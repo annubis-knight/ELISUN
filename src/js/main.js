@@ -6,27 +6,18 @@
 // Import des styles CSS avec Tailwind
 import '../css/main.css';
 
-// Import des nouveaux composants modulaires selon conventions
-// import { initSwipers } from './components/ui-swiper-config.js'; // OBSOLÈTE - Aucun Swiper avec ces selectors
-// import { initFAQAccordions } from './components/page-faq-accordeon.js'; // OBSOLÈTE - Point d'entrée [data-accordion-toggle] absent
-// import { initContactForm } from './components/ui-form-contact.js'; // OBSOLÈTE - #contact-form n'existe pas
+// Import des composants modulaires
 import { initFeaturesNav } from './components/landing-caracteristiques-nav.js';
 import { initTriggerBlock } from './components/page-materiel-trigger-block.js';
 import { initSpecsToggle } from './components/page-materiel-specs-toggle.js';
 import { initOnduleurSlider } from './components/page-materiel-onduleur-slider.js';
 
-// Import des composants existants
+// Import des composants de page
 import Hero from './components/landing-hero.js';
 import Benefits from './components/landing-benefices.js';
-// import CustomerJourney from './components/page-installation-parcours.js'; // OBSOLÈTE - Structure utilise .benefit-block, pas .journey-item
-// import IndexCustomerJourney from './components/index-customer-journey.js'; // SUPPRIMÉ - section parcours-client-exemple retirée
-// import Services from './components/landing-services.js'; // OBSOLÈTE - #services n'existe pas
-// import Testimonials from './components/landing-temoignages.js'; // OBSOLÈTE - .testimonials-carousel n'existe pas
-// import Gallery from './components/landing-galerie.js'; // OBSOLÈTE - .gallery-item n'existe pas
 import SavingsWidget from './components/landing-widget-economies.js';
-// import AddressForm from './components/ui-form-adresse.js'; // OBSOLÈTE - #address-input et #devis-btn n'existent pas
-// import FloatingCards from './components/landing-cartes-flottantes.js'; // OBSOLÈTE - .floating-cards n'existe pas
 import HeroBackgroundRotation from './components/landing-hero-background.js';
+
 // ModalDevis s'auto-initialise via son propre écouteur d'événement 'includes:loaded'
 import './components/ui-modal-devis.js';
 
@@ -96,51 +87,28 @@ class ElisunApp {
     }
 
     async initCriticalComponents() {
-        // 1. Swiper carousels (témoignages, galerie) selon conventions
-        // OBSOLÈTE - Commenté pour test UX
-        // const swiperManager = initSwipers();
-        // this.components.set('swipers', swiperManager);
-
-        // 2. FAQ Accordéons selon conventions
-        // OBSOLÈTE - Commenté pour test UX
-        // const faqManager = initFAQAccordions();
-        // this.components.set('faq', faqManager);
-
-        // 3. Formulaire contact selon conventions
-        // OBSOLÈTE - Commenté pour test UX
-        // const contactManager = initContactForm();
-        // this.components.set('contact', contactManager);
-
-        // 4. Navigation sticky features
+        // Navigation sticky features
         initFeaturesNav();
 
-        // 5. Trigger block particulier/professionnel
+        // Trigger block particulier/professionnel
         initTriggerBlock();
 
-        // 6. Toggle caractéristiques techniques
+        // Toggle caractéristiques techniques
         initSpecsToggle();
 
-        // 7. Slider onduleurs (HICONICS / SWATTEN)
+        // Slider onduleurs (HICONICS / SWATTEN)
         initOnduleurSlider();
 
-        // 8. Modal devis - S'initialise automatiquement après le chargement des includes HTML
+        // Modal devis - S'initialise automatiquement après le chargement des includes HTML
         // (voir modal-devis.js - écoute l'événement 'includes:loaded')
 
-        // 4. Composants existants
+        // Composants de page
         this.components.set('hero', new Hero());
         this.components.set('benefits', new Benefits());
-        // OBSOLÈTE - Commenté pour test UX
-        // this.components.set('journey', new CustomerJourney());
-        // this.components.set('services', new Services());
-        // this.components.set('testimonials', new Testimonials());
-        // this.components.set('gallery', new Gallery());
         this.components.set('savingsWidget', new SavingsWidget());
-        // OBSOLÈTE - Commenté pour test UX
-        // this.components.set('addressForm', new AddressForm());
-        // this.components.set('floatingCards', new FloatingCards());
         this.components.set('heroBackgroundRotation', new HeroBackgroundRotation());
 
-        // 5. Navigation mobile et dropdowns
+        // Navigation mobile et dropdowns
         this.initNavigation();
 
         console.log(`📦 ${this.components.size} composants initialisés`);
@@ -223,11 +191,7 @@ class ElisunApp {
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                // OBSOLÈTE - Commenté pour test UX
-                // const swiperManager = this.components.get('swipers');
-                // if (swiperManager) {
-                //     swiperManager.handleResize();
-                // }
+                // Hook pour gestion responsive des composants si nécessaire
             }, 250);
         });
     }

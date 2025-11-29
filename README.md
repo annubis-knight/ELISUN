@@ -46,7 +46,7 @@ ClaudeCode-ELISUN/
 ```
 
 ## 🎨 Identité de Marque
-- **Couleurs** : Bleu solaire, Jaune énergie, Vert écologique
+- **Couleurs** : Orange solaire, Vert écologique
 - **Typographies** : Inter, Poppins
 - **Ton** : Familial et professionnel, accessible et rassurant
 
