@@ -1,4 +1,5 @@
 /* === PAGE ACCORDÉON - SYSTÈME SPECS TECHNIQUES === */
+
 /*
  * Accordéon expand/collapse pour caractéristiques techniques
  * Tables responsive avec hover effects
@@ -75,7 +76,7 @@
     font-size: 15px;
     line-height: 1.6;
     background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
     border-radius: 8px;
     overflow: hidden;
 
@@ -129,7 +130,7 @@
   }
 
   /* Responsive mobile */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     table {
       font-size: 14px;
 

@@ -22,14 +22,14 @@
   border-radius: 5px;
 
   /* Responsive mobile : 95% largeur */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     width: 95%;
     max-width: 300px;
     margin: auto;
   }
 
   /* Responsive mobile : 90% largeur */
-  @media (max-width: 640px) {
+  @media (width <= 640px) {
     width: 100%;
     margin: auto;
     max-width: none;
@@ -89,7 +89,7 @@
   &:focus-visible {
     outline: 3px solid var(--primary-color);
     outline-offset: 3px;
-    box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.2);
+    box-shadow: 0 0 0 3px rgb(255 149 0 / 20%);
   }
 }
 
@@ -111,7 +111,7 @@
   cursor: pointer;
   transition: var(--transition-normal);
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     width: 80px;
     height: 80px;
     gap: 0.5rem;
@@ -162,17 +162,17 @@
     position: absolute;
     top: -20px;
     left: -20px;
-    background: #000000;
-    color: #ffffff;
+    background: #000;
+    color: #fff;
     font-size: 1rem;
     font-weight: 700;
     padding: 8px 12px;
     border-radius: 6px;
     z-index: 10;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
     transition: var(--transition-normal);
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       top: -6px;
       left: -6px;
       font-size: 0.625rem;

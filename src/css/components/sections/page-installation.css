@@ -1,4 +1,5 @@
 /* === PAGE INSTALLATION === */
+
 /*
  * Sections spécifiques page installation.html
  * Toutes les sections du parcours installation
@@ -21,7 +22,7 @@
   gap: 3rem;
   margin-bottom: 4rem;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     grid-template-columns: 1fr;
     gap: 2rem;
     margin-bottom: 3rem;
@@ -57,7 +58,7 @@
     overflow: hidden;
     height: 800px;
     width: 450px;
-    box-shadow: -15px 15px 0px var(--border-accent);
+    box-shadow: -15px 15px 0 var(--border-accent);
 
     img {
       height: 100%;
@@ -66,10 +67,10 @@
     }
 
     /* Responsive tablette */
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       height: auto;
       width: 100%;
-      box-shadow: -8px 8px 0px var(--border-accent);
+      box-shadow: -8px 8px 0 var(--border-accent);
       margin-bottom: 2rem;
 
       img {
@@ -81,8 +82,8 @@
 
   .image-preparation {
     position: absolute;
-    right: 0px;
-    bottom: 0px;
+    right: 0;
+    bottom: 0;
     border-radius: 16px;
     height: 250px;
     width: 250px;
@@ -97,7 +98,7 @@
     }
 
     /* Responsive tablette */
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       position: static;
       transform: none;
       width: 100%;
@@ -155,7 +156,7 @@
   background-color: #f9fafb;
   overflow: hidden;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     padding: 4rem 0;
   }
 
@@ -166,7 +167,7 @@
     justify-content: center;
     margin-left: -300px;
 
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       margin-left: 0;
       margin-bottom: 2rem;
     }
@@ -179,7 +180,7 @@
     left: -20px;
     top: 0;
 
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       position: static;
       height: 100%;
       width: 100%;
@@ -215,7 +216,7 @@
   padding: 8rem 0;
   background-color: white;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     padding: 4rem 0;
   }
 
@@ -239,13 +240,13 @@
     overflow: hidden;
     height: 650px;
     width: 450px;
-    box-shadow: 15px 15px 0px var(--border-accent);
+    box-shadow: 15px 15px 0 var(--border-accent);
     justify-self: end;
 
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       height: auto;
       width: 100%;
-      box-shadow: 8px 8px 0px var(--border-accent);
+      box-shadow: 8px 8px 0 var(--border-accent);
       margin-bottom: 2rem;
     }
 
@@ -254,7 +255,7 @@
       width: 100%;
       object-fit: cover;
 
-      @media (max-width: 1024px) {
+      @media (width <= 1024px) {
         height: auto;
         aspect-ratio: 0.7;
       }
@@ -263,8 +264,8 @@
 
   .image-visite {
     position: absolute;
-    left: 0px;
-    bottom: 0px;
+    left: 0;
+    bottom: 0;
     border-radius: 16px;
     height: 250px;
     width: 250px;
@@ -272,7 +273,7 @@
     border: 1px solid var(--border-accent);
     overflow: hidden;
 
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       position: static;
       transform: none;
       width: 100%;
@@ -290,8 +291,8 @@
 
   .image-preparation {
     position: absolute;
-    right: 0px;
-    bottom: 0px;
+    right: 0;
+    bottom: 0;
     border-radius: 16px;
     height: 250px;
     width: 250px;
@@ -369,7 +370,7 @@
   padding-top: 4rem;
   padding-bottom: 8rem;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     padding: 3rem 0;
   }
 
@@ -385,12 +386,12 @@
     overflow: hidden;
     height: 650px;
     width: 450px;
-    box-shadow: -15px 15px 0px var(--border-accent);
+    box-shadow: -15px 15px 0 var(--border-accent);
 
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       height: auto;
       width: 100%;
-      box-shadow: -8px 8px 0px var(--border-accent);
+      box-shadow: -8px 8px 0 var(--border-accent);
       margin-bottom: 2rem;
     }
 
@@ -399,7 +400,7 @@
       width: 100%;
       object-fit: cover;
 
-      @media (max-width: 1024px) {
+      @media (width <= 1024px) {
         height: auto;
         aspect-ratio: 0.7;
       }
@@ -408,8 +409,8 @@
 
   .image-preparation {
     position: absolute;
-    right: 0px;
-    bottom: 0px;
+    right: 0;
+    bottom: 0;
     border-radius: 16px;
     height: 250px;
     width: 250px;
@@ -417,7 +418,7 @@
     border: 1px solid var(--border-accent);
     overflow: hidden;
 
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       position: static;
       transform: none;
       width: 100%;

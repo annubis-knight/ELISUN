@@ -1,7 +1,7 @@
 /* Point d'entrée CSS principal - EliSun */
 
 /* Import Font Awesome */
-@import '~@fortawesome/fontawesome-free/css/all.css';
+@import url('~@fortawesome/fontawesome-free/css/all.css');
 
 /* Import Tailwind CSS */
 @tailwind base;
@@ -9,51 +9,60 @@
 @tailwind utilities;
 
 /* Import des styles de base */
-@import './base/reset.css';
-@import './base/variables.css';
-@import './base/typography.css';
-@import './base/utilities.css';
-@import './base/animations.css';
+@import url('./base/reset.css');
+@import url('./base/variables.css');
+@import url('./base/typography.css');
+@import url('./base/utilities.css');
+@import url('./base/animations.css');
 
 /* Import des composants */
-@import './components/sections/layout-header.css';
-@import './components/sections/layout-navbar.css';
-@import './components/ui-buttons.css';
-@import './components/ui-cards.css';
-@import './components/ui-stats.css';
-@import './components/sections/layout-footer.css';
+@import url('./components/sections/layout-header.css');
+@import url('./components/sections/layout-navbar.css');
+@import url('./components/ui-buttons.css');
+@import url('./components/ui-cards.css');
+@import url('./components/ui-stats.css');
+@import url('./components/sections/layout-footer.css');
+
 /* @import './components/modals.css'; */
 
 /* === COMPOSANTS UI RÉUTILISABLES === */
-@import './components/ui-indicateurs.css';
-@import './components/ui-badges.css';
-@import './components/ui-bento.css';
-@import './components/ui-hero.css';
-@import './components/ui-benefit-block.css';
-@import './components/ui-section-headers.css';
-@import './components/ui-modal.css';
-@import './components/ui-radio.css'; /* Styles de base pour tous les radio buttons */
-@import './components/ui-forms.css'; /* Styles de base pour tous les formulaires */
+@import url('./components/ui-indicateurs.css');
+@import url('./components/ui-badges.css');
+@import url('./components/ui-bento.css');
+@import url('./components/ui-hero.css');
+@import url('./components/ui-benefit-block.css');
+@import url('./components/ui-section-headers.css');
+@import url('./components/ui-modal.css');
+@import url('./components/ui-radio.css'); /* Styles de base pour tous les radio buttons */
+@import url('./components/ui-forms.css'); /* Styles de base pour tous les formulaires */
 
 /* === SECTIONS LANDING PAGE === */
-@import './components/sections/landing-hero.css';
-@import './components/sections/landing-banniere.css';
-@import './components/sections/landing-benefices.css';
-@import './components/sections/landing-caracteristiques.css';
-/* @import './components/sections/landing-parcours.css'; */ /* SUPPRIMÉ - section parcours-client-exemple retirée */
-@import './components/sections/landing-conversion.css';
+@import url('./components/sections/landing-hero.css');
+@import url('./components/sections/landing-banniere.css');
+@import url('./components/sections/landing-benefices.css');
+@import url('./components/sections/landing-caracteristiques.css');
+
+/* @import './components/sections/landing-parcours.css'; */
+
+ /* SUPPRIMÉ - section parcours-client-exemple retirée */
+@import url('./components/sections/landing-conversion.css');
 
 /* === SECTIONS PAGES SPÉCIFIQUES === */
-@import './components/sections/page-installation.css';
-@import './components/sections/page-produits.css';
-@import './components/sections/page-accordeon.css';
-@import './components/sections/page-faq.css';
+@import url('./components/sections/page-installation.css');
+@import url('./components/sections/page-produits.css');
+@import url('./components/sections/page-accordeon.css');
+@import url('./components/sections/page-faq.css');
 
 /* Import des styles de pages (seront créés dans la phase 2) */
+
 /* @import './pages/home.css'; */
+
 /* @import './pages/about.css'; */
+
 /* @import './pages/services.css'; */
+
 /* @import './pages/contact.css'; */
+
 /* @import './pages/sectionTest.css'; */
 
 /* === STYLES GLOBAUX === */
@@ -72,16 +81,18 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
 }
 
 .grid-tailwind {
   @apply grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-8;
+
   margin: auto;
 }
 
 .containerMax {
 @apply mx-4 md:mx-8 lg:mx-auto lg:w-[90%];
+
 max-width: 1300px;
 height: 100%;
 }

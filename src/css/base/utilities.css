@@ -1,6 +1,7 @@
 /* Utilitaires CSS personnalisés - EliSun */
 
 /* === GESTION CHARGEMENT PAGE === */
+
 /* Cacher le body jusqu'au chargement complet du DOM */
 body:not(.dom-loaded) {
   opacity: 0;
@@ -23,12 +24,12 @@ body.dom-loaded {
   padding-left: var(--spacing-4);
   padding-right: var(--spacing-4);
 
-  @media (min-width: 640px) {
+  @media (width >= 640px) {
     padding-left: var(--spacing-6);
     padding-right: var(--spacing-6);
   }
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     padding-left: var(--spacing-8);
     padding-right: var(--spacing-8);
   }
@@ -39,12 +40,12 @@ body.dom-loaded {
   padding-top: var(--spacing-16);
   padding-bottom: var(--spacing-16);
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     padding-top: var(--spacing-20);
     padding-bottom: var(--spacing-20);
   }
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     padding-top: var(--spacing-24);
     padding-bottom: var(--spacing-24);
   }

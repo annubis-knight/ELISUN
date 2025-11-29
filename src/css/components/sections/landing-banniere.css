@@ -1,4 +1,5 @@
 /* === LANDING - SECTION BANNIÈRE === */
+
 /*
  * Section bannière avec widget économies interactif
  * Toggle particulier/professionnel + calcul dynamique
@@ -13,9 +14,10 @@
  *
  * Migration depuis sections.css (lignes 1199-1826)
  */
+
 /* === SECTION BANNIERE === */
 .banner-section {
-  padding: 8rem 0 16rem 0;
+  padding: 8rem 0 16rem;
   background: var(--background-primary);
   position: relative;
   overflow: hidden;
@@ -29,7 +31,7 @@
     width: 0;
     height: 0;
     border-right: 100px solid transparent;
-    border-top: 100px solid rgba(43, 155, 31, 0.15);
+    border-top: 100px solid rgb(43 155 31 / 15%);
     pointer-events: none;
     z-index: 1;
   }
@@ -47,15 +49,15 @@
         0deg,
         transparent,
         transparent 8px,
-        rgba(251, 175, 0, 0.08) 8px,
-        rgba(251, 175, 0, 0.08) 10px
+        rgb(251 175 0 / 8%) 8px,
+        rgb(251 175 0 / 8%) 10px
       ),
       repeating-linear-gradient(
         90deg,
         transparent,
         transparent 8px,
-        rgba(43, 155, 31, 0.06) 8px,
-        rgba(43, 155, 31, 0.06) 10px
+        rgb(43 155 31 / 6%) 8px,
+        rgb(43 155 31 / 6%) 10px
       );
     opacity: 1;
     pointer-events: none;
@@ -78,7 +80,7 @@
   /* === SECTION BANNER HIGHLIGHTS === */
   .banner-highlights {
     display: none;
-    padding: 4rem 0 2rem 0;
+    padding: 4rem 0 2rem;
     position: relative;
     z-index: 2;
 
@@ -90,7 +92,7 @@
       padding-right: 2rem;
 
       /* Responsive mobile : suppression du padding droit */
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         padding-right: 0;
         margin-bottom: 3rem;
       }
@@ -245,7 +247,7 @@
             flex-direction: column;
             gap: 0.75rem;
             padding: 1rem 0.75rem;
-            background: rgba(248, 250, 252, 0.8);
+            background: rgb(248 250 252 / 80%);
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             transition: all 0.3s ease;
@@ -318,6 +320,7 @@
         width: 100%;
         left: 0;
         top: 0;
+
         /* box-shadow: var(--accent) 90px -20px 0; */
         border-radius: 20px 20px 0 0;
         overflow: hidden;
@@ -363,10 +366,10 @@
     justify-content: center;
     
     .result-card {
-      background: linear-gradient(145deg, #ffffff 0%, #fefcf3 50%, #fff8e1 100%);
+      background: linear-gradient(145deg, #fff 0%, #fefcf3 50%, #fff8e1 100%);
       border-radius: 20px;
       padding: 2rem;
-      box-shadow: 0 16px 40px rgba(251, 175, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 16px 40px rgb(251 175 0 / 15%), 0 8px 24px rgb(0 0 0 / 8%);
       border: 3px solid var(--accent);
       display: flex;
       flex-direction: column;
@@ -378,7 +381,7 @@
       
       &:hover {
         transform: translateY(-6px) scale(1.02);
-        box-shadow: 0 20px 50px rgba(251, 175, 0, 0.25), 0 12px 32px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 20px 50px rgb(251 175 0 / 25%), 0 12px 32px rgb(0 0 0 / 12%);
         border-color: var(--secondary);
       }
       
@@ -403,7 +406,7 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, rgba(251, 175, 0, 0.08) 0%, transparent 70%);
+        background: radial-gradient(circle, rgb(251 175 0 / 8%) 0%, transparent 70%);
         animation: pulse-glow 4s ease-in-out infinite;
       }
       
@@ -428,7 +431,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, var(--accent-ultra-light) 0%, rgba(255, 255, 255, 0.8) 100%);
+        background: linear-gradient(135deg, var(--accent-ultra-light) 0%, rgb(255 255 255 / 80%) 100%);
         border: 2px solid var(--accent-light);
         transition: var(--transition-normal);
         
@@ -464,7 +467,7 @@
             font-weight: 900;
             color: var(--accent);
             line-height: 0.8;
-            text-shadow: 0 6px 12px rgba(251, 175, 0, 0.3);
+            text-shadow: 0 6px 12px rgb(251 175 0 / 30%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 1;
@@ -472,12 +475,12 @@
             /* Effet de brillance sur le nombre */
             background: linear-gradient(45deg, var(--accent), #ff8c00, var(--accent));
             background-size: 200% 200%;
-            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradient-shift 3s ease-in-out infinite;
             
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 3.5rem;
             }
           }
@@ -486,10 +489,10 @@
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--accent);
-            text-shadow: 0 4px 8px rgba(251, 175, 0, 0.3);
+            text-shadow: 0 4px 8px rgb(251 175 0 / 30%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 2rem;
             }
           }
@@ -526,7 +529,7 @@
       }
 
       /* Responsive mobile : ajustement result-card */
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         padding: 1.25rem;
         gap: 1.25rem;
 
@@ -561,10 +564,12 @@
     transform: scale(0) rotate(0deg); 
     opacity: 0; 
   }
+
   50% { 
     transform: scale(1.2) rotate(180deg); 
     opacity: 0.8; 
   }
+
   100% { 
     transform: scale(1) rotate(360deg); 
     opacity: 1; 
@@ -577,6 +582,7 @@
     opacity: 0.3; 
     transform: translate(-50%, -50%) scale(1); 
   }
+
   50% { 
     opacity: 0.6; 
     transform: translate(-50%, -50%) scale(1.1); 

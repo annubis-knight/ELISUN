@@ -1,4 +1,5 @@
 /* === COMPOSANT UI : BADGES ET CARDS === */
+
 /*
  * Composant réutilisable : Trigger blocks, cards prix, badges certifications
  * Toggle particuliers/professionnels avec états actifs
@@ -16,7 +17,7 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background: rgba(248, 250, 252, 0.6);
+  background: rgb(248 250 252 / 60%);
   backdrop-filter: blur(8px);
   border: 1px solid #e5e7eb;
   border-radius: 12px;
@@ -52,7 +53,7 @@
       transform: translateY(-2px);
     }
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       font-size: 0.75rem;
       padding: 0.75rem 1rem;
     }
@@ -64,6 +65,7 @@
 /* === CERTIFICATIONS CONTAINER SUR IMAGES - PAGE MATÉRIEL === */
 .product-certifications-container {
   position: absolute;
+
   /* Position par défaut : centre bas */
   bottom: 20px;
   left: 50%;
@@ -74,37 +76,25 @@
 
   /* Modifieur : coin supérieur gauche */
   &.top-left {
-    bottom: 60vh;
-    top: auto;
-    left: 40px;
-    right: auto;
+    inset: auto auto 60vh 40px;
     transform: none;
   }
 
   /* Modifieur : coin supérieur droit */
   &.top-right {
-    bottom: 60vh;
-    top: auto;
-    right: 12px;
-    left: auto;
+    inset: auto 12px 60vh auto;
     transform: none;
   }
 
   /* Modifieur : coin inférieur gauche */
   &.bottom-left {
-    bottom: 20px;
-    top: auto;
-    left: 20px;
-    right: auto;
+    inset: auto auto 20px 20px;
     transform: none;
   }
 
   /* Modifieur : coin inférieur droit */
   &.bottom-right {
-    bottom: 20px;
-    top: auto;
-    right: 20px;
-    left: auto;
+    inset: auto 20px 20px auto;
     transform: none;
   }
 
@@ -126,7 +116,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     gap: 4px;
 
     .certification-logo {

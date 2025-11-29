@@ -1,4 +1,5 @@
 /* === LANDING - SECTION CARACTÉRISTIQUES / FEATURES === */
+
 /*
  * Section features avec navigation sticky auto-hide
  * 3 features : carte interactive, SolarDirect + tetris, suivi énergétique
@@ -43,7 +44,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background: rgba(248, 250, 252, 0.6);
+    background: rgb(248 250 252 / 60%);
     backdrop-filter: blur(8px);
     border: 1px solid #e5e7eb;
     border-radius: 12px;
@@ -59,7 +60,7 @@
 
 
     /* Responsive mobile : réduction taille et padding */
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       flex-direction: column;
     }
 
@@ -79,7 +80,7 @@
       transition: all 0.3s ease;
 
       /* Responsive mobile : réduction taille et padding */
-      @media (max-width: 640px) {
+      @media (width <= 640px) {
         padding: 0.75rem 1rem;
         font-size: 0.75rem;
         width: 100%;
@@ -116,7 +117,7 @@
       display: flex;
       gap: 4rem;
       align-items: center;
-      padding: 4rem 0rem;
+      padding: 4rem 0;
       background: var(--white);
 
 
@@ -159,9 +160,9 @@
           aspect-ratio: 3/4;
           object-fit: cover;
           border-radius: 12px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
 
-          @media (max-width: 768px) {
+          @media (width <= 768px) {
             width: 300px;
           }
         }
@@ -187,7 +188,7 @@
               width: 500px;
               height: 500px;
               border: 3px dashed #2b9b1f;
-              background-color: rgba(43, 155, 31, 0.2);
+              background-color: rgb(43 155 31 / 20%);
               border-radius: 50%;
               opacity: 0.4;
             }
@@ -202,8 +203,8 @@
               height: 16px;
               background: #2b9b1f;
               border-radius: 50%;
-              box-shadow: 0 0 0 4px rgba(43, 155, 31, 0.2),
-                          0 0 0 8px rgba(43, 155, 31, 0.1);
+              box-shadow: 0 0 0 4px rgb(43 155 31 / 20%),
+                          0 0 0 8px rgb(43 155 31 / 10%);
               z-index: 1;
             }
           }
@@ -213,10 +214,10 @@
       /* Container wrapper avec padding pour badges flottants */
       .map-image-wrapper {
         position: relative;
-        padding: 0px 0px 0px 100px;
+        padding: 0 0 0 100px;
 
         /* Responsive mobile : réduction padding et taille badges */
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           padding: 0;
 
           .feature-image img {
@@ -230,11 +231,11 @@
           position: absolute;
           top: 0;
           left: 0;
-          background: rgba(255, 255, 255, 0.95);
+          background: rgb(255 255 255 / 95%);
           backdrop-filter: blur(10px);
           padding: 8px;
           border-radius: 12px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
           text-align: center;
           z-index: 3;
           width: fit-content;
@@ -252,7 +253,7 @@
               border-radius: 50%;
               object-fit: cover;
               border: 2px solid white;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+              box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
             }
           }
 
@@ -261,7 +262,7 @@
             font-weight: 600;
             color: var(--secondary);
             line-height: 1.3;
-            word-wrap: break-word;
+            overflow-wrap: break-word;
           }
         }
 
@@ -277,7 +278,7 @@
           border-radius: 8px;
           font-size: 13px;
           font-weight: 600;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
           display: none;
           align-items: center;
           gap: 8px;
@@ -298,11 +299,11 @@
           bottom: 0;
           right: 0;
           transform: translate(8%, -16%);
-          background: rgba(255, 255, 255, 0.5);
+          background: rgb(255 255 255 / 50%);
           backdrop-filter: blur(10px);
           padding: 24px 20px;
           border-radius: 8px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
           min-width: 250px;
           gap: 20px;
           flex-direction: column;
@@ -311,7 +312,7 @@
 
 
           /* Responsive mobile : réduction taille et padding */
-          @media (max-width: 768px) {
+          @media (width <= 768px) {
             transform: translate(4%, 40%);
           }
 
@@ -362,7 +363,7 @@
                 background: var(--accent);
                 border: 2px solid white;
                 border-radius: 50%;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
               }
             }
           }
@@ -376,6 +377,7 @@
       background: linear-gradient(90deg, #FBAF00CC, var(--background-accent) 100%)
       ,url('../../../assets/images/background/bg-solardirect.jpg') center/cover no-repeat
       ;
+
       /* background: var(--background-accent); */
 
       .top-content {
@@ -384,7 +386,7 @@
         min-height: 400px;
         padding: 0 48px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           padding: 0 12px;
         }
 
@@ -396,7 +398,7 @@
           img {
             width: 100%;
             height: auto;
-            margin: -4rem 0rem -8rem -4rem;
+            margin: -4rem 0 -8rem -4rem;
           }
 
         }
@@ -428,7 +430,7 @@
         overflow: hidden;
 
         /* Responsive mobile : 1 colonne */
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           grid-template-columns: 1fr;
           gap: 0.75rem;
           width: 100%;
@@ -443,14 +445,14 @@
           position: relative;
           bottom: -10px;
 
-          @media (max-width: 768px) {
+          @media (width <= 768px) {
             bottom: 0;
           }
 
           &.tetris-column-double {
             grid-column: span 2;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               grid-column: 1;
             }
           }
@@ -467,7 +469,7 @@
           position: relative;
           bottom: -10px;
 
-          @media (max-width: 768px) {
+          @media (width <= 768px) {
             grid-column: 1;
             grid-template-columns: 1fr;
             bottom: 0;
@@ -483,7 +485,7 @@
             grid-column: 2;
             grid-row: 1;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               grid-column: 1;
               grid-row: 2;
             }
@@ -494,7 +496,7 @@
             grid-column: 1 / span 2;
             grid-row: 2;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               grid-column: 1;
               grid-row: 3;
             }
@@ -505,7 +507,7 @@
         .tetris-card {
           border-radius: 8px;
           padding: 1.5rem;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -516,7 +518,7 @@
           p {
             font-size: 12px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 0.875rem;
             }
           }
@@ -527,26 +529,26 @@
             margin-bottom: 0;
             line-height: 1.5;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 0.875rem;
             }
           }
 
           /* Uniformisation des titres/sous-titres dans tetris-cards */
           strong {
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 1.125rem !important;
             }
           }
 
           .stat-number {
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 2.5rem !important;
             }
           }
 
           .stat-number-small {
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 1.75rem !important;
             }
           }
@@ -554,7 +556,7 @@
 
           &.card-stat {
             background-image:
-              linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%),
+              linear-gradient(135deg, rgb(0 0 0 / 85%) 0%, rgb(0 0 0 / 70%) 100%),
               url('/src/assets/images/background/bg-connected.png');
             background-size: cover;
             background-position: center;
@@ -568,10 +570,7 @@
             &::before {
               content: '';
               position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
+              inset: 0;
               background-image: url('/src/assets/images/background/bg-connected.png');
               background-size: cover;
               background-position: center;
@@ -663,13 +662,13 @@
                 .play-button {
                   width: 60px;
                   height: 60px;
-                  background: rgba(255, 255, 255, 0.9);
+                  background: rgb(255 255 255 / 90%);
                   border-radius: 50%;
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   transition: all 0.3s ease;
-                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                  box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
 
                   svg {
                     width: 24px;
@@ -709,10 +708,7 @@
               &::before {
                 content: '';
                 position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
+                inset: 0;
                 background-image: linear-gradient(85deg, var(--background-secondary), var(--background-secondary-o8 ));
                 z-index: 0;
               }
@@ -722,14 +718,14 @@
                 gap: 1rem;
                 position: relative;
                 z-index: 1;
-                padding: 1rem 1rem 0rem 1rem;
+                padding: 1rem 1rem 0;
 
                 .testimonial-image {
                   width: 90%;
                   height: auto;
                   flex-shrink: 0;
                   border-radius: 8px;
-                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
                 }
               }
             }
@@ -789,7 +785,7 @@
 
             &.card-info-solardirect {
               background-image:
-                linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.85) 100%),
+                linear-gradient(to bottom, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 10%) 50%, rgb(0 0 0 / 85%) 100%),
                 url('/src/assets/images/images/asset2.png');
               background-size: cover;
               background-position: center;
@@ -896,7 +892,7 @@
       display: flex;
       gap: 3rem;
       align-items: center;
-      padding: 4rem 0rem;
+      padding: 4rem 0;
       background: var(--white);
 
       .feature-content {
@@ -925,7 +921,7 @@
         padding-left: 60px;
         flex: 0 0 50%;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           padding-left: 0;
           flex: 1;
 
@@ -942,9 +938,9 @@
             aspect-ratio: 3/4;
             object-fit: cover;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               width: 300px;
             }
           }
@@ -953,10 +949,10 @@
         /* Styles communs pour tous les badges de certification */
         .certification-badge {
           position: absolute;
-          background: rgba(255, 255, 255, 0.5);
+          background: rgb(255 255 255 / 50%);
           backdrop-filter: blur(10px);
           border-radius: 8px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
           z-index: 3;
           padding: 12px 16px;
           display: flex;
@@ -982,7 +978,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+              box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
               border: 2px solid white;
               z-index: 1;
 
@@ -1042,7 +1038,7 @@
 
           /* Badge témoignage client (centre droite) */
           &.badge-review {
-            right: 0px;
+            right: 0;
             bottom: 48px;
             transform: translate(5%, 0%);
             flex-direction: column;
@@ -1051,9 +1047,9 @@
             max-width: 200px;
             text-align: center;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               transform: translate(4%, 50%);
-              bottom: 0px;
+              bottom: 0;
             }
 
             .review-avatar {
@@ -1110,7 +1106,7 @@
           z-index: 3;
 
 
-          @media (max-width: 768px) {
+          @media (width <= 768px) {
             transform: translate(-5%, -25%);
           }
         }

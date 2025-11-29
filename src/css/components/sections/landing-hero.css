@@ -1,4 +1,5 @@
 /* === SECTION HERO LANDING PAGE === */
+
 /*
  * Section d'accueil principale avec titre, CTA et certifications
  * Utilisé uniquement sur index.html
@@ -61,13 +62,13 @@
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.05);
   }
 }
 
 .hero-section {
-
   /* === CERTIFICATIONS DANS HERO === */
   .hero-certifications {
     margin-top: auto;
@@ -78,7 +79,7 @@
     width: 100%;
 
     /* Overflow hidden seulement sur mobile pour l'animation */
-    @media (max-width: 1024px) {
+    @media (width <= 1024px) {
       overflow: hidden;
     }
 
@@ -88,14 +89,14 @@
       gap: 3rem;
 
       /* Desktop : pas d'animation, centrage des logos */
-      @media (min-width: 1025px) {
+      @media (width >= 1025px) {
         width: 100%;
         justify-content: center;
         animation: none;
       }
 
       /* Mobile : animation de défilement */
-      @media (max-width: 1024px) {
+      @media (width <= 1024px) {
         width: 90vw;
         gap: 2rem;
         animation: scrollCertifications 24s ease-in-out infinite alternate;
@@ -111,7 +112,7 @@
         transition: all 0.3s ease;
 
         /* Responsive mobile : réduction de la taille */
-        @media (max-width: 1024px) {
+        @media (width <= 1024px) {
           width: 120px;
           height: 40px;
         }
@@ -125,6 +126,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(calc(-100% + 100vw));
   }
@@ -133,8 +135,8 @@
 /* === HERO INSTALLATION SPÉCIFIQUE === */
 .hero-installation {
   background-image:
-    linear-gradient(135deg, rgba(30, 33, 34, 0.75) 0%, rgba(0, 0, 0, 0.4) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6) 85%, rgba(0, 0, 0, 0.8) 100%),
+    linear-gradient(135deg, rgb(30 33 34 / 75%) 0%, rgb(0 0 0 / 40%) 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 0%) 60%, rgb(0 0 0 / 60%) 85%, rgb(0 0 0 / 80%) 100%),
     url('/src/assets/images/images/bg_installation12.webp');
   background-size: cover;
   background-position: center;
@@ -145,11 +147,11 @@
   display: flex;
   align-items: center;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     min-height: 600px;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     background-attachment: scroll;
     min-height: 500px;
   }
@@ -160,8 +162,8 @@
 /* === HERO MATERIEL SPÉCIFIQUE === */
 .hero-materiel {
   background-image:
-    linear-gradient(135deg, rgba(30, 33, 34, 0.75) 0%, rgba(0, 0, 0, 0.4) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6) 85%, rgba(0, 0, 0, 0.8) 100%),
+    linear-gradient(135deg, rgb(30 33 34 / 75%) 0%, rgb(0 0 0 / 40%) 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 0%) 60%, rgb(0 0 0 / 60%) 85%, rgb(0 0 0 / 80%) 100%),
     url('/src/assets/images/images/bg_hero_materiel.png');
   background-size: cover;
   background-position: center;
@@ -172,11 +174,11 @@
   display: flex;
   align-items: center;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     min-height: 600px;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     min-height: 500px;
   }
 
