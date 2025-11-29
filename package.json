@@ -5,8 +5,8 @@
   "type": "module",
   "main": "src/js/main.js",
   "scripts": {
-    "dev": "webpack serve --mode development --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.js",
+    "dev": "webpack serve --mode development --config webpack.config.cjs",
+    "build": "webpack --mode production --config webpack.config.cjs",
     "prod": "npm run build && npm run serve:prod",
     "serve:prod": "cd dist && python -m http.server 8080",
     "build:css": "tailwindcss -i src/css/main.css -o dist/css/style.css --watch",

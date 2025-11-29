@@ -7,28 +7,28 @@
 import '../css/main.css';
 
 // Import des nouveaux composants modulaires selon conventions
-import { initSwipers } from './components/swiper-config.js';
-import { initFAQAccordions } from './components/faq-accordion.js';
-import { initContactForm } from './components/contact-form.js';
-import { initFeaturesNav } from './components/features-nav.js';
-import { initTriggerBlock } from './components/trigger-block.js';
-import { initSpecsToggle } from './utils/specsToggle.js';
-import { initOnduleurSlider } from './components/onduleur-slider.js';
+import { initSwipers } from './components/ui-swiper-config.js';
+import { initFAQAccordions } from './components/page-faq-accordeon.js';
+import { initContactForm } from './components/ui-form-contact.js';
+import { initFeaturesNav } from './components/landing-caracteristiques-nav.js';
+import { initTriggerBlock } from './components/page-materiel-trigger-block.js';
+import { initSpecsToggle } from './components/page-materiel-specs-toggle.js';
+import { initOnduleurSlider } from './components/page-materiel-onduleur-slider.js';
 
 // Import des composants existants
-import Hero from './components/hero.js';
-import Benefits from './components/benefits.js';
-import CustomerJourney from './components/customer-journey.js';
+import Hero from './components/landing-hero.js';
+import Benefits from './components/landing-benefices.js';
+import CustomerJourney from './components/page-installation-parcours.js';
 // import IndexCustomerJourney from './components/index-customer-journey.js'; // SUPPRIMÉ - section parcours-client-exemple retirée
-import Services from './components/services.js';
-import Testimonials from './components/testimonials.js';
-import Gallery from './components/gallery.js';
-import SavingsWidget from './components/savings-widget.js';
-import AddressForm from './components/address-form.js';
-import FloatingCards from './components/floatingCards.js';
-import HeroBackgroundRotation from './components/heroBackgroundRotation.js';
+import Services from './components/landing-services.js';
+import Testimonials from './components/landing-temoignages.js';
+import Gallery from './components/landing-galerie.js';
+import SavingsWidget from './components/landing-widget-economies.js';
+import AddressForm from './components/ui-form-adresse.js';
+import FloatingCards from './components/landing-cartes-flottantes.js';
+import HeroBackgroundRotation from './components/landing-hero-background.js';
 // ModalDevis s'auto-initialise via son propre écouteur d'événement 'includes:loaded'
-import './components/modal-devis.js';
+import './components/ui-modal-devis.js';
 
 // Import des animations si disponibles
 try {
