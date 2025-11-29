@@ -422,6 +422,72 @@ export function isInViewport(element) {
 
 ## 📝 Conventions de nommage
 
+### 🚨 RÈGLE DE NOMMAGE DES FICHIERS JAVASCRIPT - OBLIGATOIRE
+
+**TOUJOURS** utiliser des préfixes contextuels pour identifier immédiatement l'usage d'un fichier.
+
+#### **Préfixes obligatoires :**
+
+1. **`landing-*`** → Composants de la landing page (index.html)
+   ```
+   ✅ landing-hero.js
+   ✅ landing-benefices.js
+   ✅ landing-services.js
+   ✅ landing-temoignages.js
+   ✅ landing-galerie.js
+   ✅ landing-widget-economies.js
+   ✅ landing-cartes-flottantes.js
+   ✅ landing-hero-background.js
+   ✅ landing-caracteristiques-nav.js
+   ```
+
+2. **`page-{nom-page}-*`** → Composants spécifiques à une page
+   ```
+   ✅ page-installation-parcours.js       (installation.html)
+   ✅ page-faq-accordeon.js                (faq.html)
+   ✅ page-materiel-trigger-block.js       (materiel.html)
+   ✅ page-materiel-onduleur-slider.js     (materiel.html)
+   ✅ page-materiel-specs-toggle.js        (materiel.html)
+   ```
+
+3. **`ui-*`** → Composants UI globaux réutilisables (toutes pages)
+   ```
+   ✅ ui-modal-devis.js
+   ✅ ui-form-contact.js
+   ✅ ui-form-adresse.js
+   ✅ ui-swiper-config.js
+   ```
+
+4. **`animations/`** et **`utils/`** → Pas de préfixe (déjà dans un dossier explicite)
+   ```
+   ✅ animations/scroll.js
+   ✅ animations/transitions.js
+   ✅ utils/analytics.js
+   ✅ utils/tracking.js
+   ```
+
+#### **Exemples de renommage :**
+
+```javascript
+// ❌ AVANT (nommage ambigu)
+hero.js                    // Quelle page ? 🤔
+trigger-block.js           // Quelle page ? 🤔
+modal-devis.js             // Global ou page spécifique ? 🤔
+
+// ✅ APRÈS (nommage explicite)
+landing-hero.js                      // Landing page ✅
+page-materiel-trigger-block.js       // Page matériel ✅
+ui-modal-devis.js                    // Composant UI global ✅
+```
+
+#### **Avantages :**
+- 🎯 **Contexte immédiat** : On sait où le script est utilisé
+- 📂 **Tri alphabétique** : Les scripts d'une même page sont groupés
+- 🔗 **Cohérence CSS/JS** : Même logique que les fichiers CSS
+- 🔧 **Maintenabilité** : Plus facile de trouver un script
+
+---
+
 ### Variables et fonctions
 ```javascript
 // ✅ camelCase pour variables et fonctions
@@ -445,13 +511,6 @@ class CustomerJourney { }
 const API_URL = 'https://api.elisun.fr';
 const MAX_ITEMS = 10;
 const DEFAULT_DURATION = 1.5;
-```
-
-### Fichiers
-```javascript
-// ✅ camelCase ou kebab-case
-// customerJourney.js OU customer-journey.js
-// scrollAnimations.js OU scroll-animations.js
 ```
 
 ## 🎯 Best Practices

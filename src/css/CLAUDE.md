@@ -288,11 +288,83 @@ src/css/
     └── (aucun fichier - dossier réservé pour tests temporaires)
 ```
 
-### Convention de nommage des fichiers
+### 🚨 RÈGLE DE NOMMAGE DES FICHIERS CSS - OBLIGATOIRE
 
-**IMPORTANT** : Les fichiers CSS suivent des patterns de nommage stricts.
+**TOUJOURS** utiliser des préfixes contextuels pour identifier immédiatement l'usage d'un fichier.
 
-#### Composants UI réutilisables → `ui-{nom}.css`
+#### **Préfixes obligatoires :**
+
+1. **`ui-*`** → Composants UI réutilisables (toutes pages)
+   ```
+   ✅ ui-buttons.css          (tous les boutons)
+   ✅ ui-cards.css            (toutes les cards)
+   ✅ ui-stats.css            (statistiques, compteurs)
+   ✅ ui-forms.css            (formulaires)
+   ✅ ui-indicateurs.css      (step indicators v1-v8)
+   ✅ ui-badges.css           (badges, triggers, certifications)
+   ✅ ui-bento.css            (bento-grids)
+   ✅ ui-benefit-block.css    (blocs bénéfices)
+   ```
+
+2. **`layout-*`** → Structure globale (header, nav, footer)
+   ```
+   ✅ layout-header.css       (en-tête global)
+   ✅ layout-navbar.css       (navigation)
+   ✅ layout-footer.css       (pied de page)
+   ```
+
+3. **`landing-*`** → Sections de la landing page (index.html)
+   ```
+   ✅ landing-hero.css
+   ✅ landing-banniere.css
+   ✅ landing-benefices.css
+   ✅ landing-caracteristiques.css
+   ✅ landing-parcours.css
+   ✅ landing-conversion.css
+   ```
+
+4. **`page-*`** → Sections spécifiques à une page
+   ```
+   ✅ page-produits.css       (materiel.html)
+   ✅ page-accordeon.css      (accordéons réutilisables)
+   ✅ page-faq.css            (faq.html)
+   ✅ page-installation.css   (installation.html)
+   ```
+
+5. **`base/`** → Pas de préfixe (déjà dans un dossier explicite)
+   ```
+   ✅ base/variables.css
+   ✅ base/reset.css
+   ✅ base/typography.css
+   ✅ base/utilities.css
+   ✅ base/animations.css
+   ```
+
+#### **Exemples de renommage :**
+
+```css
+/* ❌ AVANT (nommage ambigu) */
+hero.css                  // Quelle page ? 🤔
+buttons.css               // Global ou page spécifique ? 🤔
+parcours.css              // Landing ou installation ? 🤔
+
+/* ✅ APRÈS (nommage explicite) */
+landing-hero.css          // Landing page ✅
+ui-buttons.css            // Composant UI global ✅
+landing-parcours.css      // Section parcours de la landing ✅
+page-installation.css     // Page installation ✅
+```
+
+#### **Avantages :**
+- 🎯 **Contexte immédiat** : On sait où les styles sont appliqués
+- 📂 **Tri alphabétique** : Les styles d'une même catégorie sont groupés
+- 🔗 **Cohérence CSS/JS** : Même logique de nommage pour JS et CSS
+- 🔧 **Maintenabilité** : Plus facile de trouver un fichier de styles
+- ♻️ **Réutilisation** : Les `ui-*` sont clairement identifiés comme réutilisables
+
+---
+
+### Composants UI réutilisables → `ui-{nom}.css`
 - `ui-buttons.css` - Tous les boutons
 - `ui-cards.css` - Toutes les cards
 - `ui-stats.css` - Statistiques et compteurs
