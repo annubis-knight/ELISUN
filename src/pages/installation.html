@@ -1,0 +1,596 @@
+<!--
+  Page Installation ELISUN - Processus détaillé d'installation photovoltaïque
+  Page informative avec engagement temporel et réassurance client
+  Design cohérent avec charte graphique EliSun - fond blanc informatif
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre processus d'installation photovoltaïque de A à Z. EliSun vous accompagne à chaque étape pour une installation sereine et professionnelle.">
+    <meta name="keywords" content="installation panneaux solaires, processus installation photovoltaïque, étapes installation solaire Toulouse, EliSun">
+    <title>Processus d'Installation Photovoltaïque | EliSun - De A à Z en Toute Sérénité</title>
+
+    <!-- Préconnexion aux polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+
+    <!-- CSS Critique inline pour éviter FOUC (Flash of Unstyled Content) -->
+    <style>
+        /* Cacher le body jusqu'au chargement complet */
+        body:not(.dom-loaded) {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* Afficher progressivement quand tout est chargé */
+        body.dom-loaded {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation Header -->
+    <div w3-include-html="../components/navbar.html"></div>
+
+    <!-- Hero Section Installation -->
+    <section id="sectionHeroInstallation" class="hero-installation">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Contenu principal hero -->
+                <div class="col-span-full lg:col-span-8 hero-left">
+                    <div class="content-block">
+                        <h1 class="text-white">
+                            Votre installation photovoltaïque –
+                            <span class="text-green">simple, rapide et sans stress</span>
+                        </h1>
+
+                        <p class="text-white">
+                            Nous prenons en charge votre projet de A à Z, de l'étude à la pose en passant par le dossier administratif, pour que vous puissiez profiter
+                            de vos économies d'énergie dès le premier jour. Avec EliSun, votre installation
+                            devient un plaisir, pas une contrainte. 
+                        </p>
+
+                        <!-- Stats de confiance installation -->
+                        <ul class="stats-container">
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Commande gérée entièrement par Elisun</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Installation facile et rapide</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Equipe d'installateurs certifiés</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Livraison rapide autour de Toulouse</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Economies instantanées</li>
+                        </ul>
+
+                        <!-- Bouton CTA principal -->
+                        <div class="hero-cta">
+                            <a href="#formulaire-devis" class="bouton btn-primary" aria-label="Obtenir un devis express gratuit pour installation photovoltaïque">
+                                Obtenir un devis express
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Feature Installation -->
+    <section class="feature-installation">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Image à gauche -->
+                <div class="col-span-4 lg:col-span-5 lg:col-start-2 image-container-feature">
+                    <div class="hero-image">
+                        <img src="../assets/images/images/Installation1.png" alt="Installation photovoltaïque professionnelle EliSun" width="800" height="600" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Contenu à droite -->
+                <div class="col-span-4 lg:col-span-5">
+                    <h2>
+                        Votre Installation Photovoltaïque <span class="text-primary">de A à Z</span>
+                    </h2>
+                    <p>
+                        Installation professionnelle fixe sur toiture pour une production optimale.
+                        Découvrez notre processus transparent en 4 étapes où chaque détail est pensé pour votre tranquillité d'esprit.
+                        De l'étude personnalisée au suivi sur 25 ans, nous vous accompagnons à chaque étape de votre projet solaire.
+                        Notre expertise locale et notre certification RGE vous garantissent une installation de qualité premium.
+                    </p>
+
+                    <!-- Liste à puces -->
+                    <ul class="panneaux-features-list">
+                        <li><i class="far fa-circle-check icon-orange"></i> Production 3x supérieure vs portable</li>
+                        <li><i class="far fa-circle-check icon-orange"></i> Installation certifiée RGE</li>
+                        <li><i class="far fa-circle-check icon-orange"></i> SAV local sous 48h</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section Visite Technique -->
+    <section class="visite-technique-section">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Contenu à gauche -->
+                <div class="col-span-4 lg:col-span-6">
+                    <img src="../assets/images/icons/obtenez-des-devis.svg" alt="Icône visite technique" class="feature-icon" width="80" height="80" loading="lazy">
+                    <h2>
+                        Visite Technique <span class="text-secondary">- Lancez votre projet rapidement</span>
+                    </h2>
+
+
+                    <!-- Étude personnalisée -->
+                    <div class="mb-8">
+                        <h3 class="mb-4">
+                            Étude personnalisée par notre équipe certifiée
+                        </h3>
+                        <p>
+                            Notre expert certifié RGE analyse votre habitation pour créer une solution sur mesure.
+                            Nous étudions l'orientation, l'inclinaison, les zones d'ombre et calculons précisément
+                            vos besoins énergétiques pour optimiser votre production solaire et maximiser vos économies.
+                        </p>
+                    </div>
+
+                    <!-- Devis immédiat -->
+                    <div class="mb-8">
+                        <h3 class="mb-4">
+                            Devis définitif le jour même
+                        </h3>
+                        <p>
+                            À l'issue de la visite, vous repartez avec votre devis complet et définitif.
+                            Prix ferme, planning d'installation et toutes les garanties détaillées.
+                            Plus besoin d'attendre, vous pouvez signer sur place si le projet vous convient.
+                        </p>
+                    </div>
+
+                    <!-- Container des badges -->
+                    <div class="panneaux-badges-container flex flex-wrap">
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">Jour J</div>
+                                <div class="badge-label">Devis sur place</div>
+                            </div>
+                        </div>
+
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-shield-check"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">RGE</div>
+                                <div class="badge-label">Expert certifié</div>
+                            </div>
+                        </div>
+
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-euro-sign"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">0€</div>
+                                <div class="badge-label">Visite gratuite</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image à droite -->
+                <div class="col-span-4 lg:col-span-4 lg:col-start-9 relative">
+                    <div class="hero-image">
+                        <img src="../assets/images/images/handshake.png" alt="Expert EliSun serrant la main d'un client lors de la visite technique" width="500" height="700" loading="lazy">
+                    </div>
+                    <div class="image-visite max-lg:hidden">
+                        <img src="../assets/images/images/ingenieur-en-energie-solaire.jpg" alt="Ingénieur solaire EliSun analysant les plans d'installation" width="250" height="250" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Préparation Installation -->
+    <section class="preparation-installation-section">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Image à gauche -->
+                <div class="col-span-4 lg:col-span-4 relative">
+                    <div class="hero-image">
+                        <img src="../assets/images/images/concevoir-et-preparer-projet-solaire.jpg" alt="Équipe EliSun préparant l'installation photovoltaïque" width="500" height="700" loading="lazy">
+                    </div>
+                    <div class="image-preparation max-lg:hidden">
+                        <img src="../assets/images/images/background-hero-material.webp" alt="Panneaux solaires et onduleurs prêts pour l'installation" width="250" height="250" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Contenu à droite -->
+                <div class="col-span-4 lg:col-span-6 lg:col-start-7 max-md:order-first">
+                    <img src="../assets/images/icons/mecanicien.svg" alt="Icône préparation installation" class="feature-icon" width="80" height="80" loading="lazy">
+                    <h2>
+                        Préparation d'Installation <span class="text-secondary">- Votre projet se concrétise</span>
+                    </h2>
+
+                    <!-- Démarches administratives -->
+                    <div class="mb-8">
+                        <h3 class="mb-4">
+                            Démarches administratives 100% prises en charge
+                        </h3>
+                        <p>
+                            EliSun s'occupe de TOUT ! Déclaration préalable de travaux en mairie, raccordement Enedis,
+                            attestation Consuel... Nous gérons l'intégralité des formalités administratives pour que
+                            vous n'ayez aucun souci à vous faire. Votre projet avance sereinement pendant que nous
+                            nous occupons de la paperasse.
+                        </p>
+                    </div>
+
+                    <!-- Commande et logistique -->
+                    <div class="mb-8">
+                        <h3 class="mb-4">
+                            Commande sécurisée et livraison coordonnée
+                        </h3>
+                        <p>
+                            Commande immédiate de vos panneaux Hitronics exclusifs directement auprès de notre
+                            fournisseur premium. Livraison coordonnée avec votre planning d'installation pour
+                            une organisation parfaite. Matériel garanti, emballage sécurisé, délais respectés.
+                        </p>
+                    </div>
+
+                    <!-- Bouton vers page matériel -->
+                    <div class="mt-8">
+                        <a href="materiel.html" class="bouton btn-primary" aria-label="Découvrir notre matériel photovoltaïque Hitronics premium">
+                            Découvrir notre matériel Hitronics
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Installation Jour J - Design Benefits -->
+    <section id="parcours-client-elisun" class="benefits-section">
+        <div class="benefits-visual-container">
+            <div class="containerMax">
+                <div class="grid-tailwind">
+
+                <!-- Section header -->
+                <div class="col-span-full lg:col-span-12 mb-20">
+                    <div class="content-header">
+                        <h2 class="heading-xl">Installation Jour J : <span class="text-primary">votre projet prend vie en une journée</span></h2>
+                        <p>Notre équipe certifiée RGE intervient chez vous pour une installation professionnelle en 4 étapes clés. De l'arrivée à la mise en service, découvrez notre processus transparent et garantie 25 ans.</p>
+                    </div>
+                </div>
+
+                <!-- Container Étape 1 : Arrivée & Préparation -->
+                <div class="col-span-full lg:col-span-12 installation-step-container">
+                    <!-- Benefit block à gauche -->
+                    <div class="installation-step-content">
+                        <div class="benefit-block">
+                            <div class="benefit-header">
+                                <div class="tab-button tab-button-white tab-button-inactive">
+                                    <div class="step-number">01</div>
+                                    <img src="../assets/images/icons/obtenez-des-devis.svg" alt="Icône arrivée équipe" class="tab-icon" width="40" height="40" loading="lazy" />
+                                </div>
+                                <h3>Arrivée & Préparation</h3>
+                            </div>
+
+                            <div class="benefit-content">
+                                <p>
+                                    Notre équipe certifiée arrive avec tout l'équipement nécessaire.
+                                    Présentation du planning de la journée, sécurisation complète du chantier et protection minutieuse de vos espaces pour garantir un site propre.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento-grid à droite -->
+                    <div class="installation-step-bento">
+                        <div class="bento-grid">
+                            <div class="bento-card card-white">
+                                <p><strong>8h00</strong> Arrivée de l'équipe</p>
+                            </div>
+                            <div class="bento-card card-dark">
+                                <p><strong>Sécurité</strong> Périmètre protégé</p>
+                            </div>
+                            <div class="bento-card card-gradient-green">
+                                <div class="card-mixed-content">
+                                    <p><strong>Protection</strong> Bâchage complet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Container Étape 2 : Pose & Raccordement -->
+                <div class="col-span-full lg:col-span-12 installation-step-container">
+                    <!-- Benefit block à gauche -->
+                    <div class="installation-step-content">
+                        <div class="benefit-block">
+                            <div class="benefit-header">
+                                <div class="tab-button tab-button-white tab-button-inactive">
+                                    <div class="step-number">02</div>
+                                    <img src="../assets/images/icons/mecanicien.svg" alt="Icône pose panneaux" class="tab-icon" width="40" height="40" loading="lazy" />
+                                </div>
+                                <h3>Pose & Raccordement</h3>
+                            </div>
+
+                            <div class="benefit-content">
+                                <p>
+                                    Installation précise des rails de fixation, pose des panneaux solaires et câblage électrique professionnel.
+                                    Raccordement à l'onduleur hybride et tests de production en temps réel pour validation immédiate.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento-grid à droite -->
+                    <div class="installation-step-bento">
+                        <div class="bento-grid bento-layout-2">
+                            <div class="bento-card card-gradient-orange bento-large">
+                                <div class="card-mixed-content">
+                                    <p><strong>Rails + Panneaux</strong> Fixation professionnelle</p>
+                                </div>
+                            </div>
+                            <div class="bento-stack">
+                                <div class="bento-card card-white bento-small">
+                                    <p><strong>Câblage</strong> Raccordement pro</p>
+                                </div>
+                                <div class="bento-card card-image bento-small">
+                                    <div class="card-mixed-content">
+                                        <p><strong>Onduleur</strong> Connecté</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Container Étape 3 : Tests & Contrôles -->
+                <div class="col-span-full lg:col-span-12 installation-step-container">
+                    <!-- Benefit block à gauche -->
+                    <div class="installation-step-content">
+                        <div class="benefit-block">
+                            <div class="benefit-header">
+                                <div class="tab-button tab-button-white tab-button-inactive">
+                                    <div class="step-number">03</div>
+                                    <img src="../assets/images/icons/outils.svg" alt="Icône tests qualité" class="tab-icon" width="40" height="40" loading="lazy" />
+                                </div>
+                                <h3>Tests & Contrôles</h3>
+                            </div>
+
+                            <div class="benefit-content">
+                                <p>
+                                    Vérification complète de la production, tests de sécurité électrique et validation du monitoring en temps réel.
+                                    Contrôle qualité systématique avant la mise en service définitive de votre installation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento-grid à droite -->
+                    <div class="installation-step-bento">
+                        <div class="bento-grid bento-layout-3">
+                            <div class="bento-card card-image bento-top">
+                                <div class="card-mixed-content">
+                                    <p><strong>Production active</strong> Tests réussis</p>
+                                </div>
+                            </div>
+                            <div class="bento-bottom-row">
+                                <div class="bento-card card-dark bento-half">
+                                    <p><strong>Sécurité OK</strong> Validé</p>
+                                </div>
+                                <div class="bento-card card-gradient-green bento-half">
+                                    <div class="card-mixed-content">
+                                        <p><strong>Monitoring</strong> En ligne</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Container Étape 4 : Finalisation & Remise -->
+                <div class="col-span-full lg:col-span-12 installation-step-container">
+                    <!-- Benefit block à gauche -->
+                    <div class="installation-step-content">
+                        <div class="benefit-block">
+                            <div class="benefit-header">
+                                <div class="tab-button tab-button-white tab-button-inactive">
+                                    <div class="step-number">04</div>
+                                    <img src="../assets/images/icons/lumiere-a-economie-denergie.svg" alt="Icône remise clés" class="tab-icon" width="40" height="40" loading="lazy" />
+                                </div>
+                                <h3>Finalisation & Remise</h3>
+                            </div>
+
+                            <div class="benefit-content">
+                                <p>
+                                    Nettoyage complet du site, formation pratique à l'utilisation de votre système et remise de tous les documents de garantie.
+                                    Votre installation photovoltaïque produit déjà votre énergie verte et vos économies commencent immédiatement !
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento-grid à droite -->
+                    <div class="installation-step-bento">
+                        <div class="bento-grid">
+                            <div class="bento-card card-white">
+                                <p><strong>Nettoyage</strong> Site impeccable</p>
+                            </div>
+                            <div class="bento-card card-dark">
+                                <p><strong>Formation</strong> Mode d'emploi</p>
+                            </div>
+                            <div class="bento-card card-gradient-green">
+                                <div class="card-mixed-content">
+                                    <p><strong>Documents</strong> Tout remis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Section Suivi énergétique -->
+    <section class="suivi-energetique-section">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Image à gauche -->
+                <div class="col-span-4 lg:col-span-4 relative">
+                    <div class="hero-image">
+                        <img src="../assets/images/images/SmartPlug.png" alt="Application mobile ELISUN affichant le suivi énergétique en temps réel" width="500" height="700" loading="lazy">
+                    </div>
+                    <div class="image-preparation max-lg:hidden">
+                        <img src="../assets/images/images/scenariot2.jpg" alt="Dashboard application montrant production et consommation solaire" width="250" height="250" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Contenu à droite -->
+                <div class="col-span-4 lg:col-span-6 lg:col-start-7">
+                    <img src="../assets/images/icons/lumiere-a-economie-denergie.svg" alt="Icône suivi énergétique" class="feature-icon" width="80" height="80" loading="lazy">
+                    <h2>
+                        Suivi Énergétique <span class="text-secondary">- Votre application dédiée</span>
+                    </h2>
+
+                    <!-- Application mobile -->
+                    <div class="mb-8">
+                        <h3 class="mb-4">
+                            Application mobile simple et intuitive
+                        </h3>
+                        <p>
+                            Suivez en temps réel votre production d'énergie solaire et vos économies réalisées.
+                            Notre application vous offre une vision claire de votre performance énergétique
+                            avec des graphiques détaillés et des conseils personnalisés pour optimiser votre consommation.
+                        </p>
+                    </div>
+
+                    <!-- Données en temps réel -->
+                    <div class="mb-8">
+                        <h3 class="mb-4">
+                            Vos données économiques instantanées
+                        </h3>
+                        <p>
+                            Visualisez minute par minute votre production, votre consommation et le calcul
+                            automatique de vos économies. Recevez des notifications intelligentes pour
+                            maximiser votre rentabilité et des rapports mensuels détaillés.
+                        </p>
+                    </div>
+
+                    <!-- Container des badges -->
+                    <div class="panneaux-badges-container flex flex-wrap">
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">24/7</div>
+                                <div class="badge-label">Suivi temps réel</div>
+                            </div>
+                        </div>
+
+                        <div class="panneau-badge-item">
+                            <div class="badge-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">Auto</div>
+                                <div class="badge-label">Calculs automatiques</div>
+                            </div>
+                        </div>
+
+                        <div class="panneau-badge-item">
+                            <div class="badge-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">Smart</div>
+                                <div class="badge-label">Alertes intelligentes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Call To Action finale avec éléments de confiance -->
+    <section id="cta-finale-elisun" class="cta-section">
+        <div class="containerMax">
+            <div class="cta-container">
+                <!-- Colonne gauche - Titre et description -->
+                <div class="cta-left">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Prêt à découvrir vos économies solaires ?</h2>
+                        <p class="cta-description">Bénéficiez de l'expertise terrain ELISUN et de l'accès privilégié aux kits Hitronics premium. Recevez votre devis personnalisé en moins de 24h.</p>
+                    </div>
+                </div>
+                
+                <!-- Colonne droite - Formulaire d'inscription -->
+                <div class="cta-right">
+                    <div class="input-cta-group input-cta-group-plain">
+                        <div class="input-button-wrapper">
+                            <input type="email"
+                                   id="cta-email-input"
+                                   placeholder="Entrez votre email pour recevoir votre estimation gratuite"
+                                   class="input-field">
+                            <button type="button" class="bouton btn-primary" id="cta-signup-btn" aria-label="Soumettre le formulaire pour obtenir un devis express personnalisé">
+                                Obtenir un devis express
+                            </button>
+                        </div>
+                    </div>
+                    <p class="input-cta-notice">
+                        <i class="fas fa-lock"></i> Nous respectons votre vie privée • Réponse sous 24h
+                    </p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div w3-include-html="../components/footer.html"></div>
+
+    <!-- Scripts JavaScript -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- Webpack injecte automatiquement les scripts -->
+
+    <!-- Script pour activer l'inclusion HTML -->
+    <script>
+        function includeHTML() {
+            let elements = document.querySelectorAll("[w3-include-html]");
+            elements.forEach(el => {
+                let file = el.getAttribute("w3-include-html");
+                fetch(file)
+                    .then(response => response.text())
+                    .then(data => {
+                        el.innerHTML = data;
+
+                        const scripts = el.querySelectorAll('script');
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+                            Array.from(oldScript.attributes).forEach(attr => {
+                                newScript.setAttribute(attr.name, attr.value);
+                            });
+                            newScript.textContent = oldScript.textContent;
+                            oldScript.parentNode.replaceChild(newScript, oldScript);
+                        });
+                    });
+            });
+        }
+        includeHTML();
+    </script>
+</body>
+</html>

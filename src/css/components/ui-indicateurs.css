@@ -1,0 +1,624 @@
+/* === COMPOSANT UI : INDICATEURS DE PROGRESSION === */
+/*
+ * Composant réutilisable : Step indicators avec animations
+ * 8 versions disponibles (v1 à v8) pour différents contextes
+ * Utilise animations.css pour les keyframes
+ *
+ * USAGE :
+ * - V1-V4 : Styles de base avec variantes couleurs
+ * - V5-V8 : Versions avancées avec états actifs/complétés
+ */
+
+/* === INDICATEURS D'ÉTAPES VERSION 1 (GRADIENT) === */
+.step-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--secondary), var(--accent));
+  box-shadow: 0 4px 14px rgba(251, 175, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  cursor: default;
+
+
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    background: white;
+    color: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(0, 0, 0, 0.05) 100%);
+    pointer-events: none;
+  }
+
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 175, 0, 0.35);
+
+    .step-number {
+      transform: scale(1.05);
+    }
+
+  }
+
+}
+
+
+/* === INDICATEURS D'ÉTAPES VERSION 2 (FLAT/MODERNE) === */
+.step-indicator-v2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  background: var(--background-primary);
+  border: 2px solid var(--primary-color);
+  position: relative;
+  transition: all var(--transition-normal);
+  cursor: default;
+
+  .step-number {
+    width: 28px;
+    height: 28px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary-color);
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid var(--primary-color);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    opacity: 0.6;
+  }
+
+  &:hover {
+    background: var(--primary-ultra-light);
+    transform: translateX(4px);
+
+    .step-number {
+      transform: scale(1.1);
+    }
+
+    &::after {
+      opacity: 1;
+      transform: translateY(-50%) translateX(2px);
+    }
+  }
+}
+
+/* === INDICATEURS D'ÉTAPES VERSION 3 (BACKGROUND-IMAGE) === */
+.step-indicator-v3 {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 40px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  background-image: linear-gradient(180deg, #EEFFEC00 56%, var(--secondary-ultra-light) 37%);
+  position: relative;
+  transition: all var(--transition-normal);
+
+  .step-number {
+    display: none;
+  }
+
+  .step-text {
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+}
+
+/* === INDICATEURS D'ÉTAPES VERSION 4 (SOLAIRE/ÉNERGÉTIQUE) === */
+.step-indicator-solar {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  background: linear-gradient(45deg, var(--primary) 0%, var(--primary-light) 100%);
+  position: relative;
+  transition: all var(--transition-normal);
+  cursor: default;
+  box-shadow: var(--shadow-primary);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--secondary), var(--accent), var(--primary));
+    border-radius: 14px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    background: white;
+    color: var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    position: relative;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+
+    &::after {
+      content: '⚡';
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 12px;
+      opacity: 0;
+      transition: all var(--transition-fast);
+    }
+  }
+
+  .step-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(43, 155, 31, 0.4);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .step-number::after {
+      opacity: 1;
+      transform: rotate(15deg);
+    }
+  }
+}
+
+/* === INDICATEURS D'ÉTAPES VERSION 5 (FAMILIAL/CONFIANCE) === */
+.step-indicator-family {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 28px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  background: var(--white);
+  border: 3px solid var(--primary);
+  position: relative;
+  transition: all var(--transition-cubic);
+  cursor: default;
+  box-shadow: var(--shadow-subtle);
+
+  .step-number {
+    width: 42px;
+    height: 42px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 2px dashed var(--secondary);
+      border-radius: 50%;
+      top: -4px;
+      left: -4px;
+      opacity: 0;
+      animation: rotate 3s linear infinite;
+      animation-play-state: paused;
+    }
+  }
+
+  .step-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+    position: relative;
+  }
+
+  &::after {
+    content: '🏠';
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    font-size: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-normal);
+  }
+
+  &:hover {
+    background: var(--primary-ultra-light);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+
+    .step-number::before {
+      opacity: 1;
+      animation-play-state: running;
+    }
+
+    &::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* === INDICATEURS D'ÉTAPES VERSION 6 (PREMIUM/LUXE) === */
+.step-indicator-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 32px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg,
+    var(--white) 0%,
+    var(--neutral) 50%,
+    var(--white) 100%);
+  border: 1px solid var(--primary);
+  position: relative;
+  transition: all var(--transition-normal);
+  cursor: default;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(251, 175, 0, 0.3),
+      transparent);
+    transition: left 0.6s ease;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(43, 155, 31, 0.3);
+    border: 2px solid white;
+
+    &::after {
+      content: '★';
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      color: var(--secondary);
+      font-size: 14px;
+      opacity: 0;
+      transform: scale(0);
+      transition: all var(--transition-fast);
+    }
+  }
+
+  .step-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(43, 155, 31, 0.2);
+    border-color: var(--secondary);
+
+    &::before {
+      left: 100%;
+    }
+
+    .step-number::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* === INDICATEURS D'ÉTAPES VERSION 7 (ÉCOLOGIQUE/NATURE) === */
+.step-indicator-eco {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 26px;
+  border-radius: 25px;
+  margin-bottom: 24px;
+  background: var(--white);
+  border: 2px solid var(--primary);
+  position: relative;
+  transition: all var(--transition-normal);
+  cursor: default;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.4s ease;
+  }
+
+  .step-number {
+    width: 38px;
+    height: 38px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    position: relative;
+    transition: all var(--transition-fast);
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--primary-light);
+      border-radius: 50%;
+      top: -3px;
+      left: -3px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all var(--transition-fast);
+    }
+  }
+
+  .step-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+    position: relative;
+
+    &::after {
+      content: '🌱';
+      margin-left: 8px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all var(--transition-fast);
+    }
+  }
+
+  &:hover {
+    background: var(--primary-ultra-light);
+    transform: translateX(6px);
+
+    &::before {
+      width: 100%;
+    }
+
+    .step-number {
+      background: var(--secondary);
+      transform: rotate(360deg);
+
+      &::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .step-text::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* === INDICATEURS D'ÉTAPES VERSION 8 (TECHNIQUE/PROFESSIONNEL) === */
+.step-indicator-tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  background: var(--neutral-dark);
+  position: relative;
+  transition: all var(--transition-normal);
+  cursor: default;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.3s ease;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid var(--primary);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    opacity: 0;
+    transition: all var(--transition-fast);
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: var(--neutral-dark);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    transition: all var(--transition-fast);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border-radius: 6px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+  }
+
+  .step-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: var(--font-secondary);
+  }
+
+  &:hover {
+    background: var(--primary);
+    transform: translateX(8px);
+
+    &::before {
+      width: 100%;
+    }
+
+    &::after {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
+    }
+
+    .step-number {
+      background: var(--neutral-dark);
+      color: var(--primary);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    .step-text {
+      color: var(--neutral-dark);
+    }
+  }
+}

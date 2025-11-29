@@ -1,0 +1,158 @@
+/* ==========================================================================
+   UI RADIO BUTTONS - ARCHITECTURE BEM COMPLÈTE
+   Tous les styles radio buttons centralisés ici
+   ========================================================================== */
+
+/* === BASE : RADIO GROUP === */
+.radio-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* === BASE : RADIO LABELS/CARDS === */
+.radio-label,
+.radio-card {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--background-primary, #ffffff);
+}
+
+/* Hover universel */
+.radio-label:hover,
+.radio-card:hover {
+  border-color: var(--primary-color, #ff914d);
+  background: var(--primary-ultra-light, #fff7ed);
+}
+
+/* État checked (sélecteur moderne :has() + fallback sibling) */
+.radio-label:has(input:checked),
+input[type="radio"]:checked + .radio-card {
+  border-color: var(--primary-color, #ff914d);
+  background: var(--primary-ultra-light, #fff7ed);
+}
+
+/* Focus visible (accessibilité clavier) */
+.radio-label:focus-within,
+input[type="radio"]:focus + .radio-card {
+  outline: 2px solid var(--primary-color, #ff914d);
+  outline-offset: 2px;
+}
+
+/* === MODIFICATEUR : LANDING PAGE === */
+
+/* Radio group landing - Max width + justification */
+.radio-group--landing {
+  max-width: 440px;
+  justify-content: center;
+}
+
+/* Input caché pour design custom avec icônes */
+.radio-group--landing input[type="radio"] {
+  display: none;
+}
+
+/* Card verticale avec icône et texte */
+.radio-card--landing {
+  flex-direction: column;
+  justify-content: center;
+  min-width: 100px;
+  height: 104px;
+  gap: 0.75rem;
+  flex: 1;
+
+  .card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+}
+
+
+
+
+.radio-group--landing input[type="radio"]:checked + .radio-card--landing .radio-text {
+  color: var(--primary-color);
+}
+
+/* === MODIFICATEUR : MODAL DEVIS === */
+
+/* Radio group modal - Grid 2 colonnes */
+.radio-group--modal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* Label modal avec gap spécifique */
+.radio-label--modal {
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Input radio natif visible avec accent-color */
+.radio-label--modal input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--primary-color, #ff914d);
+}
+
+/* Texte dans le label modal */
+.radio-label--modal .radio-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary, #333);
+  transition: all 0.2s ease;
+}
+
+/* État checked - Box shadow + texte gras */
+.radio-label--modal:has(input:checked) {
+  box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.1);
+}
+
+.radio-label--modal:has(input:checked) .radio-text {
+  font-weight: 600;
+  color: var(--primary-color, #ff914d);
+}
+
+/* Focus visible modal */
+/* .radio-label--modal:has(input:focus-visible) {
+  outline: 2px solid var(--primary-color, #ff914d);
+  outline-offset: 2px;
+} */
+
+/* === RESPONSIVE MOBILE (640px - Tailwind standard) === */
+@media (max-width: 640px) {
+  .radio-group {
+    gap: 0.5rem;
+  }
+
+  /* Landing - Cards plus petites */
+  .radio-group--landing {
+    justify-content: center;
+  }
+
+  .radio-card--landing {
+    min-width: 80px;
+    padding: 0.875rem 0.625rem;
+  }
+
+  .radio-card--landing .card-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Modal - Passage en 1 colonne */
+  .radio-group--modal {
+    grid-template-columns: 1fr;
+  }
+}

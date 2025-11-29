@@ -1,0 +1,139 @@
+/* Utilitaires CSS personnalisés - EliSun */
+
+/* === GESTION CHARGEMENT PAGE === */
+/* Cacher le body jusqu'au chargement complet du DOM */
+body:not(.dom-loaded) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Afficher progressivement quand le DOM est chargé */
+body.dom-loaded {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* === CONTENEURS === */
+.container-elisun {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+
+  @media (min-width: 640px) {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
+
+  @media (min-width: 1024px) {
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+  }
+}
+
+/* === SECTIONS === */
+.section-padding {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+
+  @media (min-width: 768px) {
+    padding-top: var(--spacing-20);
+    padding-bottom: var(--spacing-20);
+  }
+
+  @media (min-width: 1024px) {
+    padding-top: var(--spacing-24);
+    padding-bottom: var(--spacing-24);
+  }
+}
+
+/* === UTILITAIRES DE POSITIONNEMENT === */
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === STYLES ELISUN SPÉCIFIQUES === */
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  font-family: var(--header-font);
+  transition: var(--transition-normal);
+
+  &:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+  }
+}
+
+.nav-link {
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition-normal);
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+    transform: translate(0, -50%);
+  }
+}
+
+/* Focus visible pour navigation clavier */
+.focus-elisun:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* === COULEURS TEXTE ELISUN === */
+.text-accent {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--accent-color);
+}
+
+.text-grey {
+  color: var(--text-color);
+}
+
+.text-dark {
+  color: var(--text-primary);
+}
+
+.text-white {
+  color: var(--text-secondary);
+}
+
+/* === COULEURS ICÔNES === */
+.icon-green {
+  color: var(--accent-color);
+}
+
+.icon-orange {
+  color: var(--primary-color);
+}
+
+.icon-white {
+  color: var(--text-secondary);
+}
+
+/* === BORDER RADIUS PERSONNALISÉ === */
+.rounded-4xl {
+  border-radius: 2rem;
+}

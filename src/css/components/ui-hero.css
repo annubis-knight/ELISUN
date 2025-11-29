@@ -1,0 +1,71 @@
+/* === UI HERO COMPONENT === */
+/*
+ * Composants hero réutilisables pour toutes les pages
+ * Contient les structures de base, content-block et sous-titres
+ *
+ * CONTENU :
+ * - .hero-left : Container gauche du hero
+ * - .content-block : Wrapper contenu (titre + subtitle + CTA)
+ * - .hero-subtitle : Sous-titre hero
+ * - .hero-cta : Container boutons CTA
+ *
+ * UTILISÉ SUR :
+ * - index.html (hero landing)
+ * - installation.html (hero-installation)
+ * - materiel.html (hero-materiel)
+ *
+ * Extrait depuis landing-hero.css (lignes 72-121, 208-239, 265-297)
+ */
+
+/* === HERO LEFT CONTAINER === */
+.hero-left {
+  background-color: transparent;
+  padding: 80px 0px;
+  margin-top: 200px;
+  position: relative;
+
+  /* @media (max-width: 1024px) {
+    padding: 60px 0px;
+  } */
+
+  @media (max-width: 768px) {
+    padding: 40px 0px;
+    margin-top: 100px;
+  }
+}
+
+/* === CONTENT BLOCK WRAPPER === */
+.content-block {
+  h1 {
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-xl);
+    margin-bottom: 2rem;
+    line-height: var(--leading-relaxed);
+    font-weight: 300;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .hero-cta {
+    display: flex;
+    justify-self: start;
+    gap: 8px;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      justify-self: normal;
+    }
+  }
+}

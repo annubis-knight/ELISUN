@@ -1,0 +1,185 @@
+/* === SECTION HERO LANDING PAGE === */
+/*
+ * Section d'accueil principale avec titre, CTA et certifications
+ * Utilisé uniquement sur index.html
+ */
+
+/* === SECTION HERO === */
+.hero-section {
+  min-height: 116vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Couches de background avec rotation automatique et zoom */
+  &::before,
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transition: opacity 1s ease-in-out;
+    z-index: -1;
+    transform-origin: center center;
+    will-change: transform, opacity;
+    transform: scale(1);
+
+    /* Clipper la zone visible uniquement à la hauteur de la hero (116vh) */
+    clip-path: inset(0 0 calc(100% - 116vh) 0);
+  }
+
+  &::before {
+    background-image: var(--bg-before);
+    opacity: var(--opacity-before, 1);
+  }
+
+  &::after {
+    background-image: var(--bg-after);
+    opacity: var(--opacity-after, 0);
+  }
+
+  /* Activation de l'animation zoom via data-attributes */
+  &[data-animate-before='true']::before {
+    animation: heroBackgroundZoom 5000ms ease-out forwards;
+  }
+
+  &[data-animate-after='true']::after {
+    animation: heroBackgroundZoom 5000ms ease-out forwards;
+  }
+
+}
+
+/* Animation zoom-in progressif */
+@keyframes heroBackgroundZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.hero-section {
+
+  /* === CERTIFICATIONS DANS HERO === */
+  .hero-certifications {
+    margin-top: auto;
+    padding: 3rem 0;
+    position: relative;
+    z-index: 2;
+    max-width: 100vw;
+    width: 100%;
+
+    /* Overflow hidden seulement sur mobile pour l'animation */
+    @media (max-width: 1024px) {
+      overflow: hidden;
+    }
+
+    .certifications-scroll-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 3rem;
+
+      /* Desktop : pas d'animation, centrage des logos */
+      @media (min-width: 1025px) {
+        width: 100%;
+        justify-content: center;
+        animation: none;
+      }
+
+      /* Mobile : animation de défilement */
+      @media (max-width: 1024px) {
+        width: 90vw;
+        gap: 2rem;
+        animation: scrollCertifications 24s ease-in-out infinite alternate;
+        will-change: transform;
+      }
+
+      .certification-logo-hero {
+        flex: 0 0 auto;
+        width: 140px;
+        height: 50px;
+        object-fit: contain;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+
+        /* Responsive mobile : réduction de la taille */
+        @media (max-width: 1024px) {
+          width: 120px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+/* Animation de défilement horizontal va-et-vient (DOIT être en dehors de .hero-section) */
+@keyframes scrollCertifications {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% + 100vw));
+  }
+}
+
+/* === HERO INSTALLATION SPÉCIFIQUE === */
+.hero-installation {
+  background-image:
+    linear-gradient(135deg, rgba(30, 33, 34, 0.75) 0%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6) 85%, rgba(0, 0, 0, 0.8) 100%),
+    url('/src/assets/images/images/bg_installation12.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 700px;
+  position: relative;
+  overflow-x: visible;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    min-height: 600px;
+  }
+
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+    min-height: 500px;
+  }
+
+  /* Les styles .hero-left, .content-block, .hero-subtitle, .hero-cta sont maintenant dans ui-hero.css */
+}
+
+/* === HERO MATERIEL SPÉCIFIQUE === */
+.hero-materiel {
+  background-image:
+    linear-gradient(135deg, rgba(30, 33, 34, 0.75) 0%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6) 85%, rgba(0, 0, 0, 0.8) 100%),
+    url('/src/assets/images/images/bg_hero_materiel.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 700px;
+  position: relative;
+  overflow-x: visible;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    min-height: 600px;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 500px;
+  }
+
+  /* Les styles .hero-left, .content-block, .hero-subtitle, .hero-cta sont maintenant dans ui-hero.css */
+}
+

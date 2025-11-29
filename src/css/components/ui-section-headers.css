@@ -1,0 +1,39 @@
+/* === UI SECTION-HEADERS COMPONENT === */
+/*
+ * Composants headers de sections réutilisables
+ * Structures de layout uniquement (spacing, alignment)
+ * Les tailles de typo et couleurs restent dans typography.css et utilities.css
+ *
+ * CONTENU :
+ * - .content-header : Header de section complet avec spacing
+ * - .section-header : Header alternatif avec spacing
+ * - .heading-subtitle : Sous-titre de section (structure uniquement)
+ *
+ * UTILISÉ SUR :
+ * - Toutes les pages (sections diverses)
+ *
+ * NOTE : Les classes .heading-xl, .heading-2xl restent dans typography.css
+ * NOTE : Les classes .text-primary, .text-secondary, etc. restent dans utilities.css et typography.css
+ */
+
+/* === CONTENT HEADER === */
+/* .content-header {
+  margin-bottom: 3rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+
+} */
+
+/* === SECTION HEADER === */
+/* .section-header {
+  margin-bottom: 3rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+} */
+

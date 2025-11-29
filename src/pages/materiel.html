@@ -1,0 +1,838 @@
+<!--
+  Page Matériel ELISUN - Catalogue des kits photovoltaïques premium
+  Design e-commerce avec charte graphique ELISUN
+  Sections : Panneaux solaires, Kits complets, Onduleurs, Stockage
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre catalogue de kits photovoltaïques premium Hitronics. Panneaux solaires, onduleurs et solutions de stockage au meilleur prix à Toulouse.">
+    <meta name="keywords" content="panneaux solaires Hitronics, kit photovoltaïque, onduleur, stockage énergie, prix installation solaire Toulouse">
+    <title>Nos Kits Photovoltaïques Premium | EliSun - Matériel Hitronics Toulouse</title>
+
+    <!-- Préconnexion aux polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+
+    <!-- CSS Critique inline pour éviter FOUC (Flash of Unstyled Content) -->
+    <style>
+        /* Cacher le body jusqu'au chargement complet */
+        body:not(.dom-loaded) {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* Afficher progressivement quand tout est chargé */
+        body.dom-loaded {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation Header -->
+    <div w3-include-html="../components/navbar.html"></div>
+
+    <!-- Hero Section Matériel -->
+    <section id="sectionHeroMateriel" class="hero-materiel">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Contenu principal hero -->
+                <div class="col-span-full lg:col-span-8 hero-left">
+                    <div class="content-block">
+                        <h1 class="text-white">
+                            Les meilleures marques de
+                            <span class="text-green">matériel photovoltaïque premium</span>
+                        </h1>
+
+                        <p class="text-white">
+                            EliSun sélectionne pour vous les leaders européens du solaire : panneaux Le Bourgeois fabriqués en France,
+                            onduleurs et batteries HICONICS & SWATTEN reconnus pour leur fiabilité.
+                            Une gamme complète testée et approuvée pour garantir performance, durabilité et tranquillité d'esprit.
+                        </p>
+
+                        <!-- Stats de confiance matériel -->
+                        <ul class="stats-container">
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> 3 marques premium européennes sélectionnées</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Garanties constructeur de 10 à 30 ans</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Certifications CE, TÜV, VDE et IEC</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Installation par techniciens certifiés</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Prix compétitifs sans intermédiaire</li>
+                            <li class="stats-item text-white"><i class="far fa-circle-check icon-green"></i> Disponibilité et livraison rapide Toulouse</li>
+                        </ul>
+
+                        <!-- Bouton CTA principal -->
+                        <div class="hero-cta">
+                            <a href="#formulaire-devis" class="bouton btn-primary">
+                                Obtenir un devis personnalisé
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Panneaux Solaires -->
+    <section id="panneaux-solaires" class="panneaux-solaires-section">
+        <div class="containerMax">
+            <div class="section-wrapper">
+            <!-- Layout split gauche-droite -->
+            <div class="panneaux-split-layout flex flex-col lg:flex-row">
+                <!-- Partie gauche - Contenu texte -->
+                <div class="panneaux-content flex-1">
+                    <h2>Panneaux solaires Le Bourgeois - Fabrication française</h2>
+
+                    <!-- Liste à puces -->
+                    <ul class="panneaux-features-list">
+                        <li><i class="far fa-circle-check icon-green"></i> Rendement jusqu'à 22,6% : technologie TOPCon, demi-cellules, bifacial</li>
+                        <li><i class="far fa-circle-check icon-green"></i> Fabrication 100% française : certification ISO 9001, conforme RE2020</li>
+                        <li><i class="far fa-circle-check icon-green"></i> Finitions premium : Full Black, Silver ou Bi-verre pour intégration élégante</li>
+                        <li><i class="far fa-circle-check icon-green"></i> Production optimale : bifacial jusqu'à +30% (modèles 500 Wc)</li>
+                        <li><i class="far fa-circle-check icon-green"></i> Résistance extrême : verre trempé anti-reflet, biverre ultra-durable</li>
+                        <li><i class="far fa-circle-check icon-green"></i> Performance faible luminosité : monocristallin dernière génération, Anti-PID</li>
+                    </ul>
+
+                    <!-- Container des 4 icônes en bas -->
+                    <div class="panneaux-badges-container flex flex-col lg:flex-row">
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">30 <span>ans</span></div>
+                                <div class="badge-label">Garantie produit/production</div>
+                            </div>
+                        </div>
+
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">22,6<span>%</span></div>
+                                <div class="badge-label">Rendement max</div>
+                            </div>
+                        </div>
+
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">🇫🇷</div>
+                                <div class="badge-label">Fabrication française</div>
+                            </div>
+                        </div>
+
+                        <div class="panneau-badge-item flex flex-row">
+                            <div class="badge-icon flex-shrink-0">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="badge-text">
+                                <div class="badge-value">500 <span>Wc</span></div>
+                                <div class="badge-label">Puissance max bifacial</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bouton pour afficher les caractéristiques -->
+                    <button class="toggle-specs-btn" data-target="panneaux-specs">
+                        <span class="toggle-text">Voir les caractéristiques techniques</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                </div>
+
+                <!-- Partie droite - Image -->
+                <div class="panneaux-image flex-1">
+                    <img src="./assets/images/images/panneau-solaire-alpha5.png" alt="Panneau solaire Hitronics" />
+
+                    <!-- Container avec plusieurs badges certifications -->
+                    <div class="product-certifications-container top-right">
+                        <div class="certification-badge badge-cert">
+                            <img src="./assets/images/logo/logo_bourgeois_préféré.png" alt="Logo Le Bourgeois" class="cert-logo" />
+                        </div>
+
+                        <div class="certification-badge badge-cert">
+                            <img src="./assets/images/logo/logo_bloomberg.tier1.jpg" alt="Bloomberg Tier 1" class="cert-logo" />
+                        </div>
+
+                        <div class="certification-badge badge-cert">
+                            <img src="./assets/images/logo/logo_tuv.webp" alt="TÜV Rheinland" class="cert-logo" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Div pour les caractéristiques techniques (caché par défaut) -->
+            <div class="specs-container" id="panneaux-specs">
+                <table>
+                    <thead>
+                      <tr>
+                        <th>Paramètre</th>
+                        <th>Valeur</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td data-label="Paramètre">Modèle</td><td data-label="Valeur">BGPV 500 FB / TOPCon</td></tr>
+                      <tr><td data-label="Paramètre">Technologie</td><td data-label="Valeur">Monocristallin demi-cellules, PERC / TOPCon</td></tr>
+                      <tr><td data-label="Paramètre">Puissance nominale</td><td data-label="Valeur">500 Wc</td></tr>
+                      <tr><td data-label="Paramètre">Rendement du module</td><td data-label="Valeur">21.06 % (PDF), 21 % (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Nombre de cellules</td><td data-label="Valeur">132 demi-cellules (PDF), 120 (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Tolérance de puissance</td><td data-label="Valeur">±3 W (PDF), + (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Tension à puissance max (Vmp)</td><td data-label="Valeur">37.84 V</td></tr>
+                      <tr><td data-label="Paramètre">Courant à puissance max (Imp)</td><td data-label="Valeur">13.22 A</td></tr>
+                      <tr><td data-label="Paramètre">Tension circuit ouvert (Voc)</td><td data-label="Valeur">45.6 V</td></tr>
+                      <tr><td data-label="Paramètre">Courant court-circuit (Isc)</td><td data-label="Valeur">14.07 A</td></tr>
+                      <tr><td data-label="Paramètre">Coefficient température (Pmax)</td><td data-label="Valeur">-0,33 %/°C (PDF), -0,29 %/°C (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Coefficient température (Voc)</td><td data-label="Valeur">-0,25 %/°C</td></tr>
+                      <tr><td data-label="Paramètre">Coefficient température (Isc)</td><td data-label="Valeur">0,044 %/°C (PDF), 0,048 %/°C (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Tension système max</td><td data-label="Valeur">1500 V DC</td></tr>
+                      <tr><td data-label="Paramètre">Courant fusible max</td><td data-label="Valeur">25 A</td></tr>
+                      <tr><td data-label="Paramètre">Diodes de bypass</td><td data-label="Valeur">3</td></tr>
+                      <tr><td data-label="Paramètre">Dimensions du module</td><td data-label="Valeur">2094×1134×35 mm (PDF), 1950×1134×35 mm (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Poids</td><td data-label="Valeur">26 kg (PDF), 23,1 kg (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Epaisseur du verre</td><td data-label="Valeur">3,2 mm</td></tr>
+                      <tr><td data-label="Paramètre">Matériau du cadre</td><td data-label="Valeur">Aluminium, noir (full black)</td></tr>
+                      <tr><td data-label="Paramètre">Classe de protection Boîte de jonction</td><td data-label="Valeur">IP68</td></tr>
+                      <tr><td data-label="Paramètre">Type de connecteur</td><td data-label="Valeur">MC4, MC4-EVO2A</td></tr>
+                      <tr><td data-label="Paramètre">Section de câble</td><td data-label="Valeur">4 mm²</td></tr>
+                      <tr><td data-label="Paramètre">Longueur câble</td><td data-label="Valeur">1500 mm</td></tr>
+                      <tr><td data-label="Paramètre">Température de fonctionnement</td><td data-label="Valeur">-40°C à 85°C</td></tr>
+                      <tr><td data-label="Paramètre">Classe résistance feu</td><td data-label="Valeur">Classe C</td></tr>
+                      <tr><td data-label="Paramètre">Garantie produit</td><td data-label="Valeur">25 ans</td></tr>
+                      <tr><td data-label="Paramètre">Garantie performance</td><td data-label="Valeur">30 ans à 84,8 % (PDF), 30 ans à 87,4 % (ENF)</td></tr>
+                      <tr><td data-label="Paramètre">Certification</td><td data-label="Valeur">IEC-61215, IEC-61730</td></tr>
+                      <tr><td data-label="Paramètre">Options / Spécificités</td><td data-label="Valeur">Design élégant full black, verre trempé anti-reflet, anti-PID, adapté aux conditions extrêmes</td></tr>
+                    </tbody>
+                  </table>
+                  
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Onduleurs -->
+    <section id="onduleurs" class="onduleurs-section">
+        <div class="containerMax">
+            <!-- Bloc de choix type d'onduleur -->
+            <div class="trigger-block">
+                <div class="trigger-button active" data-slide="0">
+                    Onduleur HICONICS
+                </div>
+                <div class="trigger-button" data-slide="1">
+                    Onduleur SWATTEN
+                </div>
+            </div>
+
+            <!-- Slider container -->
+            <div class="onduleur-slider">
+                <div class="onduleur-slider-track">
+                    <!-- Slide 1: HICONICS -->
+                    <div class="onduleur-slide" data-slide="0">
+                        <div class="section-wrapper onduleur-wrapper">
+                            <!-- Layout split gauche-droite (inversé par rapport à panneaux) -->
+                            <div class="onduleurs-split-layout flex flex-col lg:flex-row">
+                                <!-- Partie gauche - Image -->
+                                <div class="onduleurs-image flex-1">
+                                    <img src="./assets/images/images/OnduleurHiconics.png" alt="Onduleur Hiconics" />
+
+                                    <!-- Container avec plusieurs badges certifications -->
+                                    <div class="product-certifications-container bottom-left">
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo_midea.png" alt="Logo Midea" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo-Solar-Direct.png" alt="Logo Solar Direct" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/iso-logo.png" alt="Logo ISO" class="cert-logo" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Partie droite - Contenu texte -->
+                                <div class="onduleurs-content flex-1">
+                                    <h2>Onduleur hybride HICONICS by Midea</h2>
+
+                                    <!-- Liste à puces -->
+                                    <ul class="onduleurs-features-list">
+                                        <li><i class="far fa-circle-check icon-green"></i> Installation express &lt; 15 min, batterie modulaire sans câblage</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Double MPPT avec gestion intelligente des ombrages</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Sécurité maximale : protections anti-arcs (AFCI), cybersécurité</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Bascule réseau ultra-rapide &lt; 10 ms pour équipements sensibles</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> App M.ESS complète : monitoring, mises à jour OTA, support à distance</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Compatible domotique : Smart Grid, VPP, pompes à chaleur Midea</li>
+                                    </ul>
+
+                                    <!-- Container des 4 icônes en bas -->
+                                    <div class="onduleurs-badges-container">
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-shield-alt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">10 <span>ans</span></div>
+                                                <div class="badge-label">Garantie constructeur</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-tachometer-alt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">97,7<span>%</span></div>
+                                                <div class="badge-label">Rendement max</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-clock"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">&lt; 15 <span>min</span></div>
+                                                <div class="badge-label">Installation express</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-bolt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">&lt; 10 <span>ms</span></div>
+                                                <div class="badge-label">Bascule réseau</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bouton pour afficher les caractéristiques -->
+                                    <button class="toggle-specs-btn" data-target="onduleurs-hiconics-specs">
+                                        <span class="toggle-text">Voir les caractéristiques techniques</span>
+                                        <i class="fas fa-chevron-down toggle-icon"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Div pour les caractéristiques techniques (caché par défaut) -->
+                            <div class="specs-container" id="onduleurs-hiconics-specs">
+                                <table>
+                                    <thead>
+                                      <tr>
+                                        <th>Paramètre</th>
+                                        <th>Valeur Hiconics</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr><td data-label="Paramètre">Indice de protection</td><td data-label="Valeur">IP66</td></tr>
+                                      <tr><td data-label="Paramètre">Classe de protection</td><td data-label="Valeur">Classe I</td></tr>
+                                      <tr><td data-label="Paramètre">Degré de pollution</td><td data-label="Valeur">PD3</td></tr>
+                                      <tr><td data-label="Paramètre">Catégorie de surtension</td><td data-label="Valeur">III (RÉSEAU), II (DC)</td></tr>
+                                      <tr><td data-label="Paramètre">Plage de température de fonctionnement [°C]</td><td data-label="Valeur">-20 à +60 (déclassement à +45)</td></tr>
+                                      <tr><td data-label="Paramètre">Altitude maximale de fonctionnement [m]</td><td data-label="Valeur">2000</td></tr>
+                                      <tr><td data-label="Paramètre">Plage d'humidité</td><td data-label="Valeur">0-100%, sans condensation</td></tr>
+                                      <tr><td data-label="Paramètre">Température de stockage [°C]</td><td data-label="Valeur">-40 à +70</td></tr>
+                                      <tr><td data-label="Paramètre">Émission sonore typique [dBA]</td><td data-label="Valeur">&lt;30 décibels</td></tr>
+                                      <tr><td data-label="Paramètre">Communication avec le système de gestion de batterie</td><td data-label="Valeur">CAN</td></tr>
+                                      <tr><td data-label="Paramètre">Communication avec le compteur</td><td data-label="Valeur">RS485</td></tr>
+                                      <tr><td data-label="Paramètre">Autoconsommation nocturne [Watt]</td><td data-label="Valeur">&lt;25</td></tr>
+                                      <tr><td data-label="Paramètre">Interface utilisateur</td><td data-label="Valeur">LED, APP (LCD en option)</td></tr>
+                                      <tr><td data-label="Paramètre">Garantie [années]</td><td data-label="Valeur">10</td></tr>
+                                      <tr><td data-label="Paramètre">Dimensions (L*H*P) [mm]</td><td data-label="Valeur">710×420×240</td></tr>
+                                      <tr><td data-label="Paramètre">Poids [kg]</td><td data-label="Valeur">26</td></tr>
+                                      <tr><td data-label="Paramètre">Concept de refroidissement</td><td data-label="Valeur">Convection naturelle</td></tr>
+                                      <tr><td data-label="Paramètre">Topologie</td><td data-label="Valeur">Non isolé</td></tr>
+                                      <tr><td data-label="Paramètre">Interfaces de communication</td><td data-label="Valeur">Compteur/CT, CAN, RS485, WiFi (externe)</td></tr>
+                                      <tr><td data-label="Paramètre">HMI</td><td data-label="Valeur">APP</td></tr>
+                                      <tr><td data-label="Paramètre">Connecteur PV solaire</td><td data-label="Valeur">MC4 (4~6mm²)</td></tr>
+                                      <tr><td data-label="Paramètre">Connecteur AC</td><td data-label="Valeur">Fiche rapide</td></tr>
+                                      <tr><td data-label="Paramètre">Connecteur batterie</td><td data-label="Valeur">Fiche rapide</td></tr>
+                                      <tr><td data-label="Paramètre">Certification</td><td data-label="Valeur">IEC/EN 62109-182, IEC 62477-1, etc.</td></tr>
+                                    </tbody>
+                                  </table>
+                                  
+                                  
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: SWATTEN -->
+                    <div class="onduleur-slide" data-slide="1">
+                        <div class="section-wrapper onduleur-wrapper">
+                            <!-- Layout split gauche-droite (inversé par rapport à panneaux) -->
+                            <div class="onduleurs-split-layout flex flex-col lg:flex-row">
+
+
+                                <!-- Partie droite - Contenu texte -->
+                                <div class="onduleurs-content flex-1">
+                                    <h2>Onduleur hybride SWATTEN by Sieyuan</h2>
+
+                                    <!-- Liste à puces -->
+                                    <ul class="onduleurs-features-list">
+                                        <li><i class="far fa-circle-check icon-green"></i> Solution robuste & accessible du groupe Sieyuan (30 ans d'expérience)</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Fiabilité éprouvée : résiste aux intempéries (IP65 intérieur/extérieur)</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Design plug-and-play, connecteurs MC4, installation simplifiée</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Monitoring en temps réel via app mobile dédiée (consommation, alertes)</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Puissances modulables : 3,6 à 10 kW mono / 8 à 30 kW triphasé</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Certifications CE, TÜV, RoHS - normes européennes strictes</li>
+                                    </ul>
+
+                                    <!-- Container des 4 icônes en bas -->
+                                    <div class="onduleurs-badges-container">
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-shield-alt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">10 <span>ans</span></div>
+                                                <div class="badge-label">Garantie constructeur</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-tachometer-alt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">97,7<span>%</span></div>
+                                                <div class="badge-label">Rendement max</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-water"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">IP65</div>
+                                                <div class="badge-label">Protection intérieur/extérieur</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="onduleur-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-mobile-alt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">App</div>
+                                                <div class="badge-label">Monitoring temps réel</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bouton pour afficher les caractéristiques -->
+                                    <button class="toggle-specs-btn" data-target="onduleurs-swatten-specs">
+                                        <span class="toggle-text">Voir les caractéristiques techniques</span>
+                                        <i class="fas fa-chevron-down toggle-icon"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Partie gauche - Image -->
+                                <div class="onduleurs-image flex-1">
+                                    <img src="./assets/images/images/OnduleurSwatten.png" alt="Onduleur Swatten" />
+
+                                    <!-- Container avec plusieurs badges certifications -->
+                                    <div class="product-certifications-container bottom-right">
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo_swatten.png" alt="Logo Swatten" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo-Solar-Direct.png" alt="Logo Solar Direct" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/iso-logo.png" alt="Logo ISO" class="cert-logo" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Div pour les caractéristiques techniques (caché par défaut) -->
+                            <div class="specs-container" id="onduleurs-swatten-specs">
+                                <table>
+                                    <thead>
+                                      <tr>
+                                        <th>Paramètre</th>
+                                        <th>Valeur Swatten</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr><td data-label="Paramètre">Indice de protection</td><td data-label="Valeur">IP65</td></tr>
+                                      <tr><td data-label="Paramètre">Classe de protection</td><td data-label="Valeur">Classe I</td></tr>
+                                      <tr><td data-label="Paramètre">Degré de pollution</td><td data-label="Valeur">N/A</td></tr>
+                                      <tr><td data-label="Paramètre">Catégorie de surtension</td><td data-label="Valeur">II (DC), III (AC)</td></tr>
+                                      <tr><td data-label="Paramètre">Plage de température de fonctionnement [°C]</td><td data-label="Valeur">-20 à +45</td></tr>
+                                      <tr><td data-label="Paramètre">Altitude maximale de fonctionnement [m]</td><td data-label="Valeur">2000</td></tr>
+                                      <tr><td data-label="Paramètre">Plage d'humidité</td><td data-label="Valeur">5-95 % HR</td></tr>
+                                      <tr><td data-label="Paramètre">Température de stockage [°C]</td><td data-label="Valeur">-20 à +45 (1 mois), -20 à +25 (6 mois)</td></tr>
+                                      <tr><td data-label="Paramètre">Émission sonore typique [dBA]</td><td data-label="Valeur">35 dB(A)</td></tr>
+                                      <tr><td data-label="Paramètre">Communication avec le système de gestion de batterie</td><td data-label="Valeur">CAN</td></tr>
+                                      <tr><td data-label="Paramètre">Communication avec le compteur</td><td data-label="Valeur">RS485</td></tr>
+                                      <tr><td data-label="Paramètre">Autoconsommation nocturne [Watt]</td><td data-label="Valeur">N/A</td></tr>
+                                      <tr><td data-label="Paramètre">Interface utilisateur</td><td data-label="Valeur">LED, affichage digital</td></tr>
+                                      <tr><td data-label="Paramètre">Garantie [années]</td><td data-label="Valeur">10</td></tr>
+                                      <tr><td data-label="Paramètre">Dimensions (L*H*P) [mm]</td><td data-label="Valeur">N/A</td></tr>
+                                      <tr><td data-label="Paramètre">Poids [kg]</td><td data-label="Valeur">N/A</td></tr>
+                                      <tr><td data-label="Paramètre">Concept de refroidissement</td><td data-label="Valeur">Convection naturelle</td></tr>
+                                      <tr><td data-label="Paramètre">Topologie</td><td data-label="Valeur">Sans transformateur</td></tr>
+                                      <tr><td data-label="Paramètre">Interfaces de communication</td><td data-label="Valeur">RS485, CAN, WLAN</td></tr>
+                                      <tr><td data-label="Paramètre">HMI</td><td data-label="Valeur">N/A</td></tr>
+                                      <tr><td data-label="Paramètre">Connecteur PV solaire</td><td data-label="Valeur">MC4 (max 6mm²)</td></tr>
+                                      <tr><td data-label="Paramètre">Connecteur AC</td><td data-label="Valeur">Borne Grid/Backup, max 10mm²</td></tr>
+                                      <tr><td data-label="Paramètre">Connecteur batterie</td><td data-label="Valeur">Plug & play</td></tr>
+                                      <tr><td data-label="Paramètre">Certification</td><td data-label="Valeur">N/A</td></tr>
+                                    </tbody>
+                                  </table>
+                                  
+                                  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Solutions de Stockage -->
+    <section id="stockage" class="stockage-section">
+        <div class="containerMax">
+            <!-- Slider container -->
+            <div class="stockage-slider">
+                <div class="stockage-slider-track">
+                    <!-- Slide 1: HICONICS -->
+                    <div class="stockage-slide" data-slide="0">
+                        <div class="section-wrapper stockage-wrapper">
+                            <!-- Layout split gauche-droite -->
+                            <div class="stockage-split-layout flex flex-col lg:flex-row">
+                                <!-- Partie gauche - Contenu texte -->
+                                <div class="stockage-content flex-1">
+                                    <h2>Batterie de stockage HICONICS by Midea</h2>
+
+                                    <!-- Liste à puces -->
+                                    <ul class="stockage-features-list">
+                                        <li><i class="far fa-circle-check icon-green"></i> Modules LiFePO4 5 kWh ultra-évolutifs : extensibles jusqu'à 40 kWh</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Installation sans câblage batterie : solution tout-en-un simplifiée</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Protection IP66/NEMA 4X : utilisation extérieure intensive</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Intégration SmartGrid et domotique (VPP, pompe à chaleur)</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Garantie 10 ans avec support SAV Midea Europe</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Gestion intelligente via app M.ESS : monitoring complet</li>
+                                    </ul>
+
+                                    <!-- Container des 4 icônes en bas -->
+                                    <div class="stockage-badges-container">
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-shield-alt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">10 <span>ans</span></div>
+                                                <div class="badge-label">Garantie constructeur</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-battery-full"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">40 <span>kWh</span></div>
+                                                <div class="badge-label">Capacité max évolutive</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-water"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">IP66</div>
+                                                <div class="badge-label">Usage extérieur intensif</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-network-wired"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">SmartGrid</div>
+                                                <div class="badge-label">Compatible domotique</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bouton pour afficher les caractéristiques -->
+                                    <button class="toggle-specs-btn" data-target="stockage-hiconics-specs">
+                                        <span class="toggle-text">Voir les caractéristiques techniques</span>
+                                        <i class="fas fa-chevron-down toggle-icon"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Partie droite - Image -->
+                                <div class="stockage-image flex-1">
+                                    <img src="./assets/images/images/BatteryHiconics.png" alt="Batterie Hiconics" />
+
+                                    <!-- Container avec plusieurs badges certifications -->
+                                    <div class="product-certifications-container top-right">
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo_lifepo.png" alt="Logo LiFePO4" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo_torch.png" alt="Logo Torch Plan" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/garantie_decennale.png" alt="Garantie Décennale 10 ans" class="cert-logo" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Div pour les caractéristiques techniques (caché par défaut) -->
+                            <div class="specs-container" id="stockage-hiconics-specs">
+                                <table>
+                                    <thead>
+                                      <tr>
+                                        <th>Paramètre</th>
+                                        <th>Valeur Hiconics</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr><td data-label="Paramètre">Pack batterie</td><td data-label="Valeur">15–30 kWh</td></tr>
+                                      <tr><td data-label="Paramètre">Composant</td><td data-label="Valeur">Base + 4 modules</td></tr>
+                                      <tr><td data-label="Paramètre">Énergie nominale du pack batterie [kWh]</td><td data-label="Valeur">20,48</td></tr>
+                                      <tr><td data-label="Paramètre">Énergie utile du pack batterie [kWh]</td><td data-label="Valeur">19,05</td></tr>
+                                      <tr><td data-label="Paramètre">Capacité nominale d'une cellule [Ah]</td><td data-label="Valeur">100</td></tr>
+                                      <tr><td data-label="Paramètre">Tension nominale [V]</td><td data-label="Valeur">230</td></tr>
+                                      <tr><td data-label="Paramètre">Courant de charge nominal [A]</td><td data-label="Valeur">20</td></tr>
+                                      <tr><td data-label="Paramètre">Courant de décharge nominal [A]</td><td data-label="Valeur">20</td></tr>
+                                      <tr><td data-label="Paramètre">Communication</td><td data-label="Valeur">CAN</td></tr>
+                                      <tr><td data-label="Paramètre">Interface utilisateur</td><td data-label="Valeur">LED</td></tr>
+                                      <tr><td data-label="Paramètre">Indice de protection</td><td data-label="Valeur">NEMA 4X</td></tr>
+                                      <tr><td data-label="Paramètre">Concept de refroidissement</td><td data-label="Valeur">Convection naturelle</td></tr>
+                                      <tr><td data-label="Paramètre">Température de fonctionnement</td><td data-label="Valeur">-20°C à +55°C</td></tr>
+                                      <tr><td data-label="Paramètre">Température de stockage</td><td data-label="Valeur">-20°C à +55°C</td></tr>
+                                      <tr><td data-label="Paramètre">Humidité</td><td data-label="Valeur">5% à 95%</td></tr>
+                                      <tr><td data-label="Paramètre">Altitude [m]</td><td data-label="Valeur">2000</td></tr>
+                                      <tr><td data-label="Paramètre">Durée de vie (cycles)</td><td data-label="Valeur">6000</td></tr>
+                                      <tr><td data-label="Paramètre">Garantie [années]</td><td data-label="Valeur">10</td></tr>
+                                      <tr><td data-label="Paramètre">Dimensions [mm]</td><td data-label="Valeur">710×1540×170</td></tr>
+                                      <tr><td data-label="Paramètre">Poids [kg]</td><td data-label="Valeur">204</td></tr>
+                                    </tbody>
+                                  </table>
+                                  
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: SWATTEN -->
+                    <div class="stockage-slide" data-slide="1">
+                        <div class="section-wrapper stockage-wrapper">
+                            <!-- Layout split gauche-droite -->
+                            <div class="stockage-split-layout flex flex-col lg:flex-row">
+
+                                <!-- Partie droite - Image -->
+                                <div class="stockage-image flex-1">
+                                    <img src="./assets/images/images/BatterySwatten.png" alt="Batterie Swatten" />
+
+                                    <!-- Container avec plusieurs badges certifications -->
+                                    <div class="product-certifications-container top-left">
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo_lifepo.png" alt="Logo LiFePO4" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/logo_torch.png" alt="Logo Torch Plan" class="cert-logo" />
+                                        </div>
+
+                                        <div class="certification-badge badge-cert">
+                                            <img src="./assets/images/logo/garantie_decennale.png" alt="Garantie Décennale 10 ans" class="cert-logo" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Partie gauche - Contenu texte -->
+                                <div class="stockage-content flex-1">
+                                    <h2>Batterie de stockage SWATTEN by Sieyuan</h2>
+
+                                    <!-- Liste à puces -->
+                                    <ul class="stockage-features-list">
+                                        <li><i class="far fa-circle-check icon-green"></i> Technologie LiFePO4 robuste : 6000+ cycles de charge garantis</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Modules empilables 3,2 kWh : flexibilité de 9,6 à 25,6 kWh</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Design compact et léger : 35 kg/module, installation simplifiée</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Certifications CE, TÜV, RoHS : sécurité et conformité européenne</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Garantie 10 ans : sérénité sur la durée avec support Sieyuan</li>
+                                        <li><i class="far fa-circle-check icon-green"></i> Monitoring temps réel via app mobile : contrôle et alertes</li>
+                                    </ul>
+
+                                    <!-- Container des 4 icônes en bas -->
+                                    <div class="stockage-badges-container">
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-shield-alt"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">10 <span>ans</span></div>
+                                                <div class="badge-label">Garantie constructeur</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-recycle"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">6000<span>+</span></div>
+                                                <div class="badge-label">Cycles LiFePO4</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-weight"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">35 <span>kg</span></div>
+                                                <div class="badge-label">Poids/module</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stockage-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-layer-group"></i>
+                                            </div>
+                                            <div class="badge-text">
+                                                <div class="badge-value">25,6 <span>kWh</span></div>
+                                                <div class="badge-label">Capacité max modulaire</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bouton pour afficher les caractéristiques -->
+                                    <button class="toggle-specs-btn" data-target="stockage-swatten-specs">
+                                        <span class="toggle-text">Voir les caractéristiques techniques</span>
+                                        <i class="fas fa-chevron-down toggle-icon"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+                            <!-- Div pour les caractéristiques techniques (caché par défaut) -->
+                            <div class="specs-container" id="stockage-swatten-specs">
+                                <table>
+                                    <thead>
+                                      <tr>
+                                        <th>Paramètre</th>
+                                        <th>Valeur Swatten</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr><td data-label="Paramètre">Pack batterie</td><td data-label="Valeur">9.6-25.6 kWh HV Li-ion</td></tr>
+                                      <tr><td data-label="Paramètre">Composant</td><td data-label="Valeur">Module + base (environ 3 à 8 modules)</td></tr>
+                                      <tr><td data-label="Paramètre">Énergie nominale du pack batterie [kWh]</td><td data-label="Valeur">9.6 à 25.6</td></tr>
+                                      <tr><td data-label="Paramètre">Énergie utile du pack batterie [kWh]</td><td data-label="Valeur">N/A (DOD 100% réglable)</td></tr>
+                                      <tr><td data-label="Paramètre">Capacité nominale d'une cellule [Ah]</td><td data-label="Valeur">50 Ah par module</td></tr>
+                                      <tr><td data-label="Paramètre">Tension nominale [V]</td><td data-label="Valeur">64 V par module</td></tr>
+                                      <tr><td data-label="Paramètre">Courant de charge nominal [A]</td><td data-label="Valeur">30 max continue</td></tr>
+                                      <tr><td data-label="Paramètre">Courant de décharge nominal [A]</td><td data-label="Valeur">30 max continue</td></tr>
+                                      <tr><td data-label="Paramètre">Communication</td><td data-label="Valeur">CAN, RS485</td></tr>
+                                      <tr><td data-label="Paramètre">Interface utilisateur</td><td data-label="Valeur">Voyant SOC, statut</td></tr>
+                                      <tr><td data-label="Paramètre">Indice de protection</td><td data-label="Valeur">IP65</td></tr>
+                                      <tr><td data-label="Paramètre">Concept de refroidissement</td><td data-label="Valeur">Convection naturelle</td></tr>
+                                      <tr><td data-label="Paramètre">Température de fonctionnement</td><td data-label="Valeur">-20 à +50 (charge), -20 à +50 (décharge)</td></tr>
+                                      <tr><td data-label="Paramètre">Température de stockage</td><td data-label="Valeur">-20 à +25 (6 mois), -20 à +45 (1 mois)</td></tr>
+                                      <tr><td data-label="Paramètre">Humidité</td><td data-label="Valeur">5% à 95%</td></tr>
+                                      <tr><td data-label="Paramètre">Altitude [m]</td><td data-label="Valeur">2000</td></tr>
+                                      <tr><td data-label="Paramètre">Durée de vie (cycles)</td><td data-label="Valeur">N/A</td></tr>
+                                      <tr><td data-label="Paramètre">Garantie [années]</td><td data-label="Valeur">10</td></tr>
+                                      <tr><td data-label="Paramètre">Dimensions [mm]</td><td data-label="Valeur">640×172×360 (par module)</td></tr>
+                                      <tr><td data-label="Paramètre">Poids [kg]</td><td data-label="Valeur">33,3 ± 0,5 (par module)</td></tr>
+                                    </tbody>
+                                  </table>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <!-- Section Call To Action finale avec éléments de confiance -->
+    <section id="cta-finale-elisun" class="cta-section">
+        <div class="containerMax">
+            <div class="cta-container">
+                <!-- Colonne gauche - Titre et description -->
+                <div class="cta-left">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Prêt à découvrir vos économies solaires ?</h2>
+                        <p class="cta-description">Bénéficiez de l'expertise terrain ELISUN et de l'accès privilégié aux kits Hitronics premium. Recevez votre devis personnalisé en moins de 24h.</p>
+                    </div>
+                </div>
+                
+                <!-- Colonne droite - Formulaire d'inscription -->
+                <div class="cta-right">
+                    <div class="input-cta-group input-cta-group-plain">
+                        <div class="input-button-wrapper">
+                            <input type="email"
+                                   id="cta-email-input"
+                                   placeholder="Entrez votre email pour recevoir votre estimation gratuite"
+                                   class="input-field">
+                            <button type="button" class="bouton btn-primary" id="cta-signup-btn">
+                                Obtenir un devis express
+                            </button>
+                        </div>
+                    </div>
+                    <p class="input-cta-notice">
+                        <i class="fas fa-lock"></i> Nous respectons votre vie privée • Réponse sous 24h
+                    </p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div w3-include-html="../components/footer.html"></div>
+
+    <!-- Scripts JavaScript -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <!-- Webpack injecte automatiquement les scripts -->
+
+    <!-- Script pour activer l'inclusion HTML -->
+    <script>
+        function includeHTML() {
+            let elements = document.querySelectorAll("[w3-include-html]");
+            elements.forEach(el => {
+                let file = el.getAttribute("w3-include-html");
+                fetch(file)
+                    .then(response => response.text())
+                    .then(data => {
+                        el.innerHTML = data;
+                        el.removeAttribute("w3-include-html");
+                    });
+            });
+        }
+        includeHTML();
+    </script>
+</body>
+</html>

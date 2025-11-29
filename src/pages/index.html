@@ -1,0 +1,1002 @@
+<!--
+  Landing page ELISUN - Kits photovoltaïques premium
+  Site vitrine entreprise familiale spécialisée dans l'installation de panneaux solaires
+  Partenaire SolarDirect avec exclusivité produits Iconics sur Toulouse
+  Lead generation avec ciblage 3 avatars : retraités, couples, professionnels
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EliSun - Kits photovoltaïques haut de gamme au tarif le plus concurrentiel de Toulouse. L'excellence technique accessible par une entreprise familiale.">
+    <meta name="keywords" content="photovoltaïque Toulouse, panneaux solaires premium, installation solaire, Iconics, EliSun, entreprise familiale">
+    <title>EliSun - Kits photovoltaïques haut de gamme Toulouse | L'excellence technique accessible</title>
+    
+    <!-- Favicon ELISUN -->
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon-elisun.svg"> -->
+    
+    <!-- Préconnexion aux polices Google pour performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- SwiperJS CSS pour carousels selon conventions -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+
+    <!-- CSS Critique inline pour éviter FOUC (Flash of Unstyled Content) -->
+    <style>
+        /* Cacher le body jusqu'au chargement complet */
+        body:not(.dom-loaded) {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* Afficher progressivement quand tout est chargé */
+        body.dom-loaded {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header ELISUN avec dropdown et hamburger mobile -->
+    <div w3-include-html="components/navbar.html"></div>
+
+    <!-- Section Hero ELISUN avec layout split et CTA multiples -->
+    <section id="sectionHeroElisun" class="hero-section" data-parallax-parent="true">
+        <div class="containerMax" data-parallax-background="true">
+            <div class="grid-tailwind pb-10" data-parallax-content="true">
+                <!-- Contenu principal hero -->
+                <div class="col-span-4 md:col-span-8 lg:col-span-10 hero-left">
+                    <div class="content-block">
+                        <h1 class="text-white">
+                            Choisissz le photovoltaïques premium avec Elisun–
+                            <span class="text-green text-bold">performance et fiabilité à prix imbattable</span>
+                        </h1>
+    
+                        <p class="max-md:hidden text-white">
+                            Offrez à votre maison ou à votre entreprise le solaire haute performance, installé localement
+                            par des experts certifiés.
+                            Profitez d'une technologie exclusive, d'un accompagnement total et économisez dès la première
+                            facture, sans stress ni surprise.
+                        </p>
+    
+    
+                        <!-- Stats de confiance entreprise familiale -->
+                        <ul class="stats-container">
+                            <li class="stats-item text-white"><i class="fas fa-circle-check icon-green"></i> Réactif sur Toulouse</li>
+                            <li class="stats-item text-white"><i class="fas fa-circle-check icon-green"></i> Economies grâce aux tarifs usine</li>
+                            <li class="stats-item text-white max-sm:hidden"><i class="fas fa-circle-check icon-green"></i> Onduleur et panneaux ultra performants</li>
+                            <li class="stats-item text-white max-sm:hidden"><i class="fas fa-circle-check icon-green"></i> Supporté par SolarDirect</li>
+                            <li class="stats-item text-white"><i class="fas fa-circle-check icon-green"></i> Eclusivités constructeurs</li>
+                            <li class="stats-item text-white"><i class="fas fa-circle-check icon-green"></i> Installateurs certifiés 10ans+</li>
+                        </ul>
+    
+   
+    
+                        <!-- Bouton CTA principal -->
+                        <div class="hero-cta">
+                            <a href="#formulaire-devis" class="bouton btn-primary" data-open-modal="devis">
+                                Obtenir un devis express
+                            </a>
+
+                            <a href="#formulaire-devis" class="bouton btn-secondary">
+                                Me contacter
+                                </a>
+                        </div>
+    
+    
+    
+                    </div>
+                </div>
+    
+            </div>
+
+            <!-- Section certifications intégrée dans Hero -->
+            <div class="hero-certifications">
+                <div class="certifications-scroll-wrapper">
+                    <!-- Certification RGE -->
+                    <img src="./assets/images/logo/qualibat-RGE-white.png"
+                         alt="Certification RGE Qualibat - Reconnu Garant de l'Environnement"
+                         loading="lazy"
+                         class="certification-logo-hero" />
+
+                    <!-- Partenaire SolarDirect -->
+                    <img src="./assets/images/logo/logo-Solar-Direct-white.png"
+                         alt="Partenaire officiel SolarDirect France"
+                         loading="lazy"
+                         class="certification-logo-hero" />
+
+                    <!-- Garantie Iconics -->
+                    <img src="./assets/images/logo/logo_Hiconics.webp"
+                         alt="Partenaire Hitronics - Matériel premium"
+                         loading="lazy"
+                         class="certification-logo-hero" />
+
+                    <!-- Certification QualiPV -->
+                    <img src="./assets/images/logo/logo_QualiPv-white2.png"
+                         alt="Certification QualiPV RGE 2025"
+                         loading="lazy"
+                         class="certification-logo-hero" />
+
+                    <!-- Partenaire Midea -->
+                    <img src="./assets/images/logo/Midea-logo-white.png"
+                         alt="Partenaire Midea"
+                         loading="lazy"
+                         class="certification-logo-hero" />
+
+                    <!-- Partenaire Bourgeois -->
+                    <img src="./assets/images/logo/logo_bourgeois-white.png"
+                         alt="Partenaire Bourgeois"
+                         loading="lazy"
+                         class="certification-logo-hero" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Bannière économies -->
+    <section id="sectionBanniere" class="banner-section">
+        <div class="containerMax">
+
+            <!-- Section avantages au-dessus du widget -->
+            <div class="banner-highlights">
+                <div class="grid-tailwind">
+                    <!-- Partie gauche - 3 containers icône + titre + texte -->
+                    <div class="col-span-4 lg:col-span-5">
+                        <div class="highlights-left">
+                            <!-- Container 1 -->
+                            <div class="highlight-item flex flex-row">
+                                <div class="highlight-icon flex-shrink-0">
+                                    <img src="./assets/images/icons/energie-renouvelable.svg" alt="Icône énergie renouvelable" class="highlight-icon-svg">
+                                </div>
+                                <div class="highlight-content">
+                                    <h3 class="highlight-title">Technologie Premium</h3>
+                                    <p class="highlight-text">Panneaux solaires Hitronics dernière génération avec un rendement exceptionnel et une durabilité garantie 25 ans.</p>
+                                </div>
+                            </div>
+
+                            <!-- Container 2 -->
+                            <div class="highlight-item flex flex-row">
+                                <div class="highlight-icon flex-shrink-0">
+                                    <img src="./assets/images/icons/economic.svg" alt="Icône économies" class="highlight-icon-svg">
+                                </div>
+                                <div class="highlight-content">
+                                    <h3 class="highlight-title">Prix Direct Usine</h3>
+                                    <p class="highlight-text">Bénéficiez de tarifs privilégiés grâce à notre partenariat exclusif avec SolarDirect et notre circuit court de distribution.</p>
+                                </div>
+                            </div>
+
+                            <!-- Container 3 -->
+                            <div class="highlight-item flex flex-row">
+                                <div class="highlight-icon flex-shrink-0">
+                                    <img src="./assets/images/icons/accompagner.svg" alt="Icône accompagnement" class="highlight-icon-svg">
+                                </div>
+                                <div class="highlight-content">
+                                    <h3 class="highlight-title">Accompagnement Total</h3>
+                                    <p class="highlight-text">De l'étude gratuite à la maintenance, notre équipe locale vous accompagne à chaque étape de votre projet solaire.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partie droite - Texte principal -->
+                    <div class="col-span-4 lg:col-span-7">
+                        <div class="highlights-right">
+                            <!-- TITRE ALTERNATIF <h2 class="banner-main-title">3 raisons de choisir ELISUN pour votre installation solaire à Toulouse</h2> -->
+                            <h2 class="banner-main-title">ELISUN combine le meilleur : expertise locale + puissance d'un leader national</h2>
+                            <div class="banner-main-text">
+                                <p>Chez ELISUN, nous combinons l'expertise d'une entreprise familiale toulousaine avec la puissance logistique du réseau SolarDirect. Cette alliance unique nous permet de vous proposer des installations photovoltaïques haut de gamme aux tarifs les plus compétitifs du marché.</p> 
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc de choix particulier/professionnel -->
+            <div class="trigger-block">
+                <div class="trigger-button active" data-type="particulier">
+                    Pour particuliers
+                </div>
+                <div class="trigger-button" data-type="professionnel">
+                    Pour professionnels
+                </div>
+            </div>
+
+            <!-- Widget pourcentage d'économie -->
+            <div class="savings-widget mt-20">
+                <div class="grid-tailwind">
+                    <!-- Container wrapper pour left-sections avec hauteur fixe -->
+                    <div class="col-span-4 md:col-span-8 lg:col-span-7 left-section-wrapper">
+                        <!-- Partie gauche - Version PARTICULIERS (visible par défaut) -->
+                        <div class="left-section" data-target="particulier">
+                        <!-- Radio buttons en bas -->
+                        <div class="particulier-pro-section">
+                            <p class="selector-label">Votre type d'installation :</p>
+                            <div class="radio-group radio-group--landing">
+                                <input type="radio" id="radio1" name="radio-group" value="6kv" checked>
+                                <label for="radio1" class="radio-card radio-card--landing">
+                                    <img src="./assets/images/icons/energie-solaire-gradient.svg" alt="Icône solaire" class="card-icon" />
+                                    <span class="radio-text">6kV</span>
+                                </label>
+
+                                <input type="radio" id="radio2" name="radio-group" value="9kv">
+                                <label for="radio2" class="radio-card radio-card--landing">
+                                    <img src="./assets/images/icons/energie-solaire-gradient.svg" alt="Icône solaire" class="card-icon" />
+                                    <span class="radio-text">9kV</span>
+                                </label>
+
+                                <input type="radio" id="radio3" name="radio-group" value="30kv">
+                                <label for="radio3" class="radio-card radio-card--landing">
+                                    <img src="./assets/images/icons/energie-solaire-gradient.svg" alt="Icône solaire" class="card-icon" />
+                                    <span class="radio-text">30kV+</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Titre au milieu -->
+                        <div class="title-section">
+                            <h2>Grâce à nos tarifs usine, économisez jusqu'à <span id="dynamic-percentage-text" class="dynamic-percentage-highlight">785€</span> sur vos panneaux solaires</h2>
+                            <p class="subtitle-exclusivity">
+                                ELISUN bénéficie d'une exclusivité avec Hitronics pour vous offrir des panneaux premium.
+                                Grâce à notre réseau SolarDirect, nous assurons une qualité premium à prix concurrentiel.
+                            </p>
+                            <a href="materiel.html" class="bouton btn-primary">
+                                Voir nos kits photovoltaïques
+                            </a>
+                        </div>
+                        </div>
+
+                        <!-- Partie gauche - Version PROFESSIONNELS (cachée par défaut) -->
+                        <div class="left-section" data-target="professionnel">
+                        <!-- Cards horizontales garanties professionnels (équivalent particulier-pro-section) -->
+                        <div class="particulier-pro-section">
+                            <p class="selector-label">Nos garanties premium :</p>
+                            <div class="pro-features-cards">
+                                <!-- Card 1: Garantie Onduleurs -->
+                                <div class="pro-feature-card">
+                                    <div class="pro-card-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                                            <path d="m9 12 2 2 4-4"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="pro-card-content">
+                                        <h4>Garantie Onduleur</h4>
+                                        <p class="max-sm:hidden text-small">Jusqu'à 20 ans</p>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Garantie Panneaux -->
+                                <div class="pro-feature-card">
+                                    <div class="pro-card-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                            <path d="M3 9h18"></path>
+                                            <path d="M9 21V9"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="pro-card-content">
+                                        <h4>Garantie Production</h4>
+                                        <p class="max-sm:hidden text-small">30 ans minimum</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Titre pour professionnels (équivalent title-section) -->
+                        <div class="title-section">
+                            <h2>Solutions Premium pour Professionnels : <span id="dynamic-percentage-text-pro" class="dynamic-percentage-highlight">Excellence & Fiabilité</span></h2>
+                            <p class="subtitle-exclusivity">
+                                Onduleurs de marques leaders pour une fiabilité maximale dans le temps. Panneaux solaires français, conçus pour résister aux conditions les plus extrêmes. Des équipements premium pour garantir la pérennité de votre investissement.
+                            </p>
+                            <a href="materiel.html" class="bouton btn-primary" data-open-modal="devis">
+                                Demander un devis professionnel
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Partie droite - Image -->
+                    <div class="col-span-4 md:col-span-8 lg:col-span-5 right-section">
+                        <div class="savings-image">
+                            <img src="./assets/images/images/panneau-solaire-alpha4.png" alt="Installation photovoltaïque ELISUN" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Section Bénéfices ELISUN avec grille 3x2 et side image -->
+    <section id="benefits-elisun" class="benefits-section">
+        <div class="benefits-visual-container">
+            <div class="containerMax">
+                <div class="grid-tailwind">
+                <!-- Section header -->
+                <div class="col-span-4 md:col-span-6 lg:col-span-12 md:mb-10 lg:mb-20">
+                    <div class="content-header">
+                        <!-- Bénéfice 1 : Panneaux haute performance -->
+                        <h2 class="heading-xl">Nos kits photovoltaïques premium : <span class="text-primary">performance et
+                                rentabilité garanties</span></h2>
+                        <p class="text-white">Découvrez les 3 avantages de nos solutions complètes panneaux + onduleur + stockage d'énergie</p>
+                    </div>
+                </div>
+    
+                <!-- Side image maison avec panneaux solaires -->
+                <div class="col-span-4 md:col-span-2 lg:col-span-5 h-[100%]">
+                    <div class="gallery-container">
+                        <!-- Item 1 - Arrière-plan gauche -->
+                        <div class="gallery-item gallery-item-back-left">
+                            <img src="./assets/images/images/panneau-face.png" style="transform: scaleX(-1);" alt="Panneaux solaires ELISUN"
+                                loading="lazy" />
+                        </div>
+
+
+                        <!-- Item 3 - Premier plan avec card prix -->
+                        <div class="gallery-item gallery-item-front">
+                            <img src="./assets/images/images/onduleur-face.png" alt="Système de stockage solaire HiConics ELISUN"
+                                loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+                <!-- Grille bénéfices 3 colonnes -->
+                <div class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8 ">
+                    <div class="content-container">
+  
+                        <!-- Bénéfice 1 : Panneaux haute performance -->
+                        <div class="benefit-block">
+                            <div class="benefit-header">
+                                <div class="tab-button tab-button-white tab-button-inactive">
+                                    <div class="step-number">01</div>
+                                    <img src="./assets/images/icons/energie-solaire-gradient.svg" alt="Icône panneaux solaires" class="tab-icon" />
+                                </div>
+                                <h3>Panneaux Hitronics Premium</h3>
+                            </div>
+
+                            <div class="benefit-content">
+                                <p class="text-white">
+                                    Modules photovoltaïques dernière génération avec un rendement exceptionnel de 22% et une
+                                    garantie de performance 30 ans. Technologie premium pour une production optimale.
+                                </p>
+
+                                <div class="bento-grid">
+                                    <!-- Card 1: Rendement - Blanche -->
+                                    <div class="bento-card card-white">
+                                        <p><strong>22% d'efficacité</strong> Rendement exceptionnel garanti</p>
+                                    </div>
+
+                                    <!-- Card 2: Garantie - Noire -->
+                                    <div class="bento-card card-dark">
+                                        <p><strong>30 ans</strong> Garantie performance constructeur</p>
+                                    </div>
+
+                                    <!-- Card 3: Durabilité - Image intempéries -->
+                                    <div class="bento-card card-gradient-green">
+                                        <div class="card-mixed-content">
+                                            <p><strong>Durabilité</strong> Résistance extrême aux intempéries</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="gallery-cta-container">
+                                    <a href="materiel.html#panneaux-solaires" class="bouton btn-primary btn-full-width">
+                                        Découvrir nos panneaux premium
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bénéfice 2 : Onduleur intelligent -->
+                        <div class="benefit-block">
+                            <div class="benefit-header">
+                                <div class="tab-button tab-button-white tab-button-inactive">
+                                    <div class="step-number">02</div>
+                                    <img src="./assets/images/icons/energie-renouvelable.svg" alt="Icône onduleur" class="tab-icon" />
+                                </div>
+                                <h3>Onduleur Intelligent</h3>
+                            </div>
+
+                            <div class="benefit-content">
+                                <p class="text-white">
+                                    Onduleur hybride avec optimisation automatique de la production et monitoring en temps
+                                    réel via application dédiée. Contrôlez votre installation depuis votre smartphone.
+                                </p>
+
+                                <div class="bento-grid bento-layout-2">
+                                    <!-- Card large gauche - Image connexion wifi -->
+                                    <div class="bento-card card-gradient-orange bento-large">
+                                        <div class="card-mixed-content">
+                                            <p><strong>98% conversion</strong> Optimisation maximale de l'énergie produite</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cards empilées droite -->
+                                    <div class="bento-stack">
+                                        <div class="bento-card card-white bento-small">
+                                            <p><strong>Temps réel</strong> Suivi mobile</p>
+                                        </div>
+
+                                        <div class="bento-card card-image bento-small">
+                                            <div class="card-mixed-content">
+                                                <!-- <p><strong>Hybride</strong> Stockage & réseau</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="gallery-cta-container">
+                                    <a href="materiel.html#onduleurs" class="bouton btn-primary btn-full-width">
+                                        Découvrir nos onduleurs intelligents
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bénéfice 3 : Stockage d'énergie -->
+                        <div class="benefit-block">
+                            <div class="benefit-header">
+                                <div class="tab-button tab-button-white tab-button-inactive">
+                                    <div class="step-number">03</div>
+                                    <img src="./assets/images/icons/lumiere-a-economie-denergie.svg" alt="Icône stockage" class="tab-icon" />
+                                </div>
+                                <h3>Stockage Intelligent</h3>
+                            </div>
+
+                            <div class="benefit-content">
+                                <p class="text-white">
+                                    Batteries lithium haute capacité pour stocker votre surplus et l'utiliser quand vous en
+                                    avez besoin, jour et nuit. Maximisez votre autoconsommation et votre indépendance énergétique.
+                                </p>
+
+                                <div class="bento-grid bento-layout-3">
+                                    <!-- Card empilée haut - Image scenariot2 -->
+                                    <div class="bento-card card-image bento-top">
+                                        <div class="card-mixed-content">
+                                            <p><strong>Jusqu'à 80%</strong> Autonomie énergétique</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cards horizontales bas -->
+                                    <div class="bento-bottom-row">
+                                        <div class="bento-card card-dark bento-half">
+                                            <!-- <p><strong>Lithium</strong> Haute capacité</p> -->
+                                        </div>
+
+                                        <div class="bento-card card-gradient-green bento-half">
+                                            <div class="card-mixed-content">
+                                                <p><strong>24/7</strong> Jour et nuit</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="gallery-cta-container">
+                                    <a href="materiel.html#stockage" class="bouton btn-primary btn-full-width">
+                                        Découvrir nos solutions de stockage
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Features -->
+    <section id="features-elisun" class="features-section">
+        <!-- Header Section Features -->
+        <div class="containerMax">
+            <div class="features-header">
+                <h2 class="heading-xl text-center">Pourquoi choisir EliSun ?<br><span class="text-green">3 atouts qui font la différence</span></h2>
+                <p>
+                    Dans un secteur en pleine expansion, nous avons fait le choix de construire notre modèle autour de trois piliers fondamentaux.
+                    Une approche locale et humaine, un partenariat exclusif avec le leader européen Solar Direct, et une expertise technique certifiée qui garantit la réussite de chaque installation.
+                    Ces trois atouts font de nous bien plus qu'un simple installateur : un partenaire de confiance pour votre transition énergétique.
+                </p>
+            </div>
+        </div>
+
+        <!-- Navigation sticky vers les features -->
+        <div class="features-nav-sticky">
+            <a href="#feature-proximite" class="feature-nav-link">Proximité & Réactivité</a>
+            <a href="#feature-partenariat" class="feature-nav-link">Partenariat Solar Direct</a>
+            <a href="#feature-expertise" class="feature-nav-link">Expertise & Certifications</a>
+        </div>
+
+        <div class="containerMax">
+            <div class="grid-tailwind">
+
+                <!-- Feature 1 - VERSION AMÉLIORÉE -->
+                <div id="feature-proximite" class="col-span-4 md:col-span-8 lg:col-span-12 mb-40">
+                    <div class="feature-block feature-text-image flex flex-col md:flex-row">
+                        <div class="feature-content flex-1">
+                            <img src="./assets/images/icons/eclair.svg" alt="Rapidité" class="feature-icon">
+                            <h2>
+                                Votre installateur local à Toulouse,
+                                <span class="text-green">intervention rapide garantie</span>
+                            </h2>
+                            <p>
+                                EliSun est votre partenaire local pour tous vos projets photovoltaïques.
+                                Notre proximité géographique nous permet d'intervenir rapidement et d'assurer un suivi personnalisé de chaque installation.
+                                Vous bénéficiez d'un contact direct avec nos équipes et d'une réactivité exemplaire.
+                            </p>
+
+                            <!-- Stats avec hiérarchie visuelle (1 orange + 3 white) -->
+                            <ul class="stats-container">
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-orange"></i> Entreprise familiale toulousaine</li>
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-orange"></i> Intervention rapide sur Toulouse et région</li>
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-orange"></i> Contact direct et réactif</li>
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-orange"></i> Disponibilité et écoute permanente</li>
+                            </ul>
+
+                            <!-- Bloc CTA vérification adresse (composant réutilisable) -->
+                            <div class="input-cta-group input-cta-group-plain">
+                                <div class="input-button-wrapper">
+                                    <input type="text" class="input-field" placeholder="Entrez votre adresse pour un devis express gratuit" />
+                                    <button class="bouton btn-primary">Vérifier</button>
+                                </div>
+                            </div>
+                            <p class="input-cta-notice"><i class="fas fa-check-circle"></i> Réponse sous 24h • Visite gratuite</p>
+                        </div>
+
+                        <!-- Container avec padding pour badges flottants -->
+                        <div class="map-image-wrapper flex-1">
+                            <!-- Image carte avec badges overlay -->
+                            <div class="feature-image feature-image-with-badges">
+                                <img src="../../assets/images/images/Occitanie-ColorGrey-tiny.png" alt="Carte intervention EliSun Toulouse et Occitanie">
+
+                                <!-- Point central avec cercle de rayon d'action -->
+                                <div class="map-radius-center">
+                                    <div class="map-radius-circle"></div>
+                                    <div class="map-center-point"></div>
+                                </div>
+                            </div>
+
+                            <!-- Badge expert avec photos profil (haut gauche) -->
+                            <div class="map-badge-expert">
+                                <div class="expert-photos">
+                                    <img src="https://i.pravatar.cc/150?img=12" alt="Expert EliSun 1" class="expert-photo">
+                                    <img src="https://i.pravatar.cc/150?img=33" alt="Expert EliSun 2" class="expert-photo">
+                                </div>
+                                <div class="expert-label">Expert à <br>proximité</div>
+                            </div>
+
+                            <!-- Badge délai visite technique (haut droite) -->
+                            <div class="map-badge-bullet">
+                                <img src="./assets/images/icons/energie-renouvelable.svg" alt="Visite technique" class="badge-icon" /> Visite technique sous 48h
+                            </div>
+
+                            <!-- Badge distance avec barre de progression (bas gauche) -->
+                            <div class="map-badge-distance">
+                                <div class="distance-header">
+                                    <span class="distance-label">Dans un rayon de</span>
+                                    <span class="distance-value">60km</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-track">
+                                        <div class="progress-bar-fill" style="width: 75%;"></div>
+                                        <div class="progress-cursor" style="left: 75%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div id="feature-partenariat" class="col-span-4 md:col-span-8 lg:col-span-12 mb-40">
+                    <div class="feature-block solardirect-content flex flex-col">
+                        <div class="top-content flex flex-col lg:flex-row">
+                            <!-- Image personnage qui déborde -->
+                            <div class="character-container flex-shrink-0 hidden lg:block">
+                                <img src="./assets/images/images/techniciens.png" alt="Technicien EliSun">
+                            </div>
+
+                            <!-- Bloc texte à droite -->
+                            <div class="text-content text-white flex-1">
+                                <img src="./assets/images/logo/logo-Solar-Direct-icone-white.png" alt="Solar Direct" class="feature-icon">
+                                <h2>Mandataire officiel Solar Direct, <span class="text-bold">l'excellence photovoltaïque européenne</span></h2>
+                                <p class="text-white">
+                                    En tant que mandataire officiel de Solar Direct, Elisun bénéficie de l'expertise et de la solidité d'un leader européen du photovoltaïque. Cette alliance nous permet de vous offrir des solutions solaires de qualité supérieure, soutenues par plus de 15 ans d'expérience et des milliers d'installations réussies.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Bento Grid Tetris -->
+                        <div class="tetris-grid flex flex-col lg:flex-row">
+                            <!-- Colonne 1 -->
+                            <div class="tetris-column">
+                                <div class="tetris-card card-testimonial card-testimonial-swiper">
+                                    <div class="testimonial-slider">
+                                        <img src="./assets/images/images/testimonials.png" alt="Témoignage client" class="testimonial-image">
+                                        <img src="./assets/images/images/testimonials.png" alt="Témoignage client" class="testimonial-image">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Colonne 2 -->
+                            <div class="tetris-column">
+                                <div class="tetris-card card-stat-small">
+                                    <div class="stat-number-small">25 ans</div>
+                                    <p class="tetris-text">Garantie matériel</p>
+                                </div>
+                            </div>
+
+                            <!-- Colonnes 3-4 : Sous-grille avec petites cards + grande card -->
+                            <div class="tetris-subgrid">
+                                <!-- Ligne 1 : Petites cards côte à côte -->
+                                <div class="tetris-card card-badge card-france">
+                                    <div class="card-france-content">
+                                        <strong>Présents</strong>
+                                        <p class="tetris-text">Partout en France</p>
+                                    </div>
+                                </div>
+
+                                <div class="tetris-card card-mixed-bg">
+                                    <div class="card-mixed-content">
+                                        <div class="stat-number-small">2500+</div>
+                                        <p class="tetris-text">Foyers équipés</p>
+                                    </div>
+                                </div>
+
+                                <!-- Ligne 2 : Grande card qui span les 2 colonnes -->
+                                <div class="tetris-card card-info card-info-solardirect">
+                                    <div class="card-info-content">
+                                        <strong>Leader Européen</strong>
+                                        <p class="tetris-text">Présent dans 8 pays, Solar Direct est reconnu pour son excellence technique et son service client premium.</p>
+                                        <a href="https://www.solardirect.fr" target="_blank" rel="noopener noreferrer" class="card-info-link">
+                                            Découvrir Solar Direct →
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Colonne 5 -->
+                            <div class="tetris-column">
+
+                                <div class="tetris-card card-certification card-video" data-video-id="">
+                                    <div class="video-thumbnail">
+                                        <div class="play-button">
+                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M8 5v14l11-7z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tetris-card card-stat">
+                                    <div class="stat-number">15+</div>
+                                    <p class="tetris-text">Années d'expérience dans le photovoltaïque</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div id="feature-expertise" class="col-span-4 md:col-span-8 lg:col-span-12 mb-40">
+                    <div class="feature-block feature-text-image feature-certification flex flex-col md:flex-row">
+                        <div class="feature-content flex-1">
+                            <img src="./assets/images/icons/qualite.svg" alt="Qualité" class="feature-icon">
+                            <h2>15 ans d'expérience terrain, <span class="text-green">une équipe technique certifiée</span></h2>
+                            <p>
+                                Forte de 15 années d'expérience en tant qu'installateur photovoltaïque, EliSun dispose de toutes les certifications RGE nécessaires pour vos projets.
+                                Que vous soyez un particulier ou un professionnel, nos qualifications RGE 9kW et 30kW+ vous garantissent une installation conforme et éligible aux aides de l'État.
+                            </p>
+                            <ul class="stats-container">
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-green"></i> 15 ans d'expérience en installation solaire</li>
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-green"></i> Certification RGE QualiPV 9kW</li>
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-green"></i> Certification RGE QualiPV 30kW et plus</li>
+                                <li class="stats-item stats-item-white"><i class="far fa-circle-check icon-green"></i> Installations éligibles aux aides de l'État</li>
+                            </ul>
+                            <a href="#formulaire-devis" class="bouton btn-primary" data-open-modal="devis">Découvrir nos certifications</a>
+                        </div>
+
+                        <!-- Container avec padding pour badges flottants -->
+                        <div class="certification-image-wrapper flex-1">
+                            <!-- Image principale -->
+                            <div class="feature-image feature-image-with-badges">
+                                <img src="../../assets/images/images/tech-solar-direct.png" alt="Service client EliSun">
+                            </div>
+
+                            <!-- Container badges certifications (haut gauche) -->
+                            <div class="certifications-container">
+                                <!-- Badge années d'expérience - EN PREMIÈRE POSITION -->
+                                <div class="certification-badge badge-cert badge-experience-cert">
+                                    <div class="experience-content">
+                                        <div class="experience-number">15</div>
+                                        <div class="experience-unit">ans</div>
+                                        <div class="experience-unit">d'expérience</div>
+                                    </div>
+                                </div>
+
+                                <!-- Badge QualiPV -->
+                                <div class="certification-badge badge-cert">
+                                    <div class="cert-check">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <img src="../../assets/images/images/icon-QualiPV-RGE.png" alt="QualiPV RGE" class="cert-logo">
+                                </div>
+
+                                <!-- Badge Qualibat -->
+                                <div class="certification-badge badge-cert">
+                                    <div class="cert-check">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <img src="../../assets/images/images/icon-Qualibat-RGE.png" alt="Qualibat RGE" class="cert-logo">
+                                </div>
+
+                                <!-- Badge Qualifelec -->
+                                <div class="certification-badge badge-cert">
+                                    <div class="cert-check">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <img src="../../assets/images/logo/qualifelec.png" alt="Qualifelec" class="cert-logo">
+                                </div>
+                            </div>
+
+
+                            <!-- Badge témoignage client (centre droite) -->
+                            <div class="certification-badge badge-review">
+                                <img src="https://i.pravatar.cc/150?img=68" alt="Marie Dupont" class="review-avatar">
+                                <div class="review-content">
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="review-text">"Installation impeccable, équipe professionnelle"</p>
+                                    <strong class="review-author">Marie D.</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Garanties avec barres de pourcentage -->
+    <section id="section-garanties" class="garanties-section">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Partie gauche - Titre et description -->
+                <div class="col-span-4 lg:col-span-5">
+                    <div class="garanties-content">
+                        <h2>
+                            Des Garanties Solides
+                        </h2>
+                        <p>
+                            Les Garanties vous apportent toute la sérénité que vous attendez 
+                            de votre investissement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Partie droite - Barres de pourcentage -->
+                <div class="col-span-4 lg:col-span-7">
+                    <div class="garanties-bars">
+                        <!-- Garantie parfait achèvement -->
+                        <div class="garantie-item">
+                            <div class="garantie-info">
+                                <span class="garantie-label">GARANTIE PARFAIT ACHÈVEMENT</span>
+                                <span class="garantie-percentage">1 an</span>
+                            </div>
+                            <div class="garantie-bar">
+                                <div class="garantie-progress" data-percentage="80"></div>
+                            </div>
+                        </div>
+
+                        <!-- Garantie biennale -->
+                        <div class="garantie-item">
+                            <div class="garantie-info">
+                                <span class="garantie-label">GARANTIE BIENNALE - 2 ANS</span>
+                                <span class="garantie-percentage">2 ans</span>
+                            </div>
+                            <div class="garantie-bar">
+                                <div class="garantie-progress" data-percentage="60"></div>
+                            </div>
+                        </div>
+
+                        <!-- Garantie décennale -->
+                        <div class="garantie-item">
+                            <div class="garantie-info">
+                                <span class="garantie-label">GARANTIE DÉCENNALE - 10 ans</span>
+                                <span class="garantie-percentage">10 ans</span>
+                            </div>
+                            <div class="garantie-bar">
+                                <div class="garantie-progress" data-percentage="80"></div>
+                            </div>
+                        </div>
+
+                        <!-- Garantie onduleur -->
+                        <div class="garantie-item">
+                            <div class="garantie-info">
+                                <span class="garantie-label">GARANTIE ONDULEUR - 10 ans</span>
+                                <span class="garantie-percentage">10 ans</span>
+                            </div>
+                            <div class="garantie-bar">
+                                <div class="garantie-progress" data-percentage="100"></div>
+                            </div>
+                        </div>
+
+                        <!-- Garantie batteries -->
+                        <div class="garantie-item">
+                            <div class="garantie-info">
+                                <span class="garantie-label">GARANTIE BATTERIES - 10 ans</span>
+                                <span class="garantie-percentage">10 ans</span>
+                            </div>
+                            <div class="garantie-bar">
+                                <div class="garantie-progress" data-percentage="100"></div>
+                            </div>
+                        </div>
+
+                        <!-- Garantie rendement panneaux -->
+                        <div class="garantie-item">
+                            <div class="garantie-info">
+                                <span class="garantie-label">GARANTIE DE RENDEMENT DES PANNEAUX - 30 ans</span>
+                                <span class="garantie-percentage">30 ans</span>
+                            </div>
+                            <div class="garantie-bar">
+                                <div class="garantie-progress" data-percentage="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section Call To Action finale avec éléments de confiance -->
+    <section id="cta-finale-elisun" class="cta-section">
+        <div class="containerMax">
+            <div class="cta-container">
+                <!-- Colonne gauche - Titre et description -->
+                <div class="cta-left">
+                    <div class="cta-content">
+                        <h2>Prêt à découvrir vos économies solaires ?</h2>
+                        <p>Bénéficiez de l'expertise terrain ELISUN et de l'accès privilégié aux kits Hitronics premium. Recevez votre devis personnalisé en moins de 24h.</p>
+                    </div>
+                </div>
+                
+                <!-- Colonne droite - Formulaire d'inscription -->
+                <div class="cta-right">
+                    <div class="input-cta-group input-cta-group-plain">
+                        <div class="input-button-wrapper">
+                            <input type="email"
+                                   id="cta-email-input"
+                                   placeholder="Entrez votre email pour recevoir votre estimation gratuite"
+                                   class="input-field">
+                            <button type="button" class="bouton btn-primary" id="cta-signup-btn" data-open-modal="devis">
+                                Obtenir un devis express
+                            </button>
+                        </div>
+                    </div>
+                    <p class="input-cta-notice">
+                        <i class="fas fa-lock"></i> Nous respectons votre vie privée • Réponse sous 24h
+                    </p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <div w3-include-html="components/footer.html"></div>
+
+    <!-- Include du modal devis -->
+    <div w3-include-html="components/modal-devis.html"></div>
+
+    <!-- Scripts JavaScript -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <!-- Webpack injecte automatiquement les scripts main.js et vendors.js -->
+
+    <!-- Script de debug pour les boutons modal -->
+    <script>
+        console.log('🔍 Script de debug chargé');
+
+        // Attendre que le DOM soit chargé
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🔍 DOMContentLoaded - Début debug boutons');
+
+            const buttons = document.querySelectorAll('[data-open-modal="devis"]');
+            console.log('🔍 Nombre de boutons trouvés:', buttons.length);
+            console.log('🔍 Liste des boutons:', buttons);
+
+            buttons.forEach((btn, index) => {
+                console.log(`🔍 Bouton ${index}:`, btn);
+                console.log(`🔍 Bouton ${index} - Tag:`, btn.tagName);
+                console.log(`🔍 Bouton ${index} - Classes:`, btn.className);
+                console.log(`🔍 Bouton ${index} - data-open-modal:`, btn.getAttribute('data-open-modal'));
+
+                // Ajouter un listener de debug
+                btn.addEventListener('click', (e) => {
+                    console.log(`🔍🖱️ CLICK DÉTECTÉ sur bouton ${index}!`);
+                    console.log('🔍🖱️ Event:', e);
+                    console.log('🔍🖱️ Target:', e.target);
+                    console.log('🔍🖱️ CurrentTarget:', e.currentTarget);
+                }, true); // Utiliser la capture phase
+            });
+
+            console.log('🔍 Debug listeners ajoutés');
+        });
+    </script>
+
+    <!-- Script pour activer l'inclusion HTML -->
+    <script>
+        function includeHTML() {
+            let elements = document.querySelectorAll("[w3-include-html]");
+            const promises = [];
+
+            elements.forEach(el => {
+                let file = el.getAttribute("w3-include-html");
+                const promise = fetch(file)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Erreur HTTP ${response.status} pour ${file}`);
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        // Insérer le HTML
+                        el.innerHTML = data;
+                        console.log(`✅ Include chargé: ${file}`);
+
+                        // Extraire et exécuter les scripts
+                        const scripts = el.querySelectorAll('script');
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+                            // Copier tous les attributs
+                            Array.from(oldScript.attributes).forEach(attr => {
+                                newScript.setAttribute(attr.name, attr.value);
+                            });
+
+                            // Copier le contenu du script
+                            newScript.textContent = oldScript.textContent;
+
+                            // Remplacer l'ancien script par le nouveau pour qu'il s'exécute
+                            oldScript.parentNode.replaceChild(newScript, oldScript);
+                        });
+                    })
+                    .catch(error => {
+                        console.error(`❌ Erreur chargement ${file}:`, error);
+                        el.innerHTML = `<!-- Erreur: ${error.message} -->`;
+                    });
+                promises.push(promise);
+            });
+
+            // Retourner une Promise qui se résout quand tous les includes sont chargés
+            return Promise.all(promises);
+        }
+
+        // Charger les includes et déclencher un événement quand c'est terminé
+        includeHTML().then(() => {
+            document.dispatchEvent(new CustomEvent('includes:loaded'));
+            console.log('✅ Tous les includes HTML chargés');
+        });
+    </script>
+
+</body>
+</html>

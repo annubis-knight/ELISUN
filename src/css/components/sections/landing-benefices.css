@@ -1,0 +1,535 @@
+/* === LANDING - SECTION BÉNÉFICES === */
+/*
+ * Section bénéfices avec gallery + bento grids
+ * Galerie 3D + installation bento avec multiple layouts
+ *
+ * CONTENU :
+ * - .benefits-section : Section principale
+ * - .benefits-visual-container : Container avec background image
+ * - .gallery-container : Galerie 3D avec items superposés
+ * - .installation-bento-container : Container bento grids superposées
+ * - .bento-grid : Grilles bento avec 3 layouts différents
+ * - .content-container : Container liste bénéfices
+ *
+ * Migration depuis sections.css (lignes 1828-2696)
+ */
+
+/* === SECTION BÉNÉFICES === */
+.benefits-section {
+  /* Section neutre sans margin ni styles visuels */
+  position: relative;
+
+  /* Conteneur visuel avec tous les effets graphiques */
+  .benefits-visual-container {
+    color: white;
+    margin: 0 40px;
+    padding: 8rem 0 5rem 0;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #2b991e90 0%, var(--primary-lighter) 100%)
+                ,url('../../../assets/images/background/bg-connected.png') center/cover no-repeat
+                ;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      margin: 0 1rem;
+      padding: 3rem 0 2rem 0;
+      border-radius: 12px;
+    }
+  }
+
+  /* LEFT - Gallery container avec effet de profondeur */
+  .gallery-container {
+    position: relative;
+    width: 100%;
+    height: 750px;
+    perspective: 1000px;
+
+
+    @media (max-width: 1024px) {
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      height: 300px;
+    }
+  }
+
+  .gallery-item {
+    position: absolute;
+    transition: all 0.4s ease;
+
+
+    /* Item arrière-plan gauche */
+    &.gallery-item-back-left {
+      width: max-content;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      transform: translate(-30%, 0%);
+
+
+      @media (max-width: 1024px) {
+        left: 50%;
+        height: 160%;
+        transform: translate(-5%, -10%);
+      }
+      
+      @media (max-width: 768px) {
+        left: 50%;
+        height: 110%;
+        transform: translate(-75%, -5%);
+      }
+
+      /* @media (max-width: 639px) {
+        height: 100%;
+        transform: translate(-0%, 0%);
+      } */
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+
+    /* Item premier plan */
+    &.gallery-item-front {
+      height: 90%;
+      width: max-content;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 5%);
+      z-index: 3;
+      filter: drop-shadow(0 0px 40px rgb(46, 255, 106));  
+
+
+      @media (max-width: 1024px) {
+        height: 150%;
+        transform: translate(-50%, 0%);
+      }
+      
+      @media (max-width: 768px) {
+        height: 100%;
+        transform: translate(-50%, 0%);
+      }
+
+      /* @media (max-width: 639px) {
+        height: 100%;
+        transform: translate(-50%, 0%);
+      } */
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+  }
+
+
+  /* RIGHT - Nouvelle structure bento-grid pour les bénéfices */
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+
+    @media (max-width: 768px) {
+      gap: 4rem;
+    }
+
+    /* Les styles .benefit-block, .benefit-header, .benefit-content sont maintenant dans ui-benefit-block.css */
+
+    .benefit-block {
+
+      /* Layout de base bento-grid */
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+
+        .bento-card {
+          border-radius: 1rem;
+          overflow: hidden;
+          min-height: 140px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+          }
+
+          /* Uniformisation responsive globale pour tous les p */
+          p {
+            @media (max-width: 768px) {
+              font-size: 0.875rem !important;
+            }
+          }
+
+          /* Uniformisation responsive globale pour tous les strong */
+          strong {
+            @media (max-width: 768px) {
+              font-size: 1.125rem !important;
+            }
+          }
+
+          /* === Styles des différents types de cards === */
+
+          /* Card blanche */
+          &.card-white {
+            background: var(--white);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+            p {
+              margin: 0;
+              font-size: 0.95rem;
+              line-height: 1.5;
+              color: var(--neutral-dark);
+
+              strong {
+                display: block;
+                font-size: 1.25rem;
+                color: var(--secondary);
+                margin-bottom: 0.25rem;
+                font-weight: 700;
+              }
+            }
+          }
+
+          /* Card noire/dark */
+          &.card-dark {
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),url(/src/assets/images/images/pose-panneau.png);
+            background-size: cover;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+            p {
+              margin: 0;
+              font-size: 0.95rem;
+              line-height: 1.5;
+              color: var(--white);
+
+              strong {
+                display: block;
+                font-size: 1.25rem;
+                color: var(--secondary);
+                margin-bottom: 0.25rem;
+                font-weight: 700;
+              }
+            }
+          }
+
+          /* Card gradient vert */
+          &.card-gradient-green {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+
+            .card-mixed-content {
+              position: relative;
+              z-index: 1;
+
+              p {
+                margin: 0;
+                font-size: 0.95rem;
+                line-height: 1.5;
+                color: var(--white);
+
+                strong {
+                  display: block;
+                  font-size: 1.25rem;
+                  margin-bottom: 0.25rem;
+                  font-weight: 700;
+                  color: var(--white);
+                }
+              }
+            }
+          }
+
+          /* Card gradient orange */
+          &.card-gradient-orange {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+            .card-mixed-content {
+              position: relative;
+              z-index: 1;
+
+              p {
+                margin: 0;
+                font-size: 0.95rem;
+                line-height: 1.5;
+                color: var(--neutral-dark);
+
+                strong {
+                  display: block;
+                  font-size: 1.25rem;
+                  margin-bottom: 0.25rem;
+                  font-weight: 700;
+                  color: var(--neutral-dark);
+                }
+              }
+            }
+          }
+
+          /* Card avec background image */
+          &.card-image {
+            background: linear-gradient(135deg, rgba(43, 155, 31, 0.85), rgba(63, 176, 40, 0.85)),
+                        url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600') center/cover;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+
+
+            .card-mixed-content {
+              position: relative;
+              z-index: 1;
+
+              p {
+                margin: 0;
+                font-size: 0.95rem;
+                line-height: 1.5;
+                color: var(--white);
+
+                strong {
+                  display: block;
+                  font-size: 1.25rem;
+                  margin-bottom: 0.25rem;
+                  font-weight: 700;
+                  color: var(--white);
+                }
+              }
+            }
+          }
+        }
+
+        /* Layout 1 - Default (3 cards horizontales) - Premier bénéfice */
+        &:not(.bento-layout-2):not(.bento-layout-3) {
+          grid-template-columns: 1fr 1fr;
+
+          @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+          }
+
+          .bento-card {
+            &:first-child {
+              grid-row: span 1;
+            }
+
+            &:nth-child(2) {
+              grid-row: span 1;
+            }
+
+            &:last-child {
+              grid-column: 2;
+              grid-row: 1 / 3;
+
+              @media (max-width: 768px) {
+                grid-column: 1;
+                grid-row: auto;
+              }
+            }
+          }
+
+          /* Card Durabilité avec image intemperies */
+          .card-gradient-green {
+            background-image:
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+              url('/src/assets/images/images/intemperies.jpg');
+            background-size: cover;
+            background-position: center;
+
+            .card-mixed-content p {
+              color: var(--white);
+
+              strong {
+                color: var(--white);
+              }
+            }
+          }
+        }
+
+        /* Layout 2 - Card large gauche + 2 cards empilées droite - Deuxième bénéfice */
+        &.bento-layout-2 {
+          grid-template-columns: 2fr 1fr;
+          grid-template-rows: 1fr 1fr;
+
+          @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+          }
+
+          /* Card 98% conversion avec image connexion-wifi */
+          .bento-large.card-gradient-orange {
+            background-image:
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+              url('/src/assets/images/images/connexion-wifi.jpg');
+            background-size: cover;
+            background-position: center;
+            grid-row: 1 / 3;
+
+            @media (max-width: 768px) {
+              grid-row: auto;
+            }
+
+            .card-mixed-content p {
+              color: var(--white);
+
+              strong {
+                color: var(--white);
+              }
+            }
+          }
+
+          .bento-large {
+            grid-row: 1 / 3;
+
+            @media (max-width: 768px) {
+              grid-row: auto;
+            }
+          }
+
+          .bento-stack {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            @media (max-width: 768px) {
+              grid-column: 1;
+              grid-row: auto;
+            }
+
+            .bento-small {
+              flex: 1;
+            }
+
+            /* Card Hybride avec image onduleur-swatten */
+            .card-image {
+              background-image: url('/src/assets/images/images/onduleur-swatten.webp');
+              background-size: cover;
+              background-position: center;
+
+              .card-mixed-content p {
+                color: var(--white);
+
+                strong {
+                  color: var(--white);
+                }
+              }
+            }
+          }
+        }
+
+        /* Layout 3 - Card large haut + 2 cards horizontales bas - Troisième bénéfice */
+        &.bento-layout-3 {
+          grid-template-columns: 1fr;
+          grid-template-rows: 2fr 1fr;
+
+          @media (max-width: 768px) {
+            grid-template-rows: auto auto;
+          }
+
+          /* Card Autonomie 80% avec image scenariot2 */
+          .bento-top.card-image {
+            background-image:
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+              url('/src/assets/images/images/scenariot2.jpg');
+            background-size: cover;
+            background-position: center;
+            grid-column: 1;
+            grid-row: 1;
+          }
+
+          .bento-top {
+            grid-column: 1;
+            grid-row: 1;
+          }
+
+          .bento-bottom-row {
+            grid-column: 1;
+            grid-row: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+
+            @media (max-width: 768px) {
+              grid-template-columns: 1fr;
+            }
+
+            .bento-half {
+              min-height: 120px;
+            }
+
+            /* Card Lithium avec image battery-lifepo */
+            .card-dark {
+              background-image:
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+                url('/src/assets/images/images/battery-lifepo.png');
+              background-size: cover;
+              background-position: center;
+
+              p {
+                color: var(--white);
+
+                strong {
+                  color: var(--white);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+/* === GALLERY CTA CONTAINER === */
+.gallery-cta-container {
+  margin-top: 2rem;
+
+  .btn-full-width {
+    width: 100%;
+    justify-content: center;
+    gap: 0.75rem;
+
+    i {
+      font-size: 1.25rem;
+    }
+  }
+}

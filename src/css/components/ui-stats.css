@@ -1,0 +1,119 @@
+/* === COMPOSANT STATS-ITEM - RÉUTILISABLE === */
+
+/* Container pour les stats items */
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 2rem;
+}
+
+/* Stats item de base - Version avec backdrop-filter blur */
+.stats-item {
+  border-radius: 16px;
+  padding: 4px 16px;
+  backdrop-filter: blur(10px);
+  width: fit-content;
+  background: #ffffff7a;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  /* Variante fond blanc opaque pour sections claires */
+  &.stats-item-white {
+    background: #ffffff;
+    backdrop-filter: none;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+  }
+
+  /* Variante fond transparent avec border */
+  &.stats-item-outline {
+    background: transparent;
+    backdrop-filter: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+
+    &:hover {
+      background: var(--primary-ultra-light);
+      transform: translateY(-1px);
+    }
+  }
+
+  /* Variante fond coloré (primary green) */
+  &.stats-item-primary {
+    background: var(--primary-color);
+    backdrop-filter: none;
+    border: none;
+    color: white;
+
+    i {
+      color: var(--accent-color) !important;
+    }
+
+    &:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(43, 155, 31, 0.3);
+    }
+  }
+
+  /* Variante fond orange (accent color) - Mise en valeur maximale */
+  &.stats-item-orange {
+    background: #FBAF00;
+    backdrop-filter: none;
+    border: none;
+    color: #1e2122;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(251, 175, 0, 0.3);
+
+    i {
+      color: #1e2122 !important;
+      font-weight: 900;
+    }
+
+    &:hover {
+      background: #e09f00;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(251, 175, 0, 0.5);
+    }
+  }
+
+  /* Icônes dans les stats items */
+  i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover i {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .stats-container {
+    gap: 4px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-item {
+    font-size: 13px;
+    padding: 3px 12px;
+    gap: 0.4rem;
+
+    i {
+      font-size: 13px;
+    }
+  }
+}

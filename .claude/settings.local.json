@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init:*)",
+      "Bash(mkdir:*)",
+      "Bash(git init:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(npm run:*)",
+      "Bash(npx webpack serve:*)",
+      "Bash(timeout:*)",
+      "Bash(taskkill:*)",
+      "Bash(npx kill-port:*)",
+      "WebFetch(domain:www.solardirect.fr)",
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(for file in landing-banniere.css landing-benefices.css landing-parcours.css landing-conversion.css landing-caracteristiques.css page-produits.css page-accordeon.css)",
+      "Bash(do touch \"c:\\Users\\arnau\\Documents\\Pro\\DevWeb\\Projets\\ClaudeCode-ELISUN\\src\\css\\components$file\")",
+      "Bash(done)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7"
+  ]
+}

@@ -1,0 +1,287 @@
+<!--
+  Page FAQ ELISUN - Questions fréquentes
+  Page informative avec système d'accordéon pour afficher/masquer les réponses
+  Utilise interpolate-size pour animations fluides
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Questions fréquentes sur l'installation de panneaux solaires avec EliSun. Découvrez toutes les réponses à vos questions sur le photovoltaïque à Toulouse.">
+    <meta name="keywords" content="FAQ panneaux solaires, questions photovoltaïque, installation solaire Toulouse, EliSun aide">
+    <title>FAQ - Questions fréquentes | EliSun - Tout savoir sur le photovoltaïque</title>
+
+    <!-- Préconnexion aux polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Critique inline pour éviter FOUC (Flash of Unstyled Content) -->
+    <style>
+        /* Cacher le body jusqu'au chargement complet */
+        body:not(.dom-loaded) {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* Afficher progressivement quand tout est chargé */
+        body.dom-loaded {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation Header -->
+    <div w3-include-html="../components/navbar.html"></div>
+
+    <!-- Hero Section FAQ -->
+    <section id="sectionHeroFaq" class="hero-faq">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <!-- Contenu principal hero -->
+                <div class="col-span-4 md:col-span-8 lg:col-span-12 hero-center">
+                    <div class="content-block">
+                        <h1>
+                            Questions fréquentes –
+                            <span>Toutes les réponses à vos interrogations</span>
+                        </h1>
+
+                        <p>
+                            Vous avez des questions sur l'installation de panneaux solaires, les garanties,
+                            les aides financières ou notre processus ? Découvrez toutes les réponses ci-dessous.
+                            Si vous ne trouvez pas la réponse à votre question, n'hésitez pas à nous contacter.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Questions FAQ -->
+    <section id="sectionQuestionsFaq" class="faq-questions-section">
+        <div class="containerMax">
+            <div class="grid-tailwind">
+                <div class="col-span-4 md:col-span-8 lg:col-span-10 lg:col-start-2">
+
+                    <!-- Question 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h2 class="heading-lg">Combien coûte une installation photovoltaïque avec EliSun ?</h2>
+                            <button class="faq-toggle" aria-label="Afficher la réponse">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Le coût d'une installation photovoltaïque varie selon plusieurs critères : la puissance de votre installation (6kW, 9kW, 30kW+), le type de matériel choisi, et les spécificités de votre toiture.
+                                Chez EliSun, nos installations commencent à partir de <strong>8 990€ TTC posé</strong> pour un kit 6kW avec panneaux Hitronics premium.
+                                Nous proposons systématiquement un devis personnalisé gratuit après visite technique, avec un prix ferme et définitif.
+                                Grâce à notre partenariat avec SolarDirect et nos tarifs direct usine, vous économisez jusqu'à <strong>28%</strong> par rapport aux prix du marché.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h2 class="heading-lg">Quelles sont les garanties sur le matériel et l'installation ?</h2>
+                            <button class="faq-toggle" aria-label="Afficher la réponse">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                EliSun vous offre un ensemble complet de garanties pour votre tranquillité d'esprit :
+                            </p>
+                            <ul>
+                                <li><strong>Garantie décennale</strong> : 10 ans sur l'installation</li>
+                                <li><strong>Garantie onduleur</strong> : 10 ans constructeur</li>
+                                <li><strong>Garantie batteries</strong> : 10 ans constructeur</li>
+                                <li><strong>Garantie rendement panneaux</strong> : 30 ans minimum Hitronics</li>
+                                <li><strong>Garantie parfait achèvement</strong> : 1 an</li>
+                                <li><strong>Garantie biennale</strong> : 2 ans sur les équipements</li>
+                            </ul>
+                            <p>
+                                Tous nos installateurs sont certifiés RGE QualiPV, garantissant une installation conforme aux normes et éligible aux aides de l'État.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h2 class="heading-lg">Combien de temps dure une installation photovoltaïque ?</h2>
+                            <button class="faq-toggle" aria-label="Afficher la réponse">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Une installation photovoltaïque complète se déroule généralement en <strong>1 à 2 jours</strong> selon la puissance et la complexité de votre projet.
+                                Notre équipe certifiée intervient avec tout le matériel nécessaire et réalise :
+                            </p>
+                            <ul>
+                                <li>La pose des rails de fixation sur votre toiture</li>
+                                <li>L'installation des panneaux solaires Hitronics</li>
+                                <li>Le câblage électrique professionnel</li>
+                                <li>Le raccordement à l'onduleur hybride</li>
+                                <li>Les tests de production et de sécurité</li>
+                                <li>La mise en service et la formation à l'utilisation</li>
+                            </ul>
+                            <p>
+                                Votre installation produit déjà votre énergie verte dès le premier jour ! Le délai total du projet (de la signature du devis à la mise en service) est généralement de <strong>4 à 8 semaines</strong>, incluant les démarches administratives que nous gérons entièrement pour vous.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h2 class="heading-lg">Quelles aides financières sont disponibles pour mon installation solaire ?</h2>
+                            <button class="faq-toggle" aria-label="Afficher la réponse">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Plusieurs dispositifs d'aides financières existent pour réduire le coût de votre installation photovoltaïque :
+                            </p>
+                            <ul>
+                                <li><strong>Prime à l'autoconsommation</strong> : jusqu'à 1 500€ selon la puissance installée (versée par EDF OA)</li>
+                                <li><strong>TVA réduite à 10%</strong> : pour les installations ≤ 3kWc raccordées au réseau depuis plus de 2 ans</li>
+                                <li><strong>Tarif de rachat garanti</strong> : revente du surplus d'électricité à EDF pendant 20 ans</li>
+                                <li><strong>Aides locales</strong> : certaines collectivités proposent des subventions complémentaires</li>
+                                <li><strong>MaPrimeRénov'</strong> : dans le cadre d'une rénovation énergétique globale</li>
+                            </ul>
+                            <p>
+                                <strong>Important</strong> : Pour bénéficier de ces aides, votre installation doit impérativement être réalisée par un installateur certifié RGE QualiPV comme EliSun.
+                                Nous vous accompagnons dans toutes les démarches administratives pour maximiser vos aides financières.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h2 class="heading-lg">Que se passe-t-il en cas de panne ou de problème technique ?</h2>
+                            <button class="faq-toggle" aria-label="Afficher la réponse">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                EliSun assure un <strong>SAV local réactif sous 48h</strong> sur Toulouse et sa région. En cas de problème technique :
+                            </p>
+                            <ul>
+                                <li><strong>Monitoring 24/7</strong> : votre application mobile vous alerte en cas d'anomalie de production</li>
+                                <li><strong>Diagnostic à distance</strong> : notre équipe technique peut souvent identifier le problème sans déplacement</li>
+                                <li><strong>Intervention rapide</strong> : déplacement d'un technicien certifié sous 48h en cas de besoin</li>
+                                <li><strong>Maintenance préventive</strong> : incluse pendant 5 ans pour anticiper les problèmes</li>
+                                <li><strong>Pièces de rechange</strong> : stock permanent pour les équipements Hitronics et onduleurs</li>
+                            </ul>
+                            <p>
+                                Notre proximité géographique à Toulouse nous permet d'intervenir rapidement, contrairement aux grands groupes nationaux.
+                                Vous avez un contact direct avec nos équipes, sans plateforme téléphonique interminable.
+                                De plus, toutes les garanties constructeur (10 ans onduleur, 30 ans panneaux) restent actives pour vous protéger sur le long terme.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Call To Action finale -->
+    <section id="cta-finale-elisun" class="cta-section">
+        <div class="containerMax">
+            <div class="cta-container">
+                <!-- Colonne gauche - Titre et description -->
+                <div class="cta-left">
+                    <div class="cta-content">
+                        <h2>Une autre question ? Contactez-nous !</h2>
+                        <p>Notre équipe est disponible pour répondre à toutes vos interrogations sur votre projet photovoltaïque. Recevez votre devis personnalisé en moins de 24h.</p>
+                    </div>
+                </div>
+
+                <!-- Colonne droite - Formulaire d'inscription -->
+                <div class="cta-right">
+                    <div class="input-cta-group input-cta-group-plain">
+                        <div class="input-button-wrapper">
+                            <input type="email"
+                                   id="cta-email-input"
+                                   placeholder="Entrez votre email pour recevoir votre estimation gratuite"
+                                   class="input-field">
+                            <button type="button" class="bouton btn-primary" id="cta-signup-btn">
+                                Obtenir un devis express
+                            </button>
+                        </div>
+                    </div>
+                    <p class="input-cta-notice">
+                        <i class="fas fa-lock"></i> Nous respectons votre vie privée • Réponse sous 24h
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div w3-include-html="../components/footer.html"></div>
+
+    <!-- Scripts JavaScript -->
+    <!-- Webpack injecte automatiquement les scripts -->
+
+    <!-- Script pour activer l'inclusion HTML -->
+    <script>
+        function includeHTML() {
+            let elements = document.querySelectorAll("[w3-include-html]");
+            elements.forEach(el => {
+                let file = el.getAttribute("w3-include-html");
+                fetch(file)
+                    .then(response => response.text())
+                    .then(data => {
+                        el.innerHTML = data;
+
+                        const scripts = el.querySelectorAll('script');
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+                            Array.from(oldScript.attributes).forEach(attr => {
+                                newScript.setAttribute(attr.name, attr.value);
+                            });
+                            newScript.textContent = oldScript.textContent;
+                            oldScript.parentNode.replaceChild(newScript, oldScript);
+                        });
+                    });
+            });
+        }
+        includeHTML();
+
+        // Script FAQ - Gestion accordéon
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const toggle = item.querySelector('.faq-toggle');
+
+                question.addEventListener('click', function() {
+                    // Toggle classe active sur l'item
+                    item.classList.toggle('active');
+                });
+
+                // Support clic sur le bouton chevron également
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

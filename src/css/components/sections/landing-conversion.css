@@ -1,0 +1,329 @@
+/* === LANDING - SECTIONS CONVERSION CTA ET TRUST === */
+/*
+ * Sections conversion finales : CTA, garanties, trust
+ *
+ * CONTENU :
+ * - .cta-section : Call-to-action finale avec formulaire
+ * - .final-trust-section : Section confiance avec overlay
+ * - .garanties-section : Garanties avec progress bars
+ * - .background-trust-image : Background trust cards
+ *
+ * Migration depuis sections.css (lignes 618-809, 3090-3277)
+ */
+
+/* === SECTION CTA FINALE === */
+.cta-section {
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  background: white;
+
+
+
+  /* Gradient radial blanc au centre pour améliorer la lisibilité */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.3) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Pattern tech grille colorée sur tout le background */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 8px,
+        rgba(251, 175, 0, 0.08) 8px,
+        rgba(251, 175, 0, 0.08) 10px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 8px,
+        rgba(43, 155, 31, 0.06) 8px,
+        rgba(43, 155, 31, 0.06) 10px
+      );
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .containerMax {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Container principal en structure verticale */
+  .cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    position: relative;
+
+  }
+
+  /* Colonne droite - Formulaire utilisant input-cta-group */
+  .cta-right {
+    width: 100%;
+    max-width: 700px;
+
+  }
+
+
+}
+
+/* === SECTION MESSAGE DE CONFIANCE FINALE === */
+.final-trust-section {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+  .trust-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(30, 33, 34, 0.6) 100%),
+      url('../../../assets/images/images/asset1.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    .trust-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(1px);
+    }
+  }
+  
+  .containerMax {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .trust-content-centered {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+
+    .trust-icon {
+      margin-bottom: 2rem;
+
+      i {
+        font-size: 4rem;
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2rem;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.4s ease;
+
+        &:hover {
+          transform: scale(1.1);
+          background: var(--accent);
+          color: white;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+    
+    .trust-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .trust-description {
+      font-size: var(--text-xl);
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      font-weight: 400;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+      @media (max-width: 768px) {
+        font-size: var(--text-lg);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-height: 500px;
+
+    .trust-content-centered {
+      padding: 3rem 1.5rem;
+
+      .trust-icon i {
+        font-size: 3rem;
+        width: 100px;
+        height: 100px;
+        padding: 1.5rem;
+      }
+
+      .trust-title {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+/* === SECTION TRUST FINALE FLOTTANTE === */
+.background-trust-image {
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  
+  @media (min-width: 768px) {
+    height: 500px;
+  }
+  
+  @media (min-width: 1024px) {
+    height: 600px;
+  }
+}
+
+/* ===== SECTION GARANTIES ===== */
+.garanties-section {
+  background-image: url('../../../assets/images/images/asset1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsla(47, 100%, 50%, 0.863);
+    pointer-events: none;
+  }
+
+  .garanties-content {
+    position: relative;
+    z-index: 2;
+    padding-right: 2rem;
+
+    @media (max-width: 768px) {
+      padding-right: 0;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+  }
+
+
+  .garanties-bars {
+    position: relative;
+    z-index: 2;
+    padding-left: 2rem;
+
+    @media (max-width: 768px) {
+      padding-left: 0;
+    }
+  }
+
+  .garantie-item {
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .garantie-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .garantie-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .garantie-percentage {
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .garantie-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .garantie-progress {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 4px;
+    position: relative;
+
+    &[data-percentage="60"] {
+      width: 60%;
+    }
+    &[data-percentage="80"] {
+      width: 80%;
+    }
+    &[data-percentage="100"] {
+      width: 100%;
+    }
+  }
+}
+
+/* Animation pour le filigrane solaire */
+@keyframes solar-pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.5;
+  }
+}

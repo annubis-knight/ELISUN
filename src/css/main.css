@@ -1,0 +1,96 @@
+/* Point d'entrée CSS principal - EliSun */
+
+/* Import Font Awesome */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+/* Import Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import des styles de base */
+@import './base/reset.css';
+@import './base/variables.css';
+@import './base/typography.css';
+@import './base/utilities.css';
+@import './base/animations.css';
+
+/* Import des composants */
+@import './components/sections/layout-header.css';
+@import './components/sections/layout-navbar.css';
+@import './components/ui-buttons.css';
+@import './components/ui-cards.css';
+@import './components/ui-stats.css';
+@import './components/sections/layout-footer.css';
+/* @import './components/modals.css'; */
+
+/* === COMPOSANTS UI RÉUTILISABLES === */
+@import './components/ui-indicateurs.css';
+@import './components/ui-badges.css';
+@import './components/ui-bento.css';
+@import './components/ui-hero.css';
+@import './components/ui-benefit-block.css';
+@import './components/ui-section-headers.css';
+@import './components/ui-modal.css';
+@import './components/ui-radio.css'; /* Styles de base pour tous les radio buttons */
+@import './components/ui-forms.css'; /* Styles de base pour tous les formulaires */
+
+/* === SECTIONS LANDING PAGE === */
+@import './components/sections/landing-hero.css';
+@import './components/sections/landing-banniere.css';
+@import './components/sections/landing-benefices.css';
+@import './components/sections/landing-caracteristiques.css';
+/* @import './components/sections/landing-parcours.css'; */ /* SUPPRIMÉ - section parcours-client-exemple retirée */
+@import './components/sections/landing-conversion.css';
+
+/* === SECTIONS PAGES SPÉCIFIQUES === */
+@import './components/sections/page-installation.css';
+@import './components/sections/page-produits.css';
+@import './components/sections/page-accordeon.css';
+@import './components/sections/page-faq.css';
+
+/* Import des styles de pages (seront créés dans la phase 2) */
+/* @import './pages/home.css'; */
+/* @import './pages/about.css'; */
+/* @import './pages/services.css'; */
+/* @import './pages/contact.css'; */
+/* @import './pages/sectionTest.css'; */
+
+/* === STYLES GLOBAUX === */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--neutral);
+  line-height: var(--leading-normal);
+}
+
+/* Smooth scroll pour toute la page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Amélioration du rendu des polices */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.grid-tailwind {
+  @apply grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-8;
+  margin: auto;
+}
+
+.containerMax {
+@apply mx-4 md:mx-8 lg:mx-auto lg:w-[90%];
+max-width: 1300px;
+height: 100%;
+}
+
+/* === LAYER TAILWIND CUSTOMIZATIONS === */
+@layer components {
+  /* Les composants Tailwind personnalisés seront ajoutés ici */
+}
+
+@layer utilities {
+  /* Les utilitaires Tailwind personnalisés seront ajoutés ici */
+}

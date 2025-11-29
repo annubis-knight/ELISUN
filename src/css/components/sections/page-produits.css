@@ -1,0 +1,756 @@
+/* === PAGE PRODUITS / MATÉRIEL === */
+/*
+ * Sections spécifiques page materiel.html
+ * Grilles produits, sliders, badges techniques
+ *
+ * CONTENU :
+ * - .panneaux-solaires-section : Section panneaux split layout
+ * - .onduleurs-section : Section onduleurs avec slider
+ * - .stockage-section : Section stockage avec slider
+ * - .panneau-badge-item : Badges techniques produits
+ *
+ * Migration depuis sections.css (lignes 4365-4977)
+ */
+
+/* === SECTION PANNEAUX SOLAIRES - PAGE MATÉRIEL === */
+.panneaux-solaires-section {
+  background: var(--gray-light);
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+
+  .containerMax {
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .panneaux-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: stretch;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 80px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .panneaux-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0;
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    .panneaux-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 48px 0;
+
+      li {
+        margin-bottom: 12px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-dark);
+
+        i {
+          margin-right: 12px;
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .panneaux-badges-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 32px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .panneau-badge-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .badge-icon {
+          font-size: 1.5rem;
+          color: var(--text-dark);
+          margin-bottom: 4px;
+        }
+
+        .badge-text {
+          .badge-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1;
+            margin-bottom: 4px;
+
+            span {
+              font-size: 1rem;
+              font-weight: 400;
+            }
+          }
+
+          .badge-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            line-height: 1.2;
+          }
+        }
+      }
+    }
+  }
+
+  .panneaux-image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      /* display: none; */
+      position: absolute;
+      width: 90%;
+      align-self: flex-start;
+      height: 120%;
+      max-width: 600px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 15px grey);
+    }
+
+    /* Responsive tablette */
+    @media (max-width: 1024px) {
+      img {
+        max-width: 400px;
+        height: auto;
+        position: static;
+      }
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 768px) {
+      img {
+        max-width: 300px;
+      }
+    }
+  }
+}
+
+/* === SECTION ONDULEURS - PAGE MATÉRIEL === */
+.onduleurs-section {
+  background: var(--white);
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+
+  .containerMax {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .trigger-block {
+    margin-bottom: 0;
+  }
+
+  /* Slider onduleurs */
+  .onduleur-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .onduleur-slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 200%; /* 2 slides = 200% */
+  }
+
+  .onduleur-slide {
+    min-width: 50%;     /* 50% du track (200%) = 100% du viewport */
+    width: 50%;         /* Idem pour garantir la largeur correcte */
+    flex-shrink: 0;
+  }
+
+  /* Classe pour déplacer le slider vers la slide 2 (sera ajoutée via JS) */
+  .onduleur-slider-track.slide-1 {
+    transform: translateX(-50%);
+  }
+
+  .onduleurs-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: stretch;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 80px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .onduleurs-image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+
+    img {
+      width: 95%;
+      height: auto;
+      max-width: 550px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 15px grey);
+    }
+
+    /* Responsive tablette */
+    @media (max-width: 1024px) {
+      img {
+        max-width: 400px;
+      }
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 768px) {
+      img {
+        max-width: 280px;
+      }
+    }
+  }
+
+  .onduleurs-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0;
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 32px;
+      line-height: 1.2;
+      color: var(--black);
+    }
+
+    .onduleurs-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 48px 0;
+
+      li {
+        margin-bottom: 12px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-dark);
+
+        i {
+          margin-right: 12px;
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .onduleurs-badges-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 32px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .onduleur-badge-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .badge-icon {
+          font-size: 1.5rem;
+          color: var(--text-dark);
+          margin-bottom: 4px;
+        }
+
+        .badge-text {
+          .badge-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1;
+            margin-bottom: 4px;
+
+            span {
+              font-size: 1rem;
+              font-weight: 400;
+            }
+          }
+
+          .badge-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            line-height: 1.2;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* === SECTION STOCKAGE - PAGE MATÉRIEL === */
+.stockage-section {
+  background: var(--gray-light);
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+
+  .containerMax {
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    width: 100%;
+  }
+
+  /* Slider stockage */
+  .stockage-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .stockage-slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 200%; /* 2 slides = 200% */
+  }
+
+  .stockage-slide {
+    min-width: 50%;     /* 50% du track (200%) = 100% du viewport */
+    width: 50%;         /* Idem pour garantir la largeur correcte */
+    flex-shrink: 0;
+  }
+
+  /* Classe pour déplacer le slider vers la slide 2 (sera ajoutée via JS) */
+  .stockage-slider-track.slide-1 {
+    transform: translateX(-50%);
+  }
+
+  .stockage-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: stretch;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 80px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .stockage-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0;
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    .stockage-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 48px 0;
+
+      li {
+        margin-bottom: 12px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-dark);
+
+        i {
+          margin-right: 12px;
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .stockage-badges-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 32px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stockage-badge-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .badge-icon {
+          font-size: 1.5rem;
+          color: var(--text-dark);
+          margin-bottom: 4px;
+        }
+
+        .badge-text {
+          .badge-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1;
+            margin-bottom: 4px;
+
+            span {
+              font-size: 1rem;
+              font-weight: 400;
+            }
+          }
+
+          .badge-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            line-height: 1.2;
+          }
+        }
+      }
+    }
+  }
+
+  .stockage-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    img {
+      width: 90%;
+      height: auto;
+      max-width: 600px;
+      min-height: 80vh;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 15px grey);
+    }
+
+    /* Responsive tablette */
+    @media (max-width: 1024px) {
+      img {
+        max-width: 400px;
+        min-height: 60vh;
+      }
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 768px) {
+      img {
+        max-width: 300px;
+        min-height: 50vh;
+      }
+    }
+  }
+}
+
+/* === CERTIFICATIONS CONTAINER SUR IMAGES - PAGE MATÉRIEL === */
+.product-certifications-container {
+  position: absolute;
+  /* Position par défaut : centre bas */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+
+  /* Modifieur : coin supérieur gauche */
+  &.top-left {
+    bottom: 60vh;
+    top: auto;
+    left: 40px;
+    right: auto;
+    transform: none;
+  }
+
+  /* Modifieur : coin supérieur droit */
+  &.top-right {
+    bottom: 60vh;
+    top: auto;
+    right: 12px;
+    left: auto;
+    transform: none;
+  }
+
+  /* Modifieur : coin inférieur gauche */
+  &.bottom-left {
+    bottom: 20px;
+    top: auto;
+    left: 0px;
+    right: auto;
+    transform: none;
+  }
+
+  /* Modifieur : coin inférieur droit */
+  &.bottom-right {
+    bottom: 20px;
+    right: 0px;
+    left: auto;
+    transform: none;
+  }
+
+  .certification-badge {
+    &.badge-cert {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      /* padding: 8px; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 76px;       /* 60px (contenu) + 8px (padding) × 2 */
+      height: 76px;      /* Idem pour garantir taille fixe */
+      transition: transform 0.3s ease;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      .cert-text {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--black);
+        text-align: center;
+      }
+
+      .cert-logo {
+        width: 76px;
+        height: 76px;
+        object-fit: contain;
+        display: block;
+      }
+    }
+  }
+
+  /* Responsive tablette */
+  @media (max-width: 1024px) {
+    &.top-right,
+    &.top-left,
+    &.bottom-right,
+    &.bottom-left {
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .certification-badge.badge-cert {
+      width: 60px;
+      height: 60px;
+
+      .cert-logo {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  /* Responsive mobile */
+  @media (max-width: 768px) {
+    gap: 4px;
+
+    .certification-badge.badge-cert {
+      width: 50px;
+      height: 50px;
+
+      .cert-logo {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+/* === TRIGGER BUTTONS (ONDULEURS / STOCKAGE) === */
+.trigger-block {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+    flex-direction: column;
+  }
+}
+
+.trigger-button {
+  padding: 1rem 2rem;
+  border: 2px solid var(--border-accent);
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+
+  &:hover {
+    background: var(--primary-ultra-light);
+    border-color: var(--primary-color);
+  }
+
+  &.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* === TABLES RESPONSIVE (SPECS CONTAINERS) === */
+.specs-container {
+  overflow-x: auto;
+  width: 100%;
+  margin-top: 2rem;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+
+    thead {
+      background: var(--primary-ultra-light);
+
+      tr {
+        border-bottom: 2px solid var(--primary-color);
+
+        th {
+          padding: 1rem;
+          text-align: left;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #e5e7eb;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background: var(--background-secondary);
+        }
+
+        td {
+          padding: 0.875rem 1rem;
+          color: var(--text-color);
+
+          &:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+          }
+        }
+      }
+    }
+
+    /* Responsive mobile : Card layout */
+    @media (max-width: 768px) {
+      font-size: 0.75rem;
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        display: block;
+      }
+
+      tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+
+        &:hover {
+          background: transparent;
+        }
+      }
+
+      td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #f3f4f6;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:first-child {
+          background: #f9fafb;
+        }
+
+        &::before {
+          content: attr(data-label);
+          font-weight: 600;
+          color: var(--text-primary);
+          min-width: 40%;
+        }
+      }
+    }
+  }
+}

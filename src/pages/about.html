@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez l'histoire d'EliSun, entreprise familiale spécialisée dans l'installation photovoltaïque.">
+    <title>À propos - EliSun</title>
+
+    <!-- CSS Critique inline pour éviter FOUC (Flash of Unstyled Content) -->
+    <style>
+        /* Cacher le body jusqu'au chargement complet */
+        body:not(.dom-loaded) {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* Afficher progressivement quand tout est chargé */
+        body.dom-loaded {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>À propos d'EliSun</h1>
+    <p>Page en développement - sera complétée en Phase 2</p>
+</body>
+</html>

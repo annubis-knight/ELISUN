@@ -1,0 +1,229 @@
+/* ========================================
+   FOOTER ELISUN - Simple et moderne
+======================================== */
+
+.footer-elisun {
+  background: var(--background-secondary);
+  color: var(--white);
+  padding: 4rem 0 2rem;
+  position: relative;
+  z-index: 5;
+
+  /* Container principal */
+  .footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  /* ========================================
+     BLOC LOGO & DESCRIPTION
+  ======================================== */
+  .footer-brand {
+    .footer-logo {
+      margin-bottom: 1.5rem;
+
+      .logo-img {
+        height: 50px;
+        width: auto;
+      }
+    }
+
+    .footer-description {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+  }
+
+  /* ========================================
+     LIENS RAPIDES
+  ======================================== */
+  .footer-links {
+    .footer-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--white);
+    }
+
+    .footer-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+
+        .footer-link {
+          color: rgba(255, 255, 255, 0.85);
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: all 0.3s ease;
+          display: inline-block;
+
+          &:hover {
+            color: var(--white);
+            transform: translateX(4px);
+          }
+        }
+      }
+    }
+  }
+
+  /* ========================================
+     CONTACT
+  ======================================== */
+  .footer-contact {
+    .footer-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--white);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      .contact-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        color: var(--white);
+        margin-top: 2px;
+      }
+
+      .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .footer-link-contact {
+          color: var(--white);
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: opacity 0.3s ease;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .footer-text {
+          color: var(--white);
+          font-weight: 600;
+          font-size: 1rem;
+        }
+
+        .contact-info {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+
+  /* ========================================
+     SÉPARATEUR
+  ======================================== */
+  .footer-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 2rem 0;
+  }
+
+  /* ========================================
+     FOOTER BOTTOM - LÉGAL
+  ======================================== */
+  .footer-bottom {
+    text-align: center;
+
+    .footer-legal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      .legal-link {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--white);
+        }
+      }
+
+      .separator {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.875rem;
+      }
+    }
+
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.875rem;
+      margin: 0;
+    }
+  }
+
+  /* ========================================
+     RESPONSIVE MOBILE
+  ======================================== */
+  @media (max-width: 768px) {
+    padding: 3rem 0 1.5rem;
+
+    .footer-container {
+      text-align: center;
+
+      .footer-brand .footer-logo {
+        display: flex;
+        justify-content: center;
+      }
+
+      .footer-links .footer-menu li .footer-link {
+        &:hover {
+          transform: none;
+        }
+      }
+
+      .footer-contact .contact-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+      }
+    }
+
+    .footer-bottom .footer-legal {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .separator {
+        display: none;
+      }
+    }
+  }
+}

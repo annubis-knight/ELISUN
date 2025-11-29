@@ -1,0 +1,191 @@
+<!-- MODAL DEVIS -->
+<!-- Composant modal pour demande de devis - inclure dans toutes les pages -->
+<div id="modal-devis" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+  <div class="modal-container">
+    <div class="modal-card">
+
+      <!-- Corps du modal avec formulaire -->
+      <div class="modal-body">
+        <!-- Bouton de fermeture -->
+        <button type="button" class="modal-close" aria-label="Fermer le formulaire" data-close-modal>
+          <i class="fas fa-times"></i>
+        </button>
+        <form id="form-devis" class="devis-form" novalidate>
+
+          <!-- ÉTAPE 1 : Informations de contact -->
+          <div class="form-step" data-step="1">
+            <h3 class="step-title">Étape 1/2 - Vos coordonnées</h3>
+
+            <!-- Indicateur de progression -->
+            <div class="form-steps-indicator">
+              <div class="progress-bar" data-step-indicator="1"></div>
+              <div class="progress-bar" data-step-indicator="2"></div>
+            </div>
+            
+            <!-- Nom et Prénom sur la même ligne -->
+            <div class="form-row">
+              <div class="form-group form-group--modal">
+                <label for="devis-nom" class="form-label form-label--modal">
+                  Nom <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="devis-nom"
+                  name="nom"
+                  class="form-input form-input--modal"
+                  placeholder="Dupont"
+                  required
+                  aria-required="true"
+                  autocomplete="family-name"
+                />
+              </div>
+
+              <div class="form-group form-group--modal">
+                <label for="devis-prenom" class="form-label form-label--modal">
+                  Prénom <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="devis-prenom"
+                  name="prenom"
+                  class="form-input form-input--modal"
+                  placeholder="Jean"
+                  required
+                  aria-required="true"
+                  autocomplete="given-name"
+                />
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group form-group--modal">
+              <label for="devis-email" class="form-label form-label--modal">
+                Email <span class="required">*</span>
+              </label>
+              <input
+                type="email"
+                id="devis-email"
+                name="email"
+                class="form-input form-input--modal"
+                placeholder="jean.dupont@exemple.fr"
+                required
+                aria-required="true"
+                autocomplete="email"
+              />
+            </div>
+
+            <!-- Téléphone -->
+            <div class="form-group form-group--modal">
+              <label for="devis-tel" class="form-label form-label--modal">
+                Téléphone <span class="required">*</span>
+              </label>
+              <input
+                type="tel"
+                id="devis-tel"
+                name="telephone"
+                class="form-input form-input--modal"
+                placeholder="06 12 34 56 78"
+                required
+                aria-required="true"
+                pattern="[0-9\s\.\-\+\(\)]+"
+                autocomplete="tel"
+              />
+            </div>
+          </div>
+
+          <!-- ÉTAPE 2 : Détails du projet -->
+          <div class="form-step" data-step="2" hidden>
+            <h3 class="step-title">Étape 2/2 - Votre projet</h3>
+
+            <!-- Indicateur de progression -->
+            <div class="form-steps-indicator">
+              <div class="progress-bar" data-step-indicator="1"></div>
+              <div class="progress-bar" data-step-indicator="2"></div>
+            </div>
+
+            <!-- Puissance souhaitée (Radio buttons) -->
+            <div class="form-group form-group--modal">
+              <fieldset class="form-fieldset">
+                <legend class="form-label form-label--modal">
+                  Puissance souhaitée <span class="optional">(facultatif)</span>
+                </legend>
+                <div class="radio-group radio-group--modal">
+                  <label class="radio-label radio-label--modal">
+                    <input type="radio" name="puissance" value="3kV" />
+                    <span class="radio-text">3 kV</span>
+                  </label>
+                  <label class="radio-label radio-label--modal">
+                    <input type="radio" name="puissance" value="9kV" />
+                    <span class="radio-text">9 kV</span>
+                  </label>
+                  <label class="radio-label radio-label--modal">
+                    <input type="radio" name="puissance" value="30kV" />
+                    <span class="radio-text">30 kV</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Adresse postale (facultatif) -->
+            <div class="form-group form-group--modal">
+              <label for="devis-adresse" class="form-label form-label--modal">
+                Adresse postale <span class="optional">(facultatif)</span>
+              </label>
+              <input
+                type="text"
+                id="devis-adresse"
+                name="adresse"
+                class="form-input form-input--modal"
+                placeholder="123 Rue de la République, 75001 Paris"
+                autocomplete="street-address"
+              />
+            </div>
+
+            <!-- Description du projet -->
+            <div class="form-group form-group--modal">
+              <label for="devis-description" class="form-label form-label--modal">
+                Description de votre projet <span class="required">*</span>
+              </label>
+              <textarea
+                id="devis-description"
+                name="description"
+                class="form-textarea form-textarea--modal"
+                rows="5"
+                placeholder="Décrivez-nous votre projet photovoltaïque..."
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Message d'alerte global -->
+          <div class="form-alert" role="alert" hidden>
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Veuillez remplir tous les champs obligatoires</span>
+          </div>
+
+          <!-- Navigation entre étapes -->
+          <div class="form-navigation flex flex-col md:flex-row gap-4">
+            <button type="button" class="btn-prev bouton btn-secondary w-full max-w-none" data-nav="prev" hidden>
+              <i class="fas fa-arrow-left"></i> Précédent
+            </button>
+            <button type="button" class="btn-next bouton btn-primary w-full max-w-none" data-nav="next">
+              Suivant <i class="fas fa-arrow-right"></i>
+            </button>
+            <button type="submit" class="btn-submit bouton btn-primary w-full max-w-none" hidden>
+              <i class="fas fa-paper-plane"></i> Envoyer ma demande
+            </button>
+          </div>
+
+          <!-- Message de confirmation (caché par défaut) -->
+          <div class="form-success" role="alert" aria-live="polite" hidden>
+            <i class="fas fa-check-circle"></i>
+            <p>Merci ! Votre demande de devis a bien été envoyée. Nous vous recontacterons sous 24h.</p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,584 @@
+/* === LANDING - SECTION BANNIÈRE === */
+/*
+ * Section bannière avec widget économies interactif
+ * Toggle particulier/professionnel + calcul dynamique
+ * Card résultat avec animations
+ *
+ * CONTENU :
+ * - .banner-section : Section principale avec backgrounds
+ * - .savings-widget : Widget calculateur économies
+ * - .result-card : Card affichage résultats avec animations
+ *
+
+ *
+ * Migration depuis sections.css (lignes 1199-1826)
+ */
+/* === SECTION BANNIERE === */
+.banner-section {
+  padding: 8rem 0 16rem 0;
+  background: var(--background-primary);
+  position: relative;
+  overflow: hidden;
+
+  /* Triangle géométrique en coin supérieur gauche */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-right: 100px solid transparent;
+    border-top: 100px solid rgba(43, 155, 31, 0.15);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* Pattern tech subtil */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 8px,
+        rgba(251, 175, 0, 0.08) 8px,
+        rgba(251, 175, 0, 0.08) 10px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 8px,
+        rgba(43, 155, 31, 0.06) 8px,
+        rgba(43, 155, 31, 0.06) 10px
+      );
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .certification-logo {
+    width: 100%;
+    max-width: 200px;
+    height: 60px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    opacity: 0.7;
+    filter: grayscale(1);
+    transition: var(--transition-normal);
+    
+  }
+  
+  /* === SECTION BANNER HIGHLIGHTS === */
+  .banner-highlights {
+    display: none;
+    padding: 4rem 0 2rem 0;
+    position: relative;
+    z-index: 2;
+
+
+    .highlights-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-right: 2rem;
+
+      /* Responsive mobile : suppression du padding droit */
+      @media (max-width: 768px) {
+        padding-right: 0;
+        margin-bottom: 3rem;
+      }
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+
+        .highlight-icon-svg {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .highlight-icon {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--primary-ultra-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--primary-light);
+      transition: all 0.3s ease;
+
+      .highlight-icon-svg {
+        width: 32px;
+        height: 32px;
+        filter: brightness(0) saturate(100%) invert(29%) sepia(77%) saturate(1398%) hue-rotate(88deg) brightness(96%) contrast(101%);
+        transition: all 0.3s ease;
+      }
+    }
+
+    .highlight-content {
+      flex: 1;
+
+      .highlight-title {
+        font-size: var(--text-xl);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+        font-family: var(--header-font);
+      }
+
+      .highlight-text {
+        font-size: var(--text-base);
+        color: var(--text-color);
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+
+
+  }
+
+  /* Widget économies complet */
+  .savings-widget {
+    background: var(--background-primary);
+    overflow: visible;
+    position: relative;
+    
+    .widget-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      
+      .widget-title {
+        font-size: var(--text-xl);
+        font-weight: 600;
+        color: var(--neutral-dark);
+        line-height: var(--leading-relaxed);
+      }
+    }
+    
+    /* grid-tailwind gère maintenant la mise en page */
+
+    /* Wrapper des left-sections pour hauteur fixe */
+    .left-section-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Section gauche complète */
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transition: opacity 0.3s ease, z-index 0.3s ease;
+
+      /* Par défaut (particulier) - position normale */
+      &[data-target="particulier"] {
+        position: relative;
+        opacity: 1;
+        z-index: 2;
+      }
+
+      /* Professionnel - absolute + invisible par défaut */
+      &[data-target="professionnel"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* Classe active pour professionnel */
+      &[data-target="professionnel"].active {
+        opacity: 1;
+        z-index: 2;
+        pointer-events: auto;
+      }
+
+      /* Classe inactive pour particulier */
+      &[data-target="particulier"].inactive {
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* Ordre vertical : radio buttons → titre → pourcentage */
+      .particulier-pro-section {
+        order: 1;
+
+        .selector-label {
+          font-size: var(--text-sm);
+          font-weight: 500;
+          color: var(--neutral-medium);
+          margin-bottom: 1rem;
+          text-align: left;
+        }
+
+        /* Cards horizontales professionnels */
+        .pro-features-cards {
+          display: flex;
+          flex-direction: row;
+          gap: 0.75rem;
+          max-width: 440px;
+          height: 104px;
+
+          .pro-feature-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem 0.75rem;
+            background: rgba(248, 250, 252, 0.8);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+
+
+            .pro-card-icon {
+              flex-shrink: 0;
+              width: 1.5rem;
+              height: 1.5rem;
+              background: linear-gradient(135deg, var(--accent), var(--primary-color));
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: var(--white);
+
+              svg {
+                width: 1rem;
+                height: 1rem;
+              }
+            }
+
+            .pro-card-content {
+              h4 {
+                font-size: var(--text-base);
+                color: var(--neutral-dark);
+                margin-bottom: 0;
+
+              }
+
+              /* p {
+                font-size: 0.75rem;
+                color: var(--neutral-medium);
+                line-height: 1.3;
+                margin: 0;
+              } */
+            }
+          }
+        }
+      }
+
+      .title-section {
+        order: 2;
+        text-align: left;
+
+        .dynamic-percentage-highlight {
+          font-weight: 700;
+          color: var(--accent);
+          font-size: 1.3em;
+        }
+      }
+
+    }
+    
+    /* Section droite - Image */
+    .right-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-right: -300px;
+      
+      .savings-image {
+        position: absolute;
+        height: 150%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        /* box-shadow: var(--accent) 90px -20px 0; */
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        z-index: 0;
+        transform: scale(1.5);
+      
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: top;
+          transition: all 0.3s ease;
+          transform: scaleX(-1);
+        }
+      }
+    }
+    
+    .widget-separator {
+      width: 1px;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--neutral-medium), transparent);
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        background: var(--neutral-medium);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  /* Section résultat - Card avec image bien intégrée */
+  .result-section {
+    display: flex;
+    justify-content: center;
+    
+    .result-card {
+      background: linear-gradient(145deg, #ffffff 0%, #fefcf3 50%, #fff8e1 100%);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 16px 40px rgba(251, 175, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+      border: 3px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(251, 175, 0, 0.25), 0 12px 32px rgba(0, 0, 0, 0.12);
+        border-color: var(--secondary);
+      }
+      
+      /* Animation de mise à jour */
+      &.updating {
+        animation: card-pulse 0.6s ease-out;
+        
+        .percentage-number {
+          animation: number-bounce 0.8s ease-out;
+        }
+        
+        .card-image img {
+          transition: all 0.3s ease-out;
+        }
+      }
+      
+      /* Effet de brillance animé */
+      &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(251, 175, 0, 0.08) 0%, transparent 70%);
+        animation: pulse-glow 4s ease-in-out infinite;
+      }
+      
+      /* Bordure supérieure décorative */
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 50%, var(--accent) 100%);
+        background-size: 200% 100%;
+        animation: shimmer 2s ease-in-out infinite;
+      }
+      
+      .card-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent-ultra-light) 0%, rgba(255, 255, 255, 0.8) 100%);
+        border: 2px solid var(--accent-light);
+        transition: var(--transition-normal);
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: var(--transition-normal);
+        }
+        
+        &:hover {
+          transform: scale(1.05);
+          border-color: var(--accent);
+          
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+      
+      .card-content {
+        text-align: center;
+        
+        .percentage-display {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          gap: 0.25rem;
+          margin-bottom: 1rem;
+          
+          .percentage-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 0.8;
+            text-shadow: 0 6px 12px rgba(251, 175, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            
+            /* Effet de brillance sur le nombre */
+            background: linear-gradient(45deg, var(--accent), #ff8c00, var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease-in-out infinite;
+            
+            @media (max-width: 768px) {
+              font-size: 3.5rem;
+            }
+          }
+          
+          .percentage-symbol {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-shadow: 0 4px 8px rgba(251, 175, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            @media (max-width: 768px) {
+              font-size: 2rem;
+            }
+          }
+        }
+        
+        .result-labels {
+          .result-main-label {
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 0.5rem;
+            line-height: var(--leading-tight);
+          }
+          
+          .result-sub-label {
+            font-size: var(--text-sm);
+            color: var(--neutral-medium);
+            font-weight: 400;
+            line-height: var(--leading-relaxed);
+            
+            .amount {
+              font-weight: 700;
+              color: var(--accent);
+              font-size: var(--text-base);
+              background: var(--accent-ultra-light);
+              padding: 0.25rem 0.5rem;
+              border-radius: 6px;
+              border: 1px solid var(--accent-light);
+              display: inline-block;
+              margin: 0.25rem 0;
+            }
+          }
+        }
+      }
+
+      /* Responsive mobile : ajustement result-card */
+      @media (max-width: 768px) {
+        padding: 1.25rem;
+        gap: 1.25rem;
+
+        .card-image {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+  
+}
+
+/* === ANIMATIONS POUR LE WIDGET ÉCONOMIES === */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes checkmark-appear {
+  0% { 
+    transform: scale(0) rotate(0deg); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: scale(1.2) rotate(180deg); 
+    opacity: 0.8; 
+  }
+  100% { 
+    transform: scale(1) rotate(360deg); 
+    opacity: 1; 
+  }
+}
+
+
+@keyframes pulse-background {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: translate(-50%, -50%) scale(1); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: translate(-50%, -50%) scale(1.1); 
+  }
+}

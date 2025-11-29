@@ -1,0 +1,137 @@
+/* === COMPOSANT UI : BADGES ET CARDS === */
+/*
+ * Composant réutilisable : Trigger blocks, cards prix, badges certifications
+ * Toggle particuliers/professionnels avec états actifs
+ * Cards garanties premium avec icônes
+ *
+ * USAGE :
+ * - .card-prix-* : Cards tarifaires avec hover effects
+ * - .certification-container : Grilles logos certifications
+ */
+
+/* === TRIGGER BLOCK - COMPOSANT GLOBAL === */
+.trigger-block {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(248, 250, 252, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin: 0 auto;
+  width: fit-content;
+  position: relative;
+  z-index: 10;
+
+  .trigger-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+
+    &:hover:not(.active) {
+      background: var(--neutral);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      font-size: 0.75rem;
+      padding: 0.75rem 1rem;
+    }
+  }
+}
+
+
+
+/* === CERTIFICATIONS CONTAINER SUR IMAGES - PAGE MATÉRIEL === */
+.product-certifications-container {
+  position: absolute;
+  /* Position par défaut : centre bas */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+
+  /* Modifieur : coin supérieur gauche */
+  &.top-left {
+    bottom: 60vh;
+    top: auto;
+    left: 40px;
+    right: auto;
+    transform: none;
+  }
+
+  /* Modifieur : coin supérieur droit */
+  &.top-right {
+    bottom: 60vh;
+    top: auto;
+    right: 12px;
+    left: auto;
+    transform: none;
+  }
+
+  /* Modifieur : coin inférieur gauche */
+  &.bottom-left {
+    bottom: 20px;
+    top: auto;
+    left: 20px;
+    right: auto;
+    transform: none;
+  }
+
+  /* Modifieur : coin inférieur droit */
+  &.bottom-right {
+    bottom: 20px;
+    top: auto;
+    right: 20px;
+    left: auto;
+    transform: none;
+  }
+
+  .certification-logo {
+    width: 100%;
+    max-width: 200px;
+    height: 60px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    opacity: 0.7;
+    filter: grayscale(1);
+    transition: var(--transition-normal);
+
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0);
+      transform: scale(1.05);
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 4px;
+
+    .certification-logo {
+      max-width: 80px;
+      height: 40px;
+    }
+  }
+}
