@@ -19,7 +19,12 @@
       "Bash(curl:*)",
       "Bash(cat:*)",
       "Bash(git remote add:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(npx css-checker:*)",
+      "Bash(npm uninstall:*)"
     ],
     "defaultMode": "acceptEdits"
   },

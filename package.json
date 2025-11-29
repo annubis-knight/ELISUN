@@ -12,8 +12,9 @@
     "build:js": "webpack --mode development --watch",
     "clean": "rm -rf dist",
     "lint": "eslint src/js/**/*.js",
-    "format": "prettier --write src/**/*.{js,css,html}",
-    "check:css": "css-checker src/css"
+    "lint:css": "stylelint \"src/css/**/*.css\"",
+    "lint:css:fix": "stylelint \"src/css/**/*.css\" --fix",
+    "format": "prettier --write src/**/*.{js,css,html}"
   },
   "keywords": [
     "photovoltaique",
@@ -30,7 +31,6 @@
     "autoprefixer": "^10.4.21",
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.1",
-    "css-checker": "^1.0.1",
     "css-loader": "^7.1.2",
     "eslint": "^9.33.0",
     "html-webpack-plugin": "^5.6.3",
@@ -39,6 +39,8 @@
     "postcss-loader": "^8.1.1",
     "prettier": "^3.6.2",
     "style-loader": "^4.0.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
     "tailwindcss": "^3.4.17",
     "webpack": "^5.101.1",
     "webpack-cli": "^6.0.1",
