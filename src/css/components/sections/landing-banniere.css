@@ -22,6 +22,10 @@
   position: relative;
   overflow: hidden;
 
+  @media (max-width: 768px) {
+    padding: 8rem 0 8rem;
+  }
+
   /* Triangle géométrique en coin supérieur gauche */
   &::before {
     content: '';
