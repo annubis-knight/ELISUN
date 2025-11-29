@@ -2,6 +2,34 @@
 
 This file provides CSS-specific guidance for Claude Code when working in the `src/css/` directory.
 
+## 🔍 Stylelint - Code Quality Check
+
+**TOUJOURS lancer Stylelint avant de commiter du CSS :**
+
+```bash
+npm run lint:css      # Vérifier la qualité CSS
+npm run lint:css:fix  # Corriger automatiquement les problèmes
+```
+
+**Ce que Stylelint détecte :**
+- ✅ Propriétés CSS dupliquées
+- ✅ Valeurs redondantes dans les raccourcis (`0 0 48px 0` → `0 0 48px`)
+- ✅ Notation de couleurs non standardisée (`rgba` → `rgb` moderne)
+- ✅ Propriétés qui devraient être des raccourcis (`top/right/bottom/left` → `inset`)
+- ✅ Sélecteurs dupliqués
+- ✅ Media queries (notation moderne)
+
+**Configuration** : `.stylelintrc.json` à la racine du projet
+
+**Workflow** :
+1. Écrire/modifier CSS
+2. `npm run lint:css` pour détecter les problèmes
+3. `npm run lint:css:fix` pour corriger automatiquement
+4. Corriger manuellement les problèmes restants
+5. Commit uniquement quand Stylelint valide le code
+
+---
+
 ## 🚨 CRITICAL RULES
 
 ### CSS Nesting OBLIGATOIRE

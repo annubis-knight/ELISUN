@@ -2,6 +2,44 @@
 
 This file provides JavaScript-specific guidance for Claude Code when working in the `src/js/` directory.
 
+## 🔍 ESLint - Code Quality Check
+
+**TOUJOURS lancer ESLint avant de commiter du JavaScript :**
+
+```bash
+npm run lint:js       # Vérifier la qualité JavaScript
+npm run lint:js:fix   # Corriger automatiquement les problèmes
+npm run lint          # Alias pour lint:js
+```
+
+**Ce que ESLint détecte :**
+- ✅ Variables non utilisées (dead code)
+- ✅ Imports dupliqués
+- ✅ Fonctions identiques (duplication de code via SonarJS)
+- ✅ Chaînes de caractères dupliquées (magic strings)
+- ✅ Complexité cognitive excessive (>15)
+- ✅ Utilisation de `var` au lieu de `const/let`
+- ✅ Code inaccessible (unreachable)
+- ✅ Problèmes d'égalité (== vs ===)
+
+**Plugins activés :**
+- `@eslint/js` - Configuration ESLint recommandée
+- `eslint-plugin-import` - Gestion des imports/exports
+- `eslint-plugin-sonarjs` - Détection de duplication et complexité
+
+**Configuration** : `eslint.config.js` à la racine du projet
+
+**Workflow** :
+1. Écrire/modifier JavaScript
+2. `npm run lint:js` pour détecter les problèmes
+3. `npm run lint:js:fix` pour corriger automatiquement
+4. Corriger manuellement les problèmes restants (variables inutilisées, etc.)
+5. Commit uniquement quand ESLint valide le code
+
+**Globales configurées** : setTimeout, fetch, GSAP, Swiper, IntersectionObserver, CustomEvent, etc.
+
+---
+
 ## 🚨 CRITICAL RULES
 
 ### ES6+ Modules OBLIGATOIRES

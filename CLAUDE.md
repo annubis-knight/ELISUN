@@ -37,8 +37,19 @@ src/css/main.css → Tailwind + custom imports
 ```bash
 npm run dev          # Start dev server on localhost:8080
 npm run build        # Production build
-npm run lint         # ESLint JavaScript
 npm run format       # Prettier formatting
+```
+
+### Code Quality Commands
+```bash
+# JavaScript
+npm run lint         # ESLint JavaScript (alias for lint:js)
+npm run lint:js      # Analyze JavaScript code quality
+npm run lint:js:fix  # Auto-fix JavaScript issues
+
+# CSS
+npm run lint:css      # Analyze CSS code quality
+npm run lint:css:fix  # Auto-fix CSS issues
 ```
 
 ### Port Management
@@ -94,7 +105,81 @@ This project follows strict documentation discipline. **AFTER EVERY CODE SESSION
 2. Add corresponding CSS in appropriate location
 3. Import in `main.js`
 4. Test with `npm run dev`
-5. Update documentation files
+5. **Run code quality checks** (see below)
+6. Update documentation files
+
+## 🔍 Code Quality & Linting
+
+**CRITICAL**: Always run linters before committing code. This project uses automated tools to detect duplicates, dead code, and enforce best practices.
+
+### Tools Configured
+
+#### Stylelint (CSS)
+- **Version**: v16.26.1
+- **Config**: `.stylelintrc.json`
+- **Detects**: Duplicate properties, redundant values, color notation issues, shorthand opportunities
+
+```bash
+npm run lint:css      # Check CSS quality
+npm run lint:css:fix  # Auto-fix CSS issues (884 issues auto-fixed in initial run)
+```
+
+#### ESLint (JavaScript)
+- **Version**: v9.33.0 with flat config
+- **Config**: `eslint.config.js`
+- **Plugins**: @eslint/js, eslint-plugin-import, eslint-plugin-sonarjs
+- **Detects**: Unused variables, duplicate imports, identical functions, duplicate strings, cognitive complexity
+
+```bash
+npm run lint:js       # Check JavaScript quality
+npm run lint:js:fix   # Auto-fix JavaScript issues
+npm run lint          # Alias for lint:js
+```
+
+### Pre-Commit Workflow
+
+**MANDATORY before every commit:**
+
+1. **Run both linters:**
+   ```bash
+   npm run lint:css
+   npm run lint:js
+   ```
+
+2. **Fix auto-fixable issues:**
+   ```bash
+   npm run lint:css:fix
+   npm run lint:js:fix
+   ```
+
+3. **Manually fix remaining issues** reported by linters
+
+4. **Verify fixes:**
+   ```bash
+   npm run lint:css
+   npm run lint:js
+   ```
+
+5. **Commit only when both linters pass** (or have acceptable warnings)
+
+### What Linters Detect
+
+**Code Duplication:**
+- ✅ Duplicate CSS properties
+- ✅ Duplicate JavaScript imports
+- ✅ Identical functions (SonarJS)
+- ✅ Duplicate string literals
+
+**Dead Code:**
+- ✅ Unused CSS properties
+- ✅ Unused JavaScript variables
+- ✅ Unreachable code
+
+**Best Practices:**
+- ✅ Modern CSS notation (rgb vs rgba)
+- ✅ Shorthand properties (inset vs top/right/bottom/left)
+- ✅ const vs let vs var enforcement
+- ✅ Cognitive complexity warnings
 
 ### Code Style Enforcement - CRITICAL RULES
 
