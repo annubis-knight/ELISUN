@@ -1,6 +1,5 @@
 /* ==========================================================================
    UI MODAL - Composant modal réutilisable
-   Nesting CSS strict (CLAUDE.md) - Simple, lisible, efficace
    ========================================================================== */
 
 .modal-overlay {
@@ -11,7 +10,7 @@
   height: 100%;
   background-color: rgb(0 0 0 / 75%);
   backdrop-filter: blur(4px);
-  z-index: 9999;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,3 +134,115 @@
     }
   }
 }
+
+/* ==========================================================================
+   INTL-TEL-INPUT - Styles dans le modal #modal-devis
+   ========================================================================== */
+
+#modal-devis {
+  /* Le conteneur du champ téléphone */
+  .form-group {
+    position: relative; /* ✅ Important pour le dropdown desktop */
+
+    /* Mobile - Forcer la hauteur du popup plein écran */
+    .iti--fullscreen-popup.iti--container {
+      height: 250px;
+      position :  absolute;
+      padding : 0;
+      margin : 0;
+
+
+      .iti__search-input {
+          height: 50px;
+      }
+      
+    }
+  }
+
+  .iti {
+    width: 100%;
+    display: block;
+
+    .iti__tel-input {
+      width: 100%;
+      border: 1px solid #94a3b8;
+      padding: 0.75rem 1rem 0.75rem 4.5rem;
+      border-radius: 0.5rem;
+      font-size: 0.9375rem;
+      font-family: var(--font-primary);
+      color: var(--text-primary);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgb(251 175 0 / 10%);
+      }
+
+      @media (width <= 768px) {
+        font-size: 1rem;
+        padding: 0.875rem 1rem 0.875rem 4.5rem;
+      }
+    }
+
+    .iti__selected-flag {
+      padding: 0 0.5rem 0 0.75rem;
+      border-right: 1px solid #e2e8f0;
+      border-radius: 0.5rem 0 0 0.5rem;
+
+      &:hover {
+        background-color: rgb(0 0 0 / 3%);
+      }
+
+      .iti__arrow {
+        border-top: 5px solid #64748b;
+      }
+    }
+
+    .iti__selected-dial-code {
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-left: 0.375rem;
+    }
+  }
+}
+
+/* Dropdown - Style global (intl l'insère dans body) */
+.iti__country-list {
+  z-index: 1000;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 40px rgb(0 0 0 / 20%);
+  max-height: 250px;
+
+  .iti__country {
+    padding: 0.75rem 1rem;
+
+    &:hover {
+      background-color: #f8fafc;
+    }
+
+    &.iti__active {
+      background-color: #fef3c7;
+      font-weight: 600;
+    }
+
+    .iti__country-name {
+      font-size: 0.9375rem;
+      color: var(--text-primary);
+    }
+
+    .iti__dial-code {
+      color: #64748b;
+      font-size: 0.875rem;
+    }
+  }
+
+  .iti__divider {
+    border-bottom: 2px solid #e2e8f0;
+    margin: 0.5rem 0;
+  }
+}
+

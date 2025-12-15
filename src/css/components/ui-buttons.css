@@ -73,6 +73,25 @@
     }
   }
 
+
+    &.btn-validate {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      min-width: 160px;
+      height: -webkit-fill-available;
+      flex-basis: 30%;
+  
+      &:hover {
+        background: var(--white);
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        transform: translateY(-8px);
+      }
+    }
+
+
   /* Taille navbar - compacte pour header */
   &.btn-navbar {
     font-size: 0.9rem;
@@ -84,6 +103,8 @@
       font-size: 1rem;
     }
   }
+
+
 
   /* Focus states pour accessibilité clavier */
   &:focus-visible {

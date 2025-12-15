@@ -419,7 +419,8 @@
       padding-top: 32px;
 
       @media (width <= 768px) {
-        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-columns: repeat(2, 1fr); */
+        grid-template-columns: 1fr;
       }
 
       .stockage-badge-item {
@@ -610,54 +611,11 @@
   }
 }
 
-/* === TRIGGER BUTTONS (ONDULEURS / STOCKAGE) === */
-.trigger-block {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-
-  @media (width <= 768px) {
-    gap: 0.75rem;
-    flex-direction: column;
-  }
-}
-
-.trigger-button {
-  padding: 1rem 2rem;
-  border: 2px solid var(--border-accent);
-  background: white;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  color: var(--text-primary);
-
-  &:hover {
-    background: var(--primary-ultra-light);
-    border-color: var(--primary-color);
-  }
-
-  &.active {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-  }
-
-  @media (width <= 768px) {
-    width: 100%;
-    padding: 0.875rem 1.5rem;
-    font-size: 0.9rem;
-  }
-}
 
 /* === TABLES RESPONSIVE (SPECS CONTAINERS) === */
 .specs-container {
   overflow-x: auto;
   width: 100%;
-  margin-top: 2rem;
 
   table {
     width: 100%;

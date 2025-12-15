@@ -187,7 +187,7 @@ Toutes les sections doivent suivre ce pattern :
     <!-- Colonne 1 -->
     <div class="tetris-column">
         <div class="tetris-card card-stat">
-            <div class="stat-number">15+</div>
+            <div class="tetris-subtext">15+</div>
             <p>Années d'expérience</p>
         </div>
         <div class="tetris-card card-certification">
@@ -469,15 +469,118 @@ Webpack injecte **automatiquement** :
 </picture>
 ```
 
+## 🔗 Asset Paths & Build Rules
+
+### 🚨 Règle Critique: Chemins des Images et Assets
+
+Après le build Webpack, **TOUTES les pages HTML sont à la racine de `dist/`** (pas de sous-dossiers).
+
+#### ✅ CORRECT - Pour Images dans src/pages/
+```html
+<!-- Utiliser toujours ./ (chemin relatif simple) -->
+<img src="./assets/images/logo.png" alt="Logo">
+<img src="./assets/images/icons/icon.svg" alt="Icône">
+<img src="./assets/images/background/bg.jpg" alt="Fond">
+```
+
+#### ❌ JAMAIS - Chemins avec ../
+```html
+<!-- ❌ INTERDIT - Cassera après le build -->
+<img src="../assets/images/logo.png" alt="Logo">
+
+<!-- Pourquoi? Installation.html ne sera PAS dans src/pages/
+     après le build - tout sera à la racine de dist/ -->
+```
+
+#### ✅ CORRECT - Pour Composants w3-include-html
+```html
+<!-- Webpack copie src/components → dist/components/ -->
+<div w3-include-html="components/navbar.html"></div>
+<div w3-include-html="components/footer.html"></div>
+<div w3-include-html="components/modal-devis.html"></div>
+
+<!-- ❌ JAMAIS -->
+<div w3-include-html="../components/navbar.html"></div>
+```
+
+#### ✅ CORRECT - Pour Favicon
+```html
+<!-- Favicon utilise aussi ./assets/ -->
+<link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="./assets/images/logo/favicon-96x96.png">
+<link rel="shortcut icon" href="./assets/images/logo/favicon.ico">
+```
+
+#### ℹ️ Open Graph Images (URLs Absolues)
+```html
+<!-- URLs ABSOLUES UNIQUEMENT pour Open Graph -->
+<meta property="og:image" content="https://www.elisun-toulouse.fr/assets/images/og/index-og.jpg">
+
+<!-- Pas de chemins relatifs! Open Graph needs full URLs for social media -->
+```
+
+---
+
+## 📋 SEO & Meta Tags (Requis)
+
+Chaque page HTML **DOIT** avoir cette structure dans `<head>` :
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO de base -->
+    <meta name="description" content="Description unique < 160 caractères">
+    <meta name="author" content="EliSun - Expert Photovoltaïque Toulouse">
+    <link rel="canonical" href="https://www.elisun-toulouse.fr/[page].html">
+    <title>Titre Unique et Optimisé pour Google</title>
+
+    <!-- Google Tag Manager (espace réservé) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_ID"></script>
+    ...
+    -->
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="EliSun Toulouse">
+    <meta property="og:url" content="https://www.elisun-toulouse.fr/[page].html">
+    <meta property="og:title" content="Titre pour partage">
+    <meta property="og:description" content="Description pour partage">
+    <meta property="og:image" content="https://www.elisun-toulouse.fr/assets/images/og/[page]-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/logo/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/logo/favicon-96x96.png">
+    <link rel="shortcut icon" href="./assets/images/logo/favicon.ico">
+    <link rel="apple-touch-icon" sizes="96x96" href="./assets/images/logo/favicon-96x96.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      ...
+    }
+    </script>
+</head>
+```
+
+---
+
 ## ⚠️ Anti-patterns à éviter
 
 ❌ Commentaires en anglais
-❌ Divs au lieu de balises sémantiques
-❌ Classes non descriptives (`.section-1`, `.box-3`)
 ❌ Alt text vides ou non descriptifs
 ❌ Inline styles dans HTML (`style="color: red"`)
 ❌ Scripts dans `<head>` sans defer/async
-❌ Liens `<link>` et `<script>` manuels (Webpack les injecte)
 ❌ IDs non-uniques
 ❌ Imbrication excessive de divs
-❌ Manque de structure `.containerMax → .grid-tailwind`
+❌ Manque de structure, utiliser plutôt `.containerMax → .grid-tailwind`
+❌ **Chemins `../assets/` pour images** (CASSERA après le build!)
+❌ **Chemins `../components/` pour w3-include-html** (CASSERA après le build!)
+❌ URLs relatives dans Open Graph (DOIT être absolue)

@@ -5,9 +5,10 @@
 
 export function initOnduleurSlider() {
   // Sélectionner les boutons de trigger et les slider tracks
-  const triggerButtons = document.querySelectorAll('.onduleurs-section .trigger-button');
+  const triggerButtons = document.querySelectorAll('#wrapperSections .trigger-button');
   const onduleurSliderTrack = document.querySelector('.onduleur-slider-track');
   const stockageSliderTrack = document.querySelector('.stockage-slider-track');
+  const specsContainer = document.querySelectorAll('.specs-container');
 
   // Vérifier que les éléments onduleur existent
   if (!triggerButtons.length || !onduleurSliderTrack) {
@@ -20,6 +21,7 @@ export function initOnduleurSlider() {
     button.addEventListener('click', () => {
       // Retirer la classe active de tous les boutons
       triggerButtons.forEach(btn => btn.classList.remove('active'));
+      specsContainer.forEach(specs => specs.classList.remove('active'));
 
       // Ajouter la classe active au bouton cliqué
       button.classList.add('active');

@@ -33,6 +33,7 @@
 @import url('./components/ui-benefit-block.css');
 @import url('./components/ui-section-headers.css');
 @import url('./components/ui-modal.css');
+@import url('./components/ui-input-fields.css');
 @import url('./components/ui-radio.css'); /* Styles de base pour tous les radio buttons */
 @import url('./components/ui-forms.css'); /* Styles de base pour tous les formulaires */
 
@@ -94,6 +95,7 @@ body {
 @apply mx-4 md:mx-8 lg:mx-auto lg:w-[90%];
 
 max-width: 1300px;
+min-width : 0;
 height: 100%;
 }
 

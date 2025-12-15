@@ -80,10 +80,7 @@
   .cta-right {
     width: 100%;
     max-width: 700px;
-
   }
-
-
 }
 
 /* === SECTION MESSAGE DE CONFIANCE FINALE === */
@@ -223,12 +220,13 @@
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
+  color: white;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: hsl(47deg 100% 50% / 86.3%);
+    background: rgb(67 63 54 / 92%);
     pointer-events: none;
   }
 
@@ -272,14 +270,8 @@
 
   .garantie-label {
     font-size: var(--text-sm);
-    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-  }
-
-  .garantie-percentage {
-    font-size: var(--text-sm);
-    font-weight: 700;
   }
 
   .garantie-bar {

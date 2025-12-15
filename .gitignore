@@ -47,4 +47,4 @@ temp/
 .parcel-cache/
 
 # Local configuration
-.env.local
+.env.local.firebase/

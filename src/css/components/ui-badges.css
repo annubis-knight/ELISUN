@@ -23,7 +23,8 @@
   border-radius: 12px;
   margin: 0 auto;
   width: fit-content;
-  position: relative;
+  position: sticky;
+  top : 5vh;
   z-index: 10;
 
   .trigger-button {

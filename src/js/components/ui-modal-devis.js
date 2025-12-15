@@ -1,8 +1,21 @@
+import intlTelInput from 'intl-tel-input';
+
 /**
  * Gestionnaire du modal de demande de devis
  * Gestion de l'ouverture, fermeture, validation et soumission du formulaire
  * Inclut focus trap, accessibilité ARIA, localStorage et événements custom
  */
+
+// Configuration API (dev vs prod)
+// Dev = localhost, 127.0.0.1, ou IP locale (192.168.x.x)
+const hostname = window.location.hostname;
+const IS_LOCAL = hostname === 'localhost'
+  || hostname === '127.0.0.1'
+  || hostname.startsWith('192.168.');
+
+const API_ENDPOINT = IS_LOCAL
+  ? 'http://localhost:3000/api/brevo-contact' // Serveur local (dev)
+  : '/api/brevo-contact'; // Firebase Functions (production)
 
 class ModalDevis {
   constructor() {
@@ -36,6 +49,7 @@ class ModalDevis {
 
     ModalDevis.instance = this;
     this.init();
+    this.initPhoneInput();
   }
 
   init() {
@@ -43,10 +57,34 @@ class ModalDevis {
       console.warn('⚠️ Modal devis ou formulaire non trouvé');
       return;
     }
-    
+
     this.setupEventListeners();
     this.goToStep(1); // Initialiser à l'étape 1
   }
+
+async initPhoneInput() {  // ✅ async ici
+  const phoneInput = document.querySelector('#devis-tel');
+  const phoneContainer = phoneInput.closest('.form-group');
+
+  this.iti = intlTelInput(phoneInput, {
+    initialCountry: 'fr',
+    preferredCountries: ['fr', 'be', 'ch', 'lu'],
+    separateDialCode: true,
+    nationalMode: false,
+    autoPlaceholder: 'aggressive',
+    formatOnDisplay: true,
+    utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/js/utils.js',
+    dropdownContainer: phoneContainer,
+    useFullscreenPopup: true
+  }); // ✅ Fermer l'objet ici
+
+  // ✅ await APRÈS l'instanciation
+  await this.iti.promise;
+  console.log('✅ intl-tel-input utils chargé');
+}
+
+
+
 
   /**
    * Configuration des écouteurs d'événements
@@ -209,11 +247,22 @@ class ModalDevis {
       }
     });
 
-    // Afficher/masquer l'alerte globale
-    this.toggleGlobalAlert(!isValid);
+    // Valider le téléphone
+    if (this.currentStep === 1) {
+      const validationResult = this.iti.isValidNumber();
+      
+      // ✅ Vérification stricte : seulement rejeter si false
+      if (validationResult === false) {
+        this.showAlert('Numéro de téléphone invalide');
+        return false;
+      }
+      // Si null ou true, on accepte
+    }
 
+    this.toggleGlobalAlert(!isValid);
     return isValid;
   }
+
 
   /**
    * Afficher/masquer le message d'alerte global
@@ -263,7 +312,7 @@ class ModalDevis {
    */
   debounce(fn, delay = 300) {
     let timerId;
-    return function(...args) {
+    return function (...args) {
       clearTimeout(timerId);
       timerId = setTimeout(() => fn.apply(this, args), delay);
     };
@@ -274,18 +323,18 @@ class ModalDevis {
    */
   setupRealTimeValidation() {
     const inputs = this.form?.querySelectorAll('.form-input, .form-textarea');
-    
+
     inputs?.forEach(input => {
       // Validation à la perte de focus (immédiate)
       input.addEventListener('blur', () => this.validateField(input));
-      
+
       // Validation pendant la saisie (avec debounce)
       const debouncedValidate = this.debounce(() => {
         if (input.value.trim()) {
           this.validateField(input);
         }
       }, 500);
-      
+
       input.addEventListener('input', () => {
         if (input.classList.contains('has-error')) {
           this.clearFieldError(input);
@@ -348,34 +397,110 @@ class ModalDevis {
    * Gestion de la soumission du formulaire
    */
   async handleSubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!this.validateForm()) return;
+  if (!this.validateCurrentStep()) {
+    return;
+  }
 
-    const formData = this.getFormData();
-    const submitBtn = this.btnSubmit;
-    submitBtn?.classList.add('is-loading');
-    submitBtn?.setAttribute('disabled', '');
+  await this.iti.promise;
+  
+  const phoneInput = document.querySelector('#devis-tel');
+  
+  
+  // ✅ Essayer de forcer avec le pays
+  const selectedCountry = this.iti.getSelectedCountryData();
+  
+  // ✅ WORKAROUND : Construire manuellement si getNumber() échoue
+  let fullPhoneNumber = this.iti.getNumber();
+  
+  if (!fullPhoneNumber && phoneInput.value) {
+    // Construire manuellement le numéro
+    const dialCode = selectedCountry.dialCode;
+    const nationalNumber = phoneInput.value.replace(/^0/, ''); // Retirer le 0 initial
+    fullPhoneNumber = `+${dialCode}${nationalNumber}`;
+  }
 
-    try {
-      // Retry automatique en cas d'échec
-      await this.retry(() => this.submitFormData(formData), 3, 1000);
-      
-      this.showSuccessMessage();
-      
-      // Nettoyer localStorage après succès
+  const formData = new FormData(this.form);
+  
+  const data = {
+    nom: formData.get('nom'),
+    prenom: formData.get('prenom'),
+    email: formData.get('email'),
+    telephone: fullPhoneNumber,
+    puissance: formData.get('puissance'),
+    adresse: formData.get('adresse') || '',
+    description: formData.get('description')
+  };
+
+  console.log('📤 Données envoyées:', data);
+
+  try {
+    const submitBtn = this.form.querySelector('.btn-submit');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
+    submitBtn.disabled = true;
+
+    const response = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      this.showSuccess();
+      this.form.reset();
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
       localStorage.removeItem('modalDevisProgress');
-      
-      // Émettre événement custom
-      this.fireCustomEvent('submitted', { data: formData });
-    } catch (error) {
-      console.error('❌ Erreur:', error);
-      alert('Une erreur est survenue. Veuillez réessayer.');
-    } finally {
-      submitBtn?.classList.remove('is-loading');
-      submitBtn?.removeAttribute('disabled');
+      setTimeout(() => this.close(), 3000);
+    } else {
+      this.showAlert(result.message || 'Erreur lors de l\'envoi');
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
+
+  } catch (error) {
+    console.error('❌ Erreur:', error);
+    this.showAlert('Erreur de connexion. Veuillez réessayer.');
+
+    const submitBtn = this.form.querySelector('.btn-submit');
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer ma demande';
+    submitBtn.disabled = false;
+  }
+}
+
+
+  showAlert(message) {
+    const alertElement = this.form.querySelector('.form-alert');
+    if (alertElement) {
+      alertElement.querySelector('span').textContent = message;
+      alertElement.hidden = false;
+      setTimeout(() => {
+        alertElement.hidden = true;
+      }, 5000);
     }
   }
+
+
+  // Méthode pour afficher le message de succès
+  showSuccess() {
+    const successMessage = this.form.querySelector('.form-success');
+    const formSteps = this.form.querySelectorAll('.form-step');
+    const navigation = this.form.querySelector('.form-navigation');
+
+    // Masquer les étapes et la navigation
+    formSteps.forEach(step => step.hidden = true);
+    navigation.hidden = true;
+
+    // Afficher le message de succès
+    successMessage.hidden = false;
+  }
+
 
   validateForm() {
     let isFormValid = true;
@@ -447,19 +572,7 @@ class ModalDevis {
       }, 1500);
     });
 
-    /* Production:
-    const response = await fetch('/api/devis', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    
-    if (!response.ok) {
-      throw new Error('Erreur serveur');
-    }
-    
-    return response.json();
-    */
+
   }
 
   showSuccessMessage() {
@@ -477,6 +590,13 @@ class ModalDevis {
 
     const inputs = this.form?.querySelectorAll('.form-input, .form-textarea');
     inputs?.forEach(input => input.classList.remove('has-error', 'is-valid'));
+
+    // Reset bouton submit
+    const submitBtn = this.form?.querySelector('.btn-submit');
+    if (submitBtn) {
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer ma demande';
+      submitBtn.disabled = false;
+    }
   }
 
   /**
@@ -501,13 +621,30 @@ class ModalDevis {
    * LocalStorage - Charger la progression
    */
   loadProgressFromLocalStorage() {
+    // Charger données du CTA progressif (elisunLead)
+    const leadData = localStorage.getItem('elisunLead');
+    if (leadData) {
+      try {
+        const lead = JSON.parse(leadData);
+        if (lead.email && this.form?.elements['email']) {
+          this.form.elements['email'].value = lead.email;
+        }
+        if (lead.prenom && this.form?.elements['prenom']) {
+          this.form.elements['prenom'].value = lead.prenom;
+        }
+        if (lead.nom && this.form?.elements['nom']) {
+          this.form.elements['nom'].value = lead.nom;
+        }
+      } catch (e) { /* ignore */ }
+    }
+
     const saved = localStorage.getItem('modalDevisProgress');
     if (!saved) return;
 
     try {
       const data = JSON.parse(saved);
 
-      // Restaurer les champs texte
+      // Restaurer les champs texte (écrase si déjà rempli par elisunLead)
       ['nom', 'prenom', 'email', 'telephone', 'adresse', 'description'].forEach(field => {
         if (data[field] && this.form?.elements[field]) {
           this.form.elements[field].value = data[field];

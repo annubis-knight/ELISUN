@@ -22,8 +22,8 @@
   position: relative;
   overflow: hidden;
 
-  @media (max-width: 768px) {
-    padding: 8rem 0 8rem;
+  @media (width <= 1024px) {
+    padding: 8rem 0;
   }
 
   /* Triangle géométrique en coin supérieur gauche */
@@ -302,9 +302,10 @@
         text-align: left;
 
         .dynamic-percentage-highlight {
-          font-weight: 700;
+          font-weight: 600;
           color: var(--accent);
-          font-size: 1.3em;
+          font-size: 1.1em;
+          line-height: 1;
         }
       }
 
@@ -479,7 +480,6 @@
             /* Effet de brillance sur le nombre */
             background: linear-gradient(45deg, var(--accent), #ff8c00, var(--accent));
             background-size: 200% 200%;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradient-shift 3s ease-in-out infinite;

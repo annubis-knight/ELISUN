@@ -880,13 +880,28 @@
                 <div class="cta-right">
                     <div class="input-cta-group input-cta-group-plain">
                         <div class="input-button-wrapper">
+                            <!-- Étape 1 : Email -->
                             <input type="email"
                                    id="cta-email-input"
-                                   placeholder="Entrez votre email pour recevoir votre estimation gratuite"
-                                   class="input-field">
-                            <button type="button" class="bouton btn-primary" id="cta-signup-btn" data-open-modal="devis">
-                                Obtenir un devis express
-                            </button>
+                                   placeholder="Votre email professionnel"
+                                   class="input-field"
+                                   autocomplete="email">
+                            <!-- Étape 2 : Prénom + Nom (cachés par défaut) -->
+                            <input type="text"
+                                   id="cta-prenom-input"
+                                   placeholder="Prénom"
+                                   class="input-field"
+                                   autocomplete="given-name"
+                                   hidden>
+                            <input type="text"
+                                   id="cta-nom-input"
+                                   placeholder="Nom"
+                                   class="input-field"
+                                   autocomplete="family-name"
+                                   hidden>
+                            <div class="bouton btn-primary" id="cta-signup-btn">
+                                Obtenir mon devis
+                            </div>
                         </div>
                     </div>
                     <p class="input-cta-notice">

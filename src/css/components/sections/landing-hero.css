@@ -55,6 +55,9 @@
     animation: heroBackgroundZoom 5000ms ease-out forwards;
   }
 
+  h1 {
+    text-shadow: 0 0 5px rgb(0 0 0 / 50%);
+  }
 }
 
 /* Animation zoom-in progressif */
@@ -80,6 +83,8 @@
 
     /* Overflow hidden seulement sur mobile pour l'animation */
     @media (width <= 1024px) {
+      width: 90vw;
+      margin: 0 auto;
       overflow: hidden;
     }
 
@@ -90,14 +95,13 @@
 
       /* Desktop : pas d'animation, centrage des logos */
       @media (width >= 1025px) {
-        width: 100%;
         justify-content: center;
         animation: none;
       }
 
       /* Mobile : animation de défilement */
       @media (width <= 1024px) {
-        width: 90vw;
+        width: fit-content;
         gap: 2rem;
         animation: scrollCertifications 24s ease-in-out infinite alternate;
         will-change: transform;
@@ -113,7 +117,6 @@
 
         /* Responsive mobile : réduction de la taille */
         @media (width <= 1024px) {
-          width: 120px;
           height: 40px;
         }
       }
@@ -128,7 +131,7 @@
   }
 
   100% {
-    transform: translateX(calc(-100% + 100vw));
+    transform: translateX(calc(-100% + 90vw));
   }
 }
 

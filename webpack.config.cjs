@@ -92,23 +92,6 @@ module.exports = {
     }),
     
     // Pages additionnelles
-    new HtmlWebpackPlugin({
-      template: './src/pages/about.html',
-      filename: 'about.html',
-      inject: 'body',
-    }),
-    
-    // new HtmlWebpackPlugin({
-    //   template: './src/pages/services.html',
-    //   filename: 'services.html',
-    //   inject: 'body',
-    // }),
-    
-    new HtmlWebpackPlugin({
-      template: './src/pages/contact.html',
-      filename: 'contact.html',
-      inject: 'body',
-    }),
 
     new HtmlWebpackPlugin({
       template: './src/pages/materiel.html',
@@ -134,16 +117,21 @@ module.exports = {
       inject: 'body',
     }),
 
-    // Copier les assets seulement (pas les composants qui sont servis directement)
+    // Copier les assets et les composants HTML
     new CopyWebpackPlugin({
       patterns: [
         {
           from: 'src/assets',
           to: 'assets',
         },
+        {
+          from: 'src/components',
+          to: 'components',
+        },
       ],
     }),
-    
+
+        
     ...(isProduction ? [
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash].css',

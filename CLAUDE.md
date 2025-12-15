@@ -221,3 +221,232 @@ This project uses **specialized CLAUDE.md files** for detailed domain instructio
 - **src/pages/CLAUDE.md** → HTML structure (semantic, patterns, accessibility)
 
 **Important** : When working in a specific directory, the local CLAUDE.md provides detailed best practices for that domain.
+
+---
+
+## 📦 Build & Asset Management
+
+### 🚨 Critical Rules for Assets Path
+
+#### Règle 1: Chemins Relatifs dans src/pages/
+**DANS LES FICHIERS SOURCE** (`src/pages/*.html`):
+
+```html
+<!-- ✅ CORRECT - Chemin relatif pour images -->
+<img src="./assets/images/logo.png" alt="Logo">
+
+<!-- ❌ JAMAIS ../assets/ -->
+<img src="../assets/images/logo.png" alt="Logo">
+
+<!-- ℹ️ URLs absolues SEULEMENT pour Open Graph -->
+<meta property="og:image" content="https://www.elisun-toulouse.fr/assets/images/og/image.jpg">
+```
+
+**Pourquoi?**
+- Après le build, TOUTES les pages HTML sont à la racine de `dist/`
+- `./assets/` fonctionne pour `dist/index.html` AND `dist/materiel.html`
+- `../assets/` casserait les pages sub-directories (il n'y en a pas après build)
+
+#### Règle 2: Chemins des Composants HTML
+**TOUJOURS utiliser chemins relatifs simples** (sans `../`):
+
+```html
+<!-- ✅ CORRECT -->
+<div w3-include-html="components/navbar.html"></div>
+<div w3-include-html="components/footer.html"></div>
+
+<!-- ❌ JAMAIS -->
+<div w3-include-html="../components/navbar.html"></div>
+```
+
+**Raison**: Webpack copie `src/components/` → `dist/components/`. Tous les fichiers HTML doivent utiliser le même chemin.
+
+---
+
+### 🏗️ Webpack Configuration Prerequisites
+
+**AVANT de faire `npm run build`, vérifier:**
+
+#### 1️⃣ Copie des Composants
+Le `webpack.config.cjs` DOIT avoir:
+```javascript
+new CopyWebpackPlugin({
+  patterns: [
+    { from: 'src/assets', to: 'assets' },
+    { from: 'src/components', to: 'components' },  // ← OBLIGATOIRE
+  ],
+}),
+```
+
+**Sanity check**: Vérifier que `src/components/` contient:
+- `navbar.html` ✓
+- `footer.html` ✓
+- `modal-devis.html` ✓ (ou autres composants utilisés)
+
+#### 2️⃣ HtmlWebpackPlugin pour Toutes les Pages
+```javascript
+new HtmlWebpackPlugin({
+  template: './src/pages/index.html',
+  filename: 'index.html',
+  inject: 'body',
+}),
+
+new HtmlWebpackPlugin({
+  template: './src/pages/installation.html',
+  filename: 'installation.html',
+  inject: 'body',
+}),
+
+new HtmlWebpackPlugin({
+  template: './src/pages/materiel.html',
+  filename: 'materiel.html',
+  inject: 'body',
+}),
+
+new HtmlWebpackPlugin({
+  template: './src/pages/faq.html',
+  filename: 'faq.html',
+  inject: 'body',
+}),
+```
+
+**Chaque page HTML doit avoir sa propre entrée**. Ne pas commenter de pages!
+
+#### 3️⃣ Meta Tags et SEO
+**REQUIS dans chaque `src/pages/*.html`:**
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="...optimisée < 160 char...">
+<meta name="author" content="EliSun - Expert Photovoltaïque Toulouse">
+<link rel="canonical" href="https://www.elisun-toulouse.fr/[page].html">
+<title>[Titre optimisé pour Google]</title>
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EliSun Toulouse">
+<meta property="og:url" content="https://www.elisun-toulouse.fr/[page].html">
+<meta property="og:title" content="...">
+<meta property="og:description" content="...">
+<meta property="og:image" content="https://www.elisun-toulouse.fr/assets/images/og/[page]-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Google Tag Manager (Space for GA code) -->
+<!-- ============================================
+     GOOGLE TAG MANAGER
+     Insérez votre script Google Analytics ici
+     ============================================ -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+...
+-->
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "...", ... }
+</script>
+```
+
+---
+
+### ✅ Pre-Build Checklist
+
+**AVANT `npm run build`:**
+
+```bash
+# 1. Linter et formater le code
+npm run lint:css:fix
+npm run lint:js:fix
+
+# 2. Vérifier les chemins dans src/pages/
+# ✓ Toutes les images utilisent ./assets/
+# ✓ Toutes les inclusions w3-include-html utilisent components/
+# ✓ Pas de ../ sauf dans Open Graph (urls absolues ok)
+
+# 3. Vérifier les composants existent
+ls src/components/navbar.html
+ls src/components/footer.html
+ls src/components/modal-devis.html
+```
+
+---
+
+### 📊 Build Output Structure
+
+**Après `npm run build`, `dist/` doit contenir:**
+
+```
+dist/
+├── index.html                 # Landing page
+├── installation.html          # Installation process
+├── materiel.html             # Products catalog
+├── faq.html                  # FAQ
+├── components/
+│   ├── navbar.html           # Navigation component
+│   ├── footer.html           # Footer component
+│   └── modal-devis.html      # Quote modal
+├── assets/
+│   ├── images/
+│   │   ├── images/           # Product images
+│   │   ├── icons/            # SVG icons
+│   │   ├── background/       # Background images
+│   │   ├── logo/
+│   │   │   ├── favicon.svg
+│   │   │   ├── favicon.ico
+│   │   │   ├── favicon.png
+│   │   │   └── favicon-96x96.png
+│   │   └── og/               # Open Graph images (TO BE CREATED)
+│   │       ├── index-og.jpg
+│   │       ├── installation-og.jpg
+│   │       ├── materiel-og.jpg
+│   │       └── faq-og.jpg
+│   └── fonts/                # Google Fonts
+├── js/
+│   ├── main.[hash].js        # Main bundle
+│   └── vendors.[hash].js     # Vendor libraries
+└── css/                      # Extracted CSS (production only)
+```
+
+**Check after build:**
+```bash
+# Verify structure
+ls -la dist/*.html            # 4 pages
+ls -la dist/components/       # 3 components
+ls -la dist/assets/images/logo/favicon*  # 4 favicons
+```
+
+---
+
+### 🚀 Deployment Checklist
+
+**AVANT Firebase Deploy:**
+
+```bash
+# 1. Build production
+npm run build
+
+# 2. Test localement
+npx http-server dist -p 3000 -o
+
+# 3. Vérifier dans le navigateur (http://localhost:3000):
+# ✓ Favicon visible dans onglet
+# ✓ Navbar charge (w3-include-html fonctionne)
+# ✓ Footer visible
+# ✓ Modal devis s'ouvre (index.html)
+# ✓ Pas d'erreur 404 (F12 → Console)
+# ✓ Images chargent correctement
+# ✓ Styles Tailwind appliqués
+# ✓ Animations GSAP jouent
+
+# 4. SEO check
+# ✓ Chaque page a un titre unique
+# ✓ Meta description < 160 chars
+# ✓ Canonical URLs correctes
+# ✓ Open Graph tags présents
+
+# 5. Deploy
+firebase deploy 
+```

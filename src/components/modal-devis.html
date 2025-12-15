@@ -1,6 +1,7 @@
 <!-- MODAL DEVIS -->
 <!-- Composant modal pour demande de devis - inclure dans toutes les pages -->
-<div id="modal-devis" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+<div id="modal-devis" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title"
+  aria-modal="true">
   <div class="modal-container">
     <div class="modal-card">
 
@@ -21,39 +22,23 @@
               <div class="progress-bar" data-step-indicator="1"></div>
               <div class="progress-bar" data-step-indicator="2"></div>
             </div>
-            
+
             <!-- Nom et Prénom sur la même ligne -->
             <div class="form-row">
               <div class="form-group form-group--modal">
                 <label for="devis-nom" class="form-label form-label--modal">
                   Nom <span class="required">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="devis-nom"
-                  name="nom"
-                  class="form-input form-input--modal"
-                  placeholder="Dupont"
-                  required
-                  aria-required="true"
-                  autocomplete="family-name"
-                />
+                <input type="text" id="devis-nom" name="nom" class="form-input form-input--modal" placeholder="Dupont"
+                  required aria-required="true" autocomplete="family-name" />
               </div>
 
               <div class="form-group form-group--modal">
                 <label for="devis-prenom" class="form-label form-label--modal">
                   Prénom <span class="required">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="devis-prenom"
-                  name="prenom"
-                  class="form-input form-input--modal"
-                  placeholder="Jean"
-                  required
-                  aria-required="true"
-                  autocomplete="given-name"
-                />
+                <input type="text" id="devis-prenom" name="prenom" class="form-input form-input--modal"
+                  placeholder="Jean" required aria-required="true" autocomplete="given-name" />
               </div>
             </div>
 
@@ -62,35 +47,19 @@
               <label for="devis-email" class="form-label form-label--modal">
                 Email <span class="required">*</span>
               </label>
-              <input
-                type="email"
-                id="devis-email"
-                name="email"
-                class="form-input form-input--modal"
-                placeholder="jean.dupont@exemple.fr"
-                required
-                aria-required="true"
-                autocomplete="email"
-              />
+              <input type="email" id="devis-email" name="email" class="form-input form-input--modal"
+                placeholder="jean.dupont@exemple.fr" required aria-required="true" autocomplete="email" />
             </div>
 
             <!-- Téléphone -->
-            <div class="form-group form-group--modal">
+            <div class="form-group form-group--modal" id="phone-input-container">
               <label for="devis-tel" class="form-label form-label--modal">
                 Téléphone <span class="required">*</span>
               </label>
-              <input
-                type="tel"
-                id="devis-tel"
-                name="telephone"
-                class="form-input form-input--modal"
-                placeholder="06 12 34 56 78"
-                required
-                aria-required="true"
-                pattern="[0-9\s\.\-\+\(\)]+"
-                autocomplete="tel"
-              />
+              <input type="tel" id="devis-tel" name="telephone" class="form-input form-input--modal" required />
+              <!-- Le dropdown intl sera injecté ICI -->
             </div>
+
           </div>
 
           <!-- ÉTAPE 2 : Détails du projet -->
@@ -131,14 +100,8 @@
               <label for="devis-adresse" class="form-label form-label--modal">
                 Adresse postale <span class="optional">(facultatif)</span>
               </label>
-              <input
-                type="text"
-                id="devis-adresse"
-                name="adresse"
-                class="form-input form-input--modal"
-                placeholder="123 Rue de la République, 75001 Paris"
-                autocomplete="street-address"
-              />
+              <input type="text" id="devis-adresse" name="adresse" class="form-input form-input--modal"
+                placeholder="123 Rue de la République, 75001 Paris" autocomplete="street-address" />
             </div>
 
             <!-- Description du projet -->
@@ -146,15 +109,8 @@
               <label for="devis-description" class="form-label form-label--modal">
                 Description de votre projet <span class="required">*</span>
               </label>
-              <textarea
-                id="devis-description"
-                name="description"
-                class="form-textarea form-textarea--modal"
-                rows="5"
-                placeholder="Décrivez-nous votre projet photovoltaïque..."
-                required
-                aria-required="true"
-              ></textarea>
+              <textarea id="devis-description" name="description" class="form-textarea form-textarea--modal" rows="5"
+                placeholder="Décrivez-nous votre projet photovoltaïque..." required aria-required="true"></textarea>
             </div>
           </div>
 

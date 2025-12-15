@@ -38,8 +38,6 @@
 /* === CONTENT BLOCK WRAPPER === */
 .content-block {
   h1 {
-    text-shadow: 0 0 5px rgb(0 0 0 / 50%);
-
     @media (width <= 768px) {
       font-size: 2rem;
       line-height: 1.2;
