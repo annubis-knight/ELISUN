@@ -22,14 +22,14 @@
   border-radius: 5px;
 
   /* Responsive mobile : 95% largeur */
-  @media (width <= 768px) {
+  @media (width < 768px) {
     width: 95%;
     max-width: 300px;
     margin: auto;
   }
 
   /* Responsive mobile : 90% largeur */
-  @media (width <= 640px) {
+  @media (width < 640px) {
     width: 100%;
     margin: auto;
     max-width: none;
@@ -132,7 +132,7 @@
   cursor: pointer;
   transition: var(--transition-normal);
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
     width: 80px;
     height: 80px;
     gap: 0.5rem;
@@ -193,7 +193,7 @@
     box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
     transition: var(--transition-normal);
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       top: -6px;
       left: -6px;
       font-size: 0.625rem;

@@ -62,6 +62,7 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "gsap": "^3.13.0",
-    "intl-tel-input": "^25.12.5"
+    "intl-tel-input": "^25.12.5",
+    "vanilla-cookieconsent": "^3.1.0"
   }
 }

@@ -3,6 +3,9 @@ import '../css/main.css';
 // ✅ NOUVEAU : Import intl-tel-input
 import 'intl-tel-input/build/css/intlTelInput.css';
 
+// Cookie Consent - CSS officiel + personnalisation
+import 'vanilla-cookieconsent/dist/cookieconsent.css';
+
 // Composants modulaires
 import { initFeaturesNav } from './components/landing-caracteristiques-nav.js';
 import { initTriggerBlock } from './components/page-materiel-trigger-block.js';
@@ -23,6 +26,9 @@ import './components/ui-navbar-mobile.js';
 
 // CTA progressif s'auto-initialise
 import './components/landing-cta-progressive.js';
+
+// Cookie Consent s'auto-initialise
+import './components/ui-cookie-consent.js';
 
 class ElisunApp {
     constructor() {

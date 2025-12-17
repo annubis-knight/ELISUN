@@ -1,0 +1,250 @@
+/* src/css/components/ui-cookie-consent.css */
+/* Personnalisation du style vanilla-cookieconsent pour EliSun */
+/* Documentation : https://cookieconsent.orestbida.com/reference/css-customization.html */
+
+/* === VARIABLES CSS PERSONNALISÉES === */
+
+:root {
+  /* Couleurs principales */
+  --cc-primary-color: var(--primary-color);
+  --cc-secondary-color: var(--accent-color);
+
+  /* Couleurs de fond */
+  --cc-bg: #ffffff;
+  --cc-overlay-bg: rgba(0, 0, 0, 0.65);
+
+  /* Couleurs de texte */
+  --cc-primary-text: #1e293b;
+  --cc-secondary-text: #64748b;
+
+  /* Bordures */
+  --cc-border-color: #e2e8f0;
+  --cc-border-radius: 0.75rem;
+
+  /* Boutons */
+  --cc-btn-primary-bg: var(--cc-primary-color);
+  --cc-btn-primary-text: #ffffff;
+  --cc-btn-primary-hover-bg: var(--cc-secondary-color);
+  --cc-btn-secondary-bg: #f1f5f9;
+  --cc-btn-secondary-text: #475569;
+  --cc-btn-secondary-hover-bg: #e2e8f0;
+
+  /* Toggle switch */
+  --cc-toggle-on-bg: var(--cc-primary-color);
+  --cc-toggle-off-bg: #cbd5e1;
+  --cc-toggle-readonly-bg: #94a3b8;
+
+  /* Cookies table */
+  --cc-cookie-table-bg: #f8fafc;
+
+  /* Shadows */
+  --cc-modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* === CONTAINER PRINCIPAL === */
+
+#cc-main {
+  font-family: inherit;
+  z-index: 9999;
+}
+
+/* === MODAL DE CONSENTEMENT (.cm) === */
+
+.cm {
+
+  .cm__btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 16px 32px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-radius: 5px !important;
+
+    /* Bouton PRIMARY (Tout accepter) */
+    &[data-role="all"] {
+      background: var(--primary-color) !important;
+      color: white !important;
+      border-color: var(--primary-color) !important;
+
+      &:hover {
+        background: var(--white) !important;
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        transform: translateY(-4px) !important;
+      }
+    }
+
+    /* Bouton SECONDARY (Refuser tout) */
+    &[data-role="necessary"] {
+      background: var(--white) !important;
+      color: var(--primary-color) !important;
+      border-color: var(--primary-color) !important;
+
+      &:hover {
+        background: var(--primary-color) !important;
+        color: white !important;
+        transform: translateY(-2px) !important;
+      }
+    }
+
+    /* Lien "Gérer les préférences" */
+    &[data-role="show"] {
+      background: transparent !important;
+      color: var(--primary-color) !important;
+      text-decoration: underline !important;
+      padding: 0.5rem !important;
+      border: none !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+
+      &:hover {
+        color: var(--cc-btn-secondary-text) !important;
+        transform: none !important;
+      }
+    }
+  }
+
+  .cm__footer {
+    display: none !important;
+  }
+}
+
+/* === MODAL DE PRÉFÉRENCES (.pm) === */
+
+.pm {
+
+  .pm__section-arrow {
+    background: var(--white) !important;
+
+    svg {
+      stroke: var(--primary-color) !important;
+    }
+  }
+
+  .pm__badge {
+    background: var(--cc-toggle-readonly-bg) !important;
+    color: #ffffff !important;
+    font-size: 0.6875rem !important;
+    font-weight: 600 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 0.25rem !important;
+    margin-left: 0.5rem !important;
+    text-transform: uppercase !important;
+  }
+
+  .pm__btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 12px 24px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-radius: 5px !important;
+
+    /* Bouton PRIMARY (Tout accepter / Enregistrer) */
+    &[data-role="all"] {
+      background: var(--primary-color) !important;
+      color: white !important;
+      border-color: var(--primary-color) !important;
+
+      &:hover {
+        background: var(--white) !important;
+        color: var(--primary-color) !important;
+        transform: translateY(-2px) !important;
+      }
+    }
+
+    /* Bouton SECONDARY (Refuser tout) */
+    &[data-role="necessary"] {
+      background: var(--white) !important;
+      color: var(--primary-color) !important;
+      border-color: var(--primary-color) !important;
+
+      &:hover {
+        background: var(--primary-color) !important;
+        color: white !important;
+        transform: translateY(-2px) !important;
+      }
+    }
+
+    /* Bouton Enregistrer */
+    &--save {
+      background: var(--primary-color) !important;
+      color: white !important;
+      border-color: var(--primary-color) !important;
+
+      &:hover {
+        background: var(--white) !important;
+        color: var(--primary-color) !important;
+        transform: translateY(-2px) !important;
+      }
+    }
+  }
+
+  .pm__toggle {
+    width: 3rem !important;
+    height: 1.5rem !important;
+    border-radius: 0.75rem !important;
+
+    &:checked {
+      background: var(--cc-toggle-on-bg) !important;
+    }
+
+    &:not(:checked) {
+      background: var(--cc-toggle-off-bg) !important;
+    }
+
+    &:disabled {
+      background: var(--cc-toggle-readonly-bg) !important;
+      opacity: 1 !important;
+    }
+  }
+}
+
+/* === TOGGLE SWITCH (personnalisation couleurs) === */
+
+.section__toggle ~ .toggle__icon {
+  background: rgb(56, 56, 56) !important;
+
+  svg {
+    stroke: var(--primary-color) !important;
+  }
+}
+
+.section__toggle:checked ~ .toggle__icon {
+  background: var(--primary-color) !important;
+  box-shadow: var(--primary-color) 0px 0px 1px !important;
+}
+
+/* === LIEN "GÉRER LES COOKIES" (FOOTER SITE) === */
+
+.cookie-preferences-link {
+  cursor: pointer;
+  color: var(--cc-primary-color);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+
+  &:hover {
+    color: var(--cc-secondary-color);
+  }
+}
