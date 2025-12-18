@@ -15,20 +15,8 @@
     <link rel="canonical" href="https://www.elisun-toulouse.fr/faq.html">
     <title>FAQ Panneaux Solaires Toulouse - Prix, Garanties, Installation | EliSun</title>
 
-    <!-- ============================================
-         GOOGLE TAG MANAGER
-         Insérez votre script Google Analytics ici
-         Exemple : https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID
-         ============================================ -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
+    <!-- GTM Consent Mode + Script (doit être le plus haut possible) -->
+    <include src="components/gtm-head.html"></include>
 
     <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
     <meta property="og:type" content="website">
@@ -119,8 +107,11 @@
     </script>
 </head>
 <body class="bg-white">
+    <!-- GTM noscript fallback (juste après body) -->
+    <include src="components/gtm-body.html"></include>
+
     <!-- Navigation Header -->
-    <div w3-include-html="components/navbar.html"></div>
+    <include src="components/navbar.html"></include>
 
     <!-- Hero Section FAQ -->
     <section id="sectionHeroFaq" class="hero-faq">
@@ -280,73 +271,20 @@
         </div>
     </section>
 
-    <!-- Section Call To Action finale -->
-    <section id="cta-finale-elisun" class="cta-section">
-        <div class="containerMax">
-            <div class="cta-container">
-                <!-- Colonne gauche - Titre et description -->
-                <div class="cta-left">
-                    <div class="cta-content">
-                        <h2>Une autre question ? Contactez-nous !</h2>
-                        <p>Notre équipe est disponible pour répondre à toutes vos interrogations sur votre projet photovoltaïque. Recevez votre devis personnalisé en moins de 24h.</p>
-                    </div>
-                </div>
+    <!-- Section Call To Action finale avec formulaire progressif -->
+    <include src="components/cta-section.html"></include>
 
-                <!-- Colonne droite - Formulaire d'inscription -->
-                <div class="cta-right">
-                    <div class="input-cta-group input-cta-group-plain">
-                        <div class="input-button-wrapper">
-                            <input type="email"
-                                   id="cta-email-input"
-                                   placeholder="Entrez votre email pour recevoir votre estimation gratuite"
-                                   class="input-field">
-                            <button type="button" class="bouton btn-primary" id="cta-signup-btn">
-                                Obtenir un devis express
-                            </button>
-                        </div>
-                    </div>
-                    <p class="input-cta-notice">
-                        <i class="fas fa-lock"></i> Nous respectons votre vie privée • Réponse sous 24h
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
+    <!-- Modal Devis -->
+    <include src="components/modal-devis.html"></include>
 
     <!-- Footer -->
-    <div w3-include-html="components/footer.html"></div>
+    <include src="components/footer.html"></include>
 
     <!-- Scripts JavaScript -->
     <!-- Webpack injecte automatiquement les scripts -->
 
-    <!-- Script pour activer l'inclusion HTML -->
+    <!-- Script FAQ - Gestion accordéon -->
     <script>
-        function includeHTML() {
-            let elements = document.querySelectorAll("[w3-include-html]");
-            elements.forEach(el => {
-                let file = el.getAttribute("w3-include-html");
-                fetch(file)
-                    .then(response => response.text())
-                    .then(data => {
-                        el.innerHTML = data;
-
-                        const scripts = el.querySelectorAll('script');
-                        scripts.forEach(oldScript => {
-                            const newScript = document.createElement('script');
-                            Array.from(oldScript.attributes).forEach(attr => {
-                                newScript.setAttribute(attr.name, attr.value);
-                            });
-                            newScript.textContent = oldScript.textContent;
-                            oldScript.parentNode.replaceChild(newScript, oldScript);
-                        });
-                    });
-            });
-        }
-        includeHTML();
-
-        // Script FAQ - Gestion accordéon
         document.addEventListener('DOMContentLoaded', function() {
             const faqItems = document.querySelectorAll('.faq-item');
 

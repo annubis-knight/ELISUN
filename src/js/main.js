@@ -30,6 +30,9 @@ import './components/landing-cta-progressive.js';
 // Cookie Consent s'auto-initialise
 import './components/ui-cookie-consent.js';
 
+// GTM Tracking - initialisation automatique des events
+import { initGTMTracking } from './utils/gtm-tracking.js';
+
 class ElisunApp {
     constructor() {
         this.init();
@@ -49,10 +52,13 @@ class ElisunApp {
         try {
             await this.initCriticalComponents();
             this.initNavigation();
-            
+
+            // Initialiser le tracking GTM (scroll, clics contact, CTA)
+            initGTMTracking();
+
             document.body.classList.add('dom-loaded');
             console.log('✅ ELISUN initialisée');
-            
+
         } catch (error) {
             console.error('❌ Erreur initialisation:', error);
             document.body.classList.add('dom-loaded');

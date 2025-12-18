@@ -1,8 +1,10 @@
 // src/js/components/ui-cookie-consent.js
 // Configuration et initialisation de vanilla-cookieconsent pour EliSun
 // Documentation : https://cookieconsent.orestbida.com/
+// Intégration GTM Consent Mode v2
 
 import * as CookieConsent from 'vanilla-cookieconsent';
+import { updateGTMConsent } from '../utils/gtm-tracking.js';
 
 /**
  * Configuration des catégories de cookies
@@ -80,7 +82,7 @@ const cookieConsentConfig = {
           description: 'Nous utilisons des cookies pour améliorer votre expérience sur notre site, analyser le trafic et personnaliser le contenu. Vous pouvez choisir les cookies que vous souhaitez accepter.',
           acceptAllBtn: 'Tout accepter',
           acceptNecessaryBtn: 'Refuser tout',
-          showPreferencesBtn: 'Gérer les préférences',
+          showPreferencesBtn: 'PERSONNALISER',
           footer: '<a href="/mentions-legales.html">Mentions légales</a> | <a href="/politique-confidentialite.html">Politique de confidentialité</a>',
         },
 
@@ -179,80 +181,38 @@ const cookieConsentConfig = {
   // === CALLBACKS ===
 
   // Appelé à chaque changement de consentement
-  onConsent: ({ cookie }) => {
-    console.log('🍪 Consentement enregistré:', cookie);
+  onConsent: () => {
+    const analyticsAccepted = CookieConsent.acceptedCategory('analytics');
+    const marketingAccepted = CookieConsent.acceptedCategory('marketing');
 
-    // Si analytics acceptés, initialiser Google Analytics
-    if (CookieConsent.acceptedCategory('analytics')) {
-      console.log('📊 Analytics acceptés - Initialisation GA...');
-      initGoogleAnalytics();
-    }
+    console.log('🍪 Consentement enregistré:', { analyticsAccepted, marketingAccepted });
 
-    // Si marketing acceptés, initialiser les pixels
-    if (CookieConsent.acceptedCategory('marketing')) {
-      console.log('📢 Marketing acceptés - Initialisation pixels...');
-      initMarketingPixels();
-    }
+    // Mettre à jour GTM Consent Mode v2
+    updateGTMConsent({
+      analytics: analyticsAccepted,
+      marketing: marketingAccepted
+    });
   },
 
   // Appelé quand l'utilisateur change ses préférences
-  onChange: ({ cookie, changedCategories }) => {
+  onChange: ({ changedCategories }) => {
     console.log('🍪 Préférences modifiées:', changedCategories);
 
-    // Recharger la page si nécessaire pour appliquer les changements
-    // (optionnel - décommenter si besoin)
-    // if (changedCategories.includes('analytics') || changedCategories.includes('marketing')) {
-    //   window.location.reload();
-    // }
+    const analyticsAccepted = CookieConsent.acceptedCategory('analytics');
+    const marketingAccepted = CookieConsent.acceptedCategory('marketing');
+
+    // Mettre à jour GTM Consent Mode v2
+    updateGTMConsent({
+      analytics: analyticsAccepted,
+      marketing: marketingAccepted
+    });
   },
 
   // Appelé à la première visite
-  onFirstConsent: ({ cookie }) => {
-    console.log('🍪 Premier consentement:', cookie);
+  onFirstConsent: () => {
+    console.log('🍪 Premier consentement utilisateur');
   },
 };
-
-/**
- * Initialise Google Analytics (à appeler uniquement si consentement donné)
- */
-function initGoogleAnalytics() {
-  // Vérifier si GA n'est pas déjà chargé
-  if (window.gtag) {
-    console.log('📊 Google Analytics déjà initialisé');
-    return;
-  }
-
-  // ID de mesure Google Analytics (à remplacer par le vrai ID)
-  const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // TODO: Remplacer par votre ID
-
-  // Créer le script GA
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-  document.head.appendChild(script);
-
-  // Initialiser gtag
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function() {
-    window.dataLayer.push(arguments);
-  };
-  window.gtag('js', new Date());
-  window.gtag('config', GA_MEASUREMENT_ID, {
-    anonymize_ip: true, // RGPD : anonymiser les IPs
-  });
-
-  console.log('📊 Google Analytics initialisé');
-}
-
-/**
- * Initialise les pixels marketing (Facebook, etc.)
- */
-function initMarketingPixels() {
-  // Facebook Pixel (à implémenter si nécessaire)
-  // const FB_PIXEL_ID = 'XXXXXXXXXX'; // TODO: Remplacer par votre ID
-
-  console.log('📢 Pixels marketing initialisés (placeholder)');
-}
 
 /**
  * Initialise le cookie consent

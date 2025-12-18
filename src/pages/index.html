@@ -9,6 +9,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <!-- GTM Consent Mode + Script (doit être le plus haut possible) -->
+    <include src="components/gtm-head.html"></include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="EliSun - Kits photovoltaïques haut de gamme au tarif le plus concurrentiel de Toulouse. L'excellence technique accessible par une entreprise familiale.">
     <meta name="keywords" content="photovoltaïque Toulouse, panneaux solaires premium, installation solaire, Iconics, EliSun, entreprise familiale">
@@ -42,8 +44,11 @@
     </style>
 </head>
 <body>
+    <!-- GTM noscript fallback (juste après body) -->
+    <include src="components/gtm-body.html"></include>
+
     <!-- Navigation Header ELISUN avec dropdown et hamburger mobile -->
-    <div w3-include-html="components/navbar.html"></div>
+    <include src="components/navbar.html"></include>
 
     <!-- Section Hero ELISUN avec layout split et CTA multiples -->
     <section id="sectionHeroElisun" class="hero-section" data-parallax-parent="true">
@@ -83,7 +88,8 @@
                                 Obtenir un devis express
                             </a>
 
-                            <a href="#formulaire-devis" class="bouton btn-secondary">
+                            <a href="https://wa.me/33651676191?text=Bonjour%20EliSun%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20kits%20photovolta%C3%AFques."
+                        target="_blank" rel="noopener" aria-label="WhatsApp" class="bouton btn-secondary">
                                 Me contacter
                                 </a>
                         </div>
@@ -782,7 +788,7 @@
                         <h2>
                             Des Garanties Solides
                         </h2>
-                        <p>
+                        <p class="text-white">
                             Les Garanties vous apportent toute la sérénité que vous attendez 
                             de votre investissement.
                         </p>
@@ -806,7 +812,7 @@
                         <!-- Garantie biennale -->
                         <div class="garantie-item">
                             <div class="garantie-info">
-                                <span class="garantie-label">GARANTIE BIENNALE - 2 ANS</span>
+                                <span class="garantie-label">GARANTIE BIENNALE</span>
                                 <span class="garantie-percentage">2 ans</span>
                             </div>
                             <div class="garantie-bar">
@@ -817,7 +823,7 @@
                         <!-- Garantie décennale -->
                         <div class="garantie-item">
                             <div class="garantie-info">
-                                <span class="garantie-label">GARANTIE DÉCENNALE - 10 ans</span>
+                                <span class="garantie-label">GARANTIE DÉCENNALE</span>
                                 <span class="garantie-percentage">10 ans</span>
                             </div>
                             <div class="garantie-bar">
@@ -828,7 +834,7 @@
                         <!-- Garantie onduleur -->
                         <div class="garantie-item">
                             <div class="garantie-info">
-                                <span class="garantie-label">GARANTIE ONDULEUR - 10 ans</span>
+                                <span class="garantie-label">GARANTIE ONDULEUR</span>
                                 <span class="garantie-percentage">10 ans</span>
                             </div>
                             <div class="garantie-bar">
@@ -839,7 +845,7 @@
                         <!-- Garantie batteries -->
                         <div class="garantie-item">
                             <div class="garantie-info">
-                                <span class="garantie-label">GARANTIE BATTERIES - 10 ans</span>
+                                <span class="garantie-label">GARANTIE BATTERIES</span>
                                 <span class="garantie-percentage">10 ans</span>
                             </div>
                             <div class="garantie-bar">
@@ -850,7 +856,7 @@
                         <!-- Garantie rendement panneaux -->
                         <div class="garantie-item">
                             <div class="garantie-info">
-                                <span class="garantie-label">GARANTIE DE RENDEMENT DES PANNEAUX - 30 ans</span>
+                                <span class="garantie-label">GARANTIE DE RENDEMENT DES PANNEAUX</span>
                                 <span class="garantie-percentage">30 ans</span>
                             </div>
                             <div class="garantie-bar">
@@ -864,65 +870,17 @@
     </section>
 
 
-    <!-- Section Call To Action finale avec éléments de confiance -->
-    <section id="cta-finale-elisun" class="cta-section">
-        <div class="containerMax">
-            <div class="cta-container">
-                <!-- Colonne gauche - Titre et description -->
-                <div class="cta-left">
-                    <div class="cta-content">
-                        <h2>Prêt à découvrir vos économies solaires ?</h2>
-                        <p>Bénéficiez de l'expertise terrain ELISUN et de l'accès privilégié aux kits Hitronics premium. Recevez votre devis personnalisé en moins de 24h.</p>
-                    </div>
-                </div>
-                
-                <!-- Colonne droite - Formulaire d'inscription -->
-                <div class="cta-right">
-                    <div class="input-cta-group input-cta-group-plain">
-                        <div class="input-button-wrapper">
-                            <!-- Étape 1 : Email -->
-                            <input type="email"
-                                   id="cta-email-input"
-                                   placeholder="Votre email professionnel"
-                                   class="input-field"
-                                   autocomplete="email">
-                            <!-- Étape 2 : Prénom + Nom (cachés par défaut) -->
-                            <input type="text"
-                                   id="cta-prenom-input"
-                                   placeholder="Prénom"
-                                   class="input-field"
-                                   autocomplete="given-name"
-                                   hidden>
-                            <input type="text"
-                                   id="cta-nom-input"
-                                   placeholder="Nom"
-                                   class="input-field"
-                                   autocomplete="family-name"
-                                   hidden>
-                            <div class="bouton btn-primary" id="cta-signup-btn">
-                                Obtenir mon devis
-                            </div>
-                        </div>
-                    </div>
-                    <p class="input-cta-notice">
-                        <i class="fas fa-lock"></i> Nous respectons votre vie privée • Réponse sous 24h
-                    </p>
-                </div>
-                
-            </div>
-            
-        </div>
-
-    </section>
+    <!-- Section Call To Action finale avec formulaire progressif -->
+    <include src="components/cta-section.html"></include>
 
 
 
 
     <!-- Footer -->
-    <div w3-include-html="components/footer.html"></div>
+    <include src="components/footer.html"></include>
 
     <!-- Include du modal devis -->
-    <div w3-include-html="components/modal-devis.html"></div>
+    <include src="components/modal-devis.html"></include>
 
     <!-- Scripts JavaScript -->
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -956,60 +914,6 @@
             });
 
             console.log('🔍 Debug listeners ajoutés');
-        });
-    </script>
-
-    <!-- Script pour activer l'inclusion HTML -->
-    <script>
-        function includeHTML() {
-            let elements = document.querySelectorAll("[w3-include-html]");
-            const promises = [];
-
-            elements.forEach(el => {
-                let file = el.getAttribute("w3-include-html");
-                const promise = fetch(file)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Erreur HTTP ${response.status} pour ${file}`);
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        // Insérer le HTML
-                        el.innerHTML = data;
-                        console.log(`✅ Include chargé: ${file}`);
-
-                        // Extraire et exécuter les scripts
-                        const scripts = el.querySelectorAll('script');
-                        scripts.forEach(oldScript => {
-                            const newScript = document.createElement('script');
-                            // Copier tous les attributs
-                            Array.from(oldScript.attributes).forEach(attr => {
-                                newScript.setAttribute(attr.name, attr.value);
-                            });
-
-                            // Copier le contenu du script
-                            newScript.textContent = oldScript.textContent;
-
-                            // Remplacer l'ancien script par le nouveau pour qu'il s'exécute
-                            oldScript.parentNode.replaceChild(newScript, oldScript);
-                        });
-                    })
-                    .catch(error => {
-                        console.error(`❌ Erreur chargement ${file}:`, error);
-                        el.innerHTML = `<!-- Erreur: ${error.message} -->`;
-                    });
-                promises.push(promise);
-            });
-
-            // Retourner une Promise qui se résout quand tous les includes sont chargés
-            return Promise.all(promises);
-        }
-
-        // Charger les includes et déclencher un événement quand c'est terminé
-        includeHTML().then(() => {
-            document.dispatchEvent(new CustomEvent('includes:loaded'));
-            console.log('✅ Tous les includes HTML chargés');
         });
     </script>
 

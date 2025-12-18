@@ -15,20 +15,8 @@
     <link rel="canonical" href="https://www.elisun-toulouse.fr/installation.html">
     <title>Installation Panneaux Solaires à Toulouse | Processus A-Z | EliSun</title>
 
-    <!-- ============================================
-         GOOGLE TAG MANAGER
-         Insérez votre script Google Analytics ici
-         Exemple : https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID
-         ============================================ -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
+    <!-- GTM Consent Mode + Script (doit être le plus haut possible) -->
+    <include src="components/gtm-head.html"></include>
 
     <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
     <meta property="og:type" content="website">
@@ -105,8 +93,11 @@
     </script>
 </head>
 <body class="bg-white">
+    <!-- GTM noscript fallback (juste après body) -->
+    <include src="components/gtm-body.html"></include>
+
     <!-- Navigation Header -->
-    <div w3-include-html="components/navbar.html"></div>
+    <include src="components/navbar.html"></include>
 
     <!-- Hero Section Installation -->
     <section id="sectionHeroInstallation" class="hero-installation">
@@ -137,7 +128,7 @@
 
                         <!-- Bouton CTA principal -->
                         <div class="hero-cta">
-                            <a href="#formulaire-devis" class="bouton btn-primary" aria-label="Obtenir un devis express gratuit pour installation photovoltaïque">
+                            <a href="#formulaire-devis" class="bouton btn-primary" data-open-modal="devis" aria-label="Obtenir un devis express gratuit pour installation photovoltaïque">
                                 Obtenir un devis express
                             </a>
                         </div>
@@ -523,7 +514,7 @@
                 </div>
 
                 <!-- Contenu à droite -->
-                <div class="col-span-4 lg:col-span-6 lg:col-start-7">
+                <div class="col-span-4 max-md:order-first lg:col-span-6 lg:col-start-7" >
                     <img src="./assets/images/icons/lumiere-a-economie-denergie.svg" alt="Icône suivi énergétique" class="feature-icon" width="80" height="80" loading="lazy">
                     <h2>
                         Suivi Énergétique <span class="text-secondary">- Votre application dédiée</span>
@@ -590,74 +581,18 @@
         </div>
     </section>
 
-    <!-- Section Call To Action finale avec éléments de confiance -->
-    <section id="cta-finale-elisun" class="cta-section">
-        <div class="containerMax">
-            <div class="cta-container">
-                <!-- Colonne gauche - Titre et description -->
-                <div class="cta-left">
-                    <div class="cta-content">
-                        <h2 class="cta-title">Prêt à découvrir vos économies solaires ?</h2>
-                        <p class="cta-description">Bénéficiez de l'expertise terrain ELISUN et de l'accès privilégié aux kits Hitronics premium. Recevez votre devis personnalisé en moins de 24h.</p>
-                    </div>
-                </div>
-                
-                <!-- Colonne droite - Formulaire d'inscription -->
-                <div class="cta-right">
-                    <div class="input-cta-group input-cta-group-plain">
-                        <div class="input-button-wrapper">
-                            <input type="email"
-                                   id="cta-email-input"
-                                   placeholder="Entrez votre email pour recevoir votre estimation gratuite"
-                                   class="input-field">
-                            <button type="button" class="bouton btn-validate" id="cta-signup-btn" aria-label="Soumettre le formulaire pour obtenir un devis express personnalisé">
-                                Obtenir un devis express
-                            </button>
-                        </div>
-                    </div>
-                    <p class="input-cta-notice">
-                        <i class="fas fa-lock"></i> Nous respectons votre vie privée • Réponse sous 24h
-                    </p>
-                </div>
-                
-            </div>
-            
-        </div>
+    <!-- Section Call To Action finale avec formulaire progressif -->
+    <include src="components/cta-section.html"></include>
 
-    </section>
+    <!-- Modal Devis -->
+    <include src="components/modal-devis.html"></include>
 
     <!-- Footer -->
-    <div w3-include-html="components/footer.html"></div>
+    <include src="components/footer.html"></include>
 
     <!-- Scripts JavaScript -->
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
     <!-- Webpack injecte automatiquement les scripts -->
-
-    <!-- Script pour activer l'inclusion HTML -->
-    <script>
-        function includeHTML() {
-            let elements = document.querySelectorAll("[w3-include-html]");
-            elements.forEach(el => {
-                let file = el.getAttribute("w3-include-html");
-                fetch(file)
-                    .then(response => response.text())
-                    .then(data => {
-                        el.innerHTML = data;
-
-                        const scripts = el.querySelectorAll('script');
-                        scripts.forEach(oldScript => {
-                            const newScript = document.createElement('script');
-                            Array.from(oldScript.attributes).forEach(attr => {
-                                newScript.setAttribute(attr.name, attr.value);
-                            });
-                            newScript.textContent = oldScript.textContent;
-                            oldScript.parentNode.replaceChild(newScript, oldScript);
-                        });
-                    });
-            });
-        }
-        includeHTML();
-    </script>
 </body>
 </html>

@@ -247,19 +247,21 @@ This project uses **specialized CLAUDE.md files** for detailed domain instructio
 - `./assets/` fonctionne pour `dist/index.html` AND `dist/materiel.html`
 - `../assets/` casserait les pages sub-directories (il n'y en a pas après build)
 
-#### Règle 2: Chemins des Composants HTML
-**TOUJOURS utiliser chemins relatifs simples** (sans `../`):
+#### Règle 2: Inclusion des Composants HTML (PostHTML-Include)
+**Utiliser la balise `<include>` avec chemin relatif depuis `src/`:**
 
 ```html
-<!-- ✅ CORRECT -->
-<div w3-include-html="components/navbar.html"></div>
-<div w3-include-html="components/footer.html"></div>
+<!-- ✅ CORRECT - Syntaxe PostHTML-Include -->
+<include src="components/navbar.html"></include>
+<include src="components/footer.html"></include>
+<include src="components/modal-devis.html"></include>
 
-<!-- ❌ JAMAIS -->
-<div w3-include-html="../components/navbar.html"></div>
 ```
 
-**Raison**: Webpack copie `src/components/` → `dist/components/`. Tous les fichiers HTML doivent utiliser le même chemin.
+**Fonctionnement**:
+- PostHTML-Include injecte le contenu des composants au moment du build
+- Les composants sont directement intégrés dans le HTML final (pas de fetch runtime)
+- Meilleur SEO car le contenu est présent dans le HTML statique
 
 ---
 
@@ -267,16 +269,9 @@ This project uses **specialized CLAUDE.md files** for detailed domain instructio
 
 **AVANT de faire `npm run build`, vérifier:**
 
-#### 1️⃣ Copie des Composants
-Le `webpack.config.cjs` DOIT avoir:
-```javascript
-new CopyWebpackPlugin({
-  patterns: [
-    { from: 'src/assets', to: 'assets' },
-    { from: 'src/components', to: 'components' },  // ← OBLIGATOIRE
-  ],
-}),
-```
+#### 1️⃣ Composants HTML (injection au build)
+Les composants dans `src/components/` sont injectés automatiquement via PostHTML-Include.
+**Pas besoin de les copier** - ils sont intégrés directement dans les pages HTML.
 
 **Sanity check**: Vérifier que `src/components/` contient:
 - `navbar.html` ✓
@@ -334,15 +329,8 @@ new HtmlWebpackPlugin({
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
 
-<!-- Google Tag Manager (Space for GA code) -->
-<!-- ============================================
-     GOOGLE TAG MANAGER
-     Insérez votre script Google Analytics ici
-     ============================================ -->
-<!--
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-...
--->
+<!-- Google Tag Manager - Voir section GTM ci-dessous -->
+<include src="components/gtm-head.html"></include>
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -363,7 +351,7 @@ npm run lint:js:fix
 
 # 2. Vérifier les chemins dans src/pages/
 # ✓ Toutes les images utilisent ./assets/
-# ✓ Toutes les inclusions w3-include-html utilisent components/
+# ✓ Tous les includes utilisent <include src="components/...">
 # ✓ Pas de ../ sauf dans Open Graph (urls absolues ok)
 
 # 3. Vérifier les composants existent
@@ -380,14 +368,10 @@ ls src/components/modal-devis.html
 
 ```
 dist/
-├── index.html                 # Landing page
-├── installation.html          # Installation process
-├── materiel.html             # Products catalog
-├── faq.html                  # FAQ
-├── components/
-│   ├── navbar.html           # Navigation component
-│   ├── footer.html           # Footer component
-│   └── modal-devis.html      # Quote modal
+├── index.html                 # Landing page (navbar+footer+modal inclus)
+├── installation.html          # Installation process (navbar+footer inclus)
+├── materiel.html             # Products catalog (navbar+footer inclus)
+├── faq.html                  # FAQ (navbar+footer inclus)
 ├── assets/
 │   ├── images/
 │   │   ├── images/           # Product images
@@ -410,11 +394,13 @@ dist/
 └── css/                      # Extracted CSS (production only)
 ```
 
+**Note**: Les composants (navbar, footer, modal) sont injectés directement dans les pages HTML au build.
+Il n'y a PAS de dossier `components/` dans `dist/`.
+
 **Check after build:**
 ```bash
 # Verify structure
 ls -la dist/*.html            # 4 pages
-ls -la dist/components/       # 3 components
 ls -la dist/assets/images/logo/favicon*  # 4 favicons
 ```
 
@@ -433,7 +419,7 @@ npx http-server dist -p 3000 -o
 
 # 3. Vérifier dans le navigateur (http://localhost:3000):
 # ✓ Favicon visible dans onglet
-# ✓ Navbar charge (w3-include-html fonctionne)
+# ✓ Navbar visible (injectée au build)
 # ✓ Footer visible
 # ✓ Modal devis s'ouvre (index.html)
 # ✓ Pas d'erreur 404 (F12 → Console)
@@ -448,5 +434,81 @@ npx http-server dist -p 3000 -o
 # ✓ Open Graph tags présents
 
 # 5. Deploy
-firebase deploy 
+firebase deploy
 ```
+
+---
+
+## 📊 Google Tag Manager (GTM)
+
+### Architecture GTM du projet
+
+Le projet utilise GTM avec **Consent Mode v2** pour respecter le RGPD.
+
+**Documentation complète** : Voir [GTM_SETUP.md](GTM_SETUP.md) à la racine
+
+### Fichiers GTM
+
+| Fichier | Description |
+|---------|-------------|
+| `src/components/gtm-head.html` | Consent Mode v2 + script GTM (dans `<head>`) |
+| `src/components/gtm-body.html` | Fallback noscript (après `<body>`) |
+| `src/js/utils/gtm-tracking.js` | Module centralisé de tracking dataLayer |
+| `src/js/components/ui-cookie-consent.js` | Intégration vanilla-cookieconsent + Consent Mode |
+
+### Intégration dans les pages HTML
+
+**Chaque page `src/pages/*.html` doit inclure :**
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <!-- GTM doit être le plus haut possible après charset -->
+  <include src="components/gtm-head.html"></include>
+  <!-- ... autres meta tags ... -->
+</head>
+<body>
+  <!-- GTM noscript immédiatement après <body> -->
+  <include src="components/gtm-body.html"></include>
+  <!-- ... contenu page ... -->
+</body>
+```
+
+### Events dataLayer trackés
+
+| Event | Description | Paramètres |
+|-------|-------------|------------|
+| `cta_devis` | Clic sur CTA devis | `cta_location` |
+| `modal_open` | Ouverture modal devis | `modal_name` |
+| `form_step` | Progression formulaire | `step_number` |
+| `form_submit` | Soumission formulaire | `puissance` |
+| `phone_click` | Clic téléphone | `phone_number` |
+| `email_click` | Clic email | `email` |
+| `whatsapp_click` | Clic WhatsApp | - |
+| `scroll_depth` | Profondeur scroll | `depth_percent` |
+
+### Tracking automatique
+
+Le module `gtm-tracking.js` track automatiquement :
+- **Scroll** : 25%, 50%, 75%, 100%
+- **Liens contact** : `tel:`, `mailto:`, `wa.me`
+- **CTA** : Éléments avec attribut `data-track-cta`
+
+### Ajouter un nouveau tracking
+
+```javascript
+// Dans le composant JS concerné
+import { trackCTADevis, trackModalOpen } from '../utils/gtm-tracking.js';
+
+// Appeler la fonction au bon moment
+button.addEventListener('click', () => {
+  trackCTADevis('hero_section');
+});
+```
+
+### Test GTM en local
+
+1. Ouvrir GTM → Workspace → Preview
+2. Coller l'URL localhost:8080
+3. Vérifier dans le Tag Assistant que les events se déclenchent
+4. Console navigateur : `dataLayer` pour voir les events

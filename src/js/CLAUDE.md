@@ -107,18 +107,19 @@ var counter = 0;
 src/js/
 ├── main.js (point d'entrée - import tous les modules)
 ├── components/
-│   ├── hero.js
-│   ├── benefits.js
-│   ├── customerJourney.js
+│   ├── landing-hero.js
+│   ├── landing-benefices.js
+│   ├── landing-widget-economies.js
+│   ├── ui-modal-devis.js
+│   ├── ui-cookie-consent.js
+│   ├── page-materiel-onduleur-slider.js
 │   └── ...
 ├── animations/
 │   ├── scrollAnimations.js
 │   ├── gsapConfig.js
 │   └── lenisScroll.js
 └── utils/
-    ├── analytics.js
-    ├── tracking.js
-    └── helpers.js
+    └── gtm-tracking.js (tracking dataLayer centralisé)
 ```
 
 ### main.js - Point d'entrée
@@ -303,69 +304,150 @@ function handleBenefitLeave(e) {
 }
 ```
 
-## 📊 Analytics & Tracking
+## 📊 Analytics & Tracking - GTM dataLayer
 
-### Google Analytics Pattern
+### Architecture GTM
+
+Le projet utilise **Google Tag Manager** avec **Consent Mode v2** pour le RGPD.
+Tous les events sont envoyés via `dataLayer.push()` et captés par GTM.
+
+**Fichier principal** : `src/js/utils/gtm-tracking.js`
+
+### Pattern GTM Tracking
 ```javascript
-// utils/analytics.js
+// utils/gtm-tracking.js
 
 /**
- * Initialisation Google Analytics 4
+ * Push un event vers le dataLayer GTM
+ * @param {string} eventName - Nom de l'événement
+ * @param {Object} eventData - Données additionnelles
  */
-export function initAnalytics() {
-  // Configuration GA4
+function pushToDataLayer(eventName, eventData = {}) {
   window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
+  window.dataLayer.push({
+    event: eventName,
+    ...eventData
+  });
+  console.log(`📊 GTM Event: ${eventName}`, eventData);
+}
+
+/**
+ * Track un clic sur CTA devis
+ * @param {string} location - Emplacement du CTA (hero, footer, etc.)
+ */
+export function trackCTADevis(location) {
+  pushToDataLayer('cta_devis', { cta_location: location });
+}
+
+/**
+ * Track l'ouverture d'une modal
+ * @param {string} modalName - Nom de la modal
+ */
+export function trackModalOpen(modalName) {
+  pushToDataLayer('modal_open', { modal_name: modalName });
+}
+
+/**
+ * Track une étape du formulaire multi-steps
+ * @param {number} stepNumber - Numéro de l'étape
+ */
+export function trackFormStep(stepNumber) {
+  pushToDataLayer('form_step', { step_number: stepNumber });
+}
+
+/**
+ * Track la soumission du formulaire
+ * @param {Object} data - Données du formulaire (anonymisées)
+ */
+export function trackFormSubmit(data = {}) {
+  pushToDataLayer('form_submit', {
+    puissance: data.puissance || 'non_specifie'
+  });
+}
+```
+
+### Intégration Consent Mode v2
+```javascript
+// utils/gtm-tracking.js
+
+/**
+ * Met à jour le consentement GTM après choix utilisateur
+ * Appelé par ui-cookie-consent.js
+ * @param {Object} consent - { analytics: boolean, marketing: boolean }
+ */
+export function updateGTMConsent({ analytics, marketing }) {
+  if (typeof gtag !== 'function') return;
+
+  gtag('consent', 'update', {
+    analytics_storage: analytics ? 'granted' : 'denied',
+    ad_storage: marketing ? 'granted' : 'denied',
+    ad_user_data: marketing ? 'granted' : 'denied',
+    ad_personalization: marketing ? 'granted' : 'denied'
+  });
+}
+```
+
+### Utilisation dans les composants
+```javascript
+// Exemple: components/ui-modal-devis.js
+import { trackModalOpen, trackFormStep, trackFormSubmit } from '../utils/gtm-tracking.js';
+
+class DevisModal {
+  open() {
+    this.modal.classList.add('active');
+    trackModalOpen('cta_devis'); // ← Track ouverture
   }
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
 
-  // Tracking événements custom
-  trackCTAClicks();
-  trackFormSubmissions();
-  trackScrollDepth();
+  goToStep(stepNumber) {
+    this.currentStep = stepNumber;
+    this.updateUI();
+    trackFormStep(stepNumber); // ← Track progression
+  }
+
+  async handleSubmit() {
+    const response = await fetch('/api/devis', { ... });
+    if (response.ok) {
+      trackFormSubmit({ puissance: this.formData.puissance }); // ← Track succès
+    }
+  }
 }
+```
 
-/**
- * Tracking des clics sur CTA
- */
-function trackCTAClicks() {
-  const ctaButtons = document.querySelectorAll('.btn-primary, .btn-cta');
+### Tracking automatique (initGTMTracking)
+```javascript
+// Dans main.js
+import { initGTMTracking } from './utils/gtm-tracking.js';
 
-  ctaButtons.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      const buttonText = e.target.textContent.trim();
+// initGTMTracking() configure automatiquement :
+// - Scroll depth (25%, 50%, 75%, 100%)
+// - Clics sur liens tel:, mailto:, wa.me
+// - Clics sur éléments avec data-track-cta="nom"
+initGTMTracking();
+```
 
-      gtag('event', 'cta_click', {
-        button_text: buttonText,
-        page_location: window.location.href,
-      });
-    });
-  });
-}
+### Events disponibles
 
-/**
- * Tracking de la profondeur de scroll
- */
-function trackScrollDepth() {
-  const milestones = [25, 50, 75, 100];
-  const tracked = new Set();
+| Fonction | Event GTM | Paramètres |
+|----------|-----------|------------|
+| `trackCTADevis(location)` | `cta_devis` | `cta_location` |
+| `trackModalOpen(name)` | `modal_open` | `modal_name` |
+| `trackFormStep(n)` | `form_step` | `step_number` |
+| `trackFormSubmit(data)` | `form_submit` | `puissance` |
+| `trackPhoneClick(number)` | `phone_click` | `phone_number` |
+| `trackEmailClick(email)` | `email_click` | `email` |
+| `trackWhatsAppClick()` | `whatsapp_click` | - |
+| `trackScrollDepth(percent)` | `scroll_depth` | `depth_percent` |
+| `trackKitSelection(kit)` | `kit_selection` | `kit_name`, `kit_price` |
 
-  window.addEventListener('scroll', () => {
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+### Debug dataLayer
 
-    milestones.forEach((milestone) => {
-      if (scrollPercent >= milestone && !tracked.has(milestone)) {
-        tracked.add(milestone);
+En console navigateur :
+```javascript
+// Voir tous les events
+console.log(window.dataLayer);
 
-        gtag('event', 'scroll_depth', {
-          percent: milestone,
-        });
-      }
-    });
-  });
-}
+// Filtrer les events custom
+dataLayer.filter(e => e.event && !e.event.startsWith('gtm'));
 ```
 
 ## 🛠️ Utilitaires & Helpers
