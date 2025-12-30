@@ -1,0 +1,66 @@
+/**
+ * Tracking DataLayer - Généré par google-setup-cli
+ * Template: lead-gen
+ * Date: 2025-12-21T13:53:49.832Z
+ */
+
+window.dataLayer = window.dataLayer || [];
+
+/**
+ * Track CTA click
+ * @param {string} location - Position du CTA (hero, sidebar, footer, header...)
+ */
+function trackCTA(location) {
+  dataLayer.push({
+    event: 'clic_cta',
+    cta_location: location
+  });
+}
+
+/**
+ * Track form submission
+ * @param {string} formName - Nom du formulaire (contact, devis, newsletter...)
+ * @param {number} value - Valeur estimée du lead (optionnel, défaut 0)
+ */
+function trackFormSubmit(formName, value = 0) {
+  dataLayer.push({
+    event: 'form_submit',
+    form_name: formName,
+    lead_value: value
+  });
+}
+
+/**
+ * Track phone link click
+ */
+function trackPhoneClick() {
+  dataLayer.push({
+    event: 'phone_click'
+  });
+}
+
+/**
+ * Track email link click
+ */
+function trackEmailClick() {
+  dataLayer.push({
+    event: 'email_click'
+  });
+}
+
+// Auto-track des liens téléphone et email
+document.addEventListener('DOMContentLoaded', function() {
+  // Liens téléphone
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      trackPhoneClick();
+    });
+  });
+
+  // Liens email
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      trackEmailClick();
+    });
+  });
+});

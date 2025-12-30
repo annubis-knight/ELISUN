@@ -22,7 +22,7 @@
   position: relative;
   overflow: hidden;
 
-  @media (width <= 1024px) {
+  @media (width < 1024px) {
     padding: 8rem 0;
   }
 
@@ -96,7 +96,7 @@
       padding-right: 2rem;
 
       /* Responsive mobile : suppression du padding droit */
-      @media (width <= 768px) {
+      @media (width < 768px) {
         padding-right: 0;
         margin-bottom: 3rem;
       }
@@ -484,7 +484,7 @@
             background-clip: text;
             animation: gradient-shift 3s ease-in-out infinite;
             
-            @media (width <= 768px) {
+            @media (width < 768px) {
               font-size: 3.5rem;
             }
           }
@@ -496,7 +496,7 @@
             text-shadow: 0 4px 8px rgb(251 175 0 / 30%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             
-            @media (width <= 768px) {
+            @media (width < 768px) {
               font-size: 2rem;
             }
           }
@@ -533,7 +533,7 @@
       }
 
       /* Responsive mobile : ajustement result-card */
-      @media (width <= 768px) {
+      @media (width < 768px) {
         padding: 1.25rem;
         gap: 1.25rem;
 

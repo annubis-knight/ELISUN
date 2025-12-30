@@ -44,17 +44,18 @@ app.post('/api/brevo-contact', async (req, res) => {
   }
 });
 
-// Route API Brevo pour CTA progressif (email + prénom + nom uniquement)
+// Route API Brevo pour CTA progressif (email + prénom + nom + attributs optionnels)
 app.post('/api/brevo-lead', async (req, res) => {
   console.log('\n========================================');
   console.log('📨 RÉCEPTION LEAD CTA');
   console.log('========================================');
-  
-  const { email, prenom, nom } = req.body;
+
+  const { email, prenom, nom, attributes: extraAttributes } = req.body;
 
   console.log('📧 Email:', email);
   console.log('👤 Prénom:', prenom || '(vide)');
   console.log('👤 Nom:', nom || '(vide)');
+  console.log('📍 Attributs supplémentaires:', extraAttributes || '(aucun)');
 
   // Validation minimale
   if (!email) {
@@ -69,6 +70,15 @@ app.post('/api/brevo-lead', async (req, res) => {
   const attributes = {};
   if (prenom && prenom.trim()) attributes.PRENOM = prenom.trim();
   if (nom && nom.trim()) attributes.NOM = nom.trim();
+
+  // Fusionner les attributs supplémentaires (adresse, distance, zone, source)
+  if (extraAttributes && typeof extraAttributes === 'object') {
+    Object.entries(extraAttributes).forEach(([key, value]) => {
+      if (value !== null && value !== undefined && value !== '') {
+        attributes[key] = value;
+      }
+    });
+  }
 
   console.log('📝 Attributs à envoyer:', attributes);
   console.log('🔢 Nombre d\'attributs:', Object.keys(attributes).length);

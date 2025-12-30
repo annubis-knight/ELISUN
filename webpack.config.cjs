@@ -1,23 +1,63 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const posthtml = require('posthtml');
+const posthtmlInclude = require('posthtml-include');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+// Fonction pour traiter les includes PostHTML dans un fichier HTML
+const processHtmlWithIncludes = (templatePath) => {
+  const content = fs.readFileSync(templatePath, 'utf-8');
+  const result = posthtml([
+    posthtmlInclude({
+      root: path.resolve(__dirname, 'src'),
+      encoding: 'utf-8'
+    })
+  ]).process(content, { sync: true });
+
+  return result.html;
+};
+
+// Factory pour créer les plugins HtmlWebpackPlugin avec preprocessing
+const createHtmlPlugin = (template, filename, extraOptions = {}) => {
+  const templatePath = path.resolve(__dirname, 'src/pages', template);
+
+  return new HtmlWebpackPlugin({
+    templateContent: () => processHtmlWithIncludes(templatePath),
+    filename: filename,
+    inject: 'body',
+    minify: isProduction ? {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeRedundantAttributes: true,
+      useShortDoctype: true,
+      removeEmptyAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      keepClosingSlash: true,
+      minifyJS: true,
+      minifyCSS: true,
+      minifyURLs: true,
+    } : false,
+    ...extraOptions
+  });
+};
+
 module.exports = {
   mode: isProduction ? 'production' : 'development',
-  
+
   entry: {
     main: './src/js/main.js',
   },
-  
+
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
     clean: true,
   },
-  
+
   devServer: {
     static: [
       {
@@ -34,7 +74,7 @@ module.exports = {
     open: true,
     watchFiles: ['src/**/*'],
   },
-  
+
   module: {
     rules: [
       {
@@ -71,74 +111,31 @@ module.exports = {
       },
     ],
   },
-  
+
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/pages/index.html',
-      filename: 'index.html',
-      inject: 'body',
-      minify: isProduction ? {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      } : false,
-    }),
-    
-    // Pages additionnelles
+    // Pages HTML avec injection PostHTML-Include via templateContent
+    createHtmlPlugin('index.html', 'index.html'),
+    createHtmlPlugin('materiel.html', 'materiel.html'),
+    createHtmlPlugin('installation.html', 'installation.html'),
+    createHtmlPlugin('faq.html', 'faq.html'),
 
-    new HtmlWebpackPlugin({
-      template: './src/pages/materiel.html',
-      filename: 'materiel.html',
-      inject: 'body',
-    }),
-
-    new HtmlWebpackPlugin({
-      template: './src/pages/installation.html',
-      filename: 'installation.html',
-      inject: 'body',
-    }),
-
-    // new HtmlWebpackPlugin({
-    //   template: './src/pages/sectionTest.html',
-    //   filename: 'sectionTest.html',
-    //   inject: 'body',
-    // }),
-
-    new HtmlWebpackPlugin({
-      template: './src/pages/faq.html',
-      filename: 'faq.html',
-      inject: 'body',
-    }),
-
-    // Copier les assets et les composants HTML
+    // Copier les assets
     new CopyWebpackPlugin({
       patterns: [
         {
           from: 'src/assets',
           to: 'assets',
         },
-        {
-          from: 'src/components',
-          to: 'components',
-        },
       ],
     }),
 
-        
     ...(isProduction ? [
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash].css',
       }),
     ] : []),
   ],
-  
+
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -151,6 +148,6 @@ module.exports = {
       },
     },
   },
-  
+
   devtool: isProduction ? 'source-map' : 'eval-source-map',
 };

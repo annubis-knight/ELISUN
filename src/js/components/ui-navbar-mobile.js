@@ -1,6 +1,5 @@
 /**
  * NAVBAR MOBILE - Gestion du menu hamburger
- * Pattern polling pour attendre l'injection w3-include-html
  */
 
 class NavbarMobile {

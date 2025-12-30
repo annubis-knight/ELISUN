@@ -61,7 +61,7 @@
 
 
     /* Responsive mobile : réduction taille et padding */
-    @media (width <=640px) {
+    @media (width <640px) {
       flex-direction: column;
     }
 
@@ -81,7 +81,7 @@
       transition: all 0.3s ease;
 
       /* Responsive mobile : réduction taille et padding */
-      @media (width <=640px) {
+      @media (width <640px) {
         padding: 0.75rem 1rem;
         font-size: 0.75rem;
         width: 100%;
@@ -163,7 +163,7 @@
           border-radius: 12px;
           box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
 
-          @media (width <=768px) {
+          @media (width <768px) {
             width: 300px;
           }
         }
@@ -218,7 +218,7 @@
         padding: 0 0 0 100px;
 
         /* Responsive mobile : réduction padding et taille badges */
-        @media (width <=768px) {
+        @media (width <768px) {
           padding: 0;
 
           .feature-image img {
@@ -313,7 +313,7 @@
 
 
           /* Responsive mobile : réduction taille et padding */
-          @media (width <=768px) {
+          @media (width <768px) {
             transform: translate(4%, 40%);
           }
 
@@ -385,7 +385,7 @@
         min-height: 400px;
         padding: 0 48px;
 
-        @media (width <=768px) {
+        @media (width <768px) {
           padding: 0 12px;
         }
 
@@ -429,9 +429,9 @@
         overflow: hidden;
 
         /* Responsive tablette/mobile : Flex horizontal avec scroll */
-        @media (width <=1024px) {
+        @media (width <1024px) {
           display: flex;
-          flex-direction: row;
+          flex-direction: row-reverse;
           gap: 1rem;
           width: 100%;
           overflow: auto visible;
@@ -457,7 +457,7 @@
           position: relative;
           bottom: -10px;
 
-          @media (width <=1024px) {
+          @media (width <1024px) {
             flex-direction: row;
             bottom: 0;
 
@@ -471,7 +471,7 @@
 
           /* Toutes les cards enfants d'une colonne */
           .tetris-card {
-            @media (width <=1024px) {
+            @media (width <1024px) {
               flex-shrink: 0;
               width: 300px;
 
@@ -482,7 +482,7 @@
           &.tetris-column-double {
             grid-column: span 2;
 
-            @media (width <=1024px) {
+            @media (width <1024px) {
               width: auto;
 
               /* ✅ Idem : largeur auto */
@@ -501,7 +501,7 @@
           position: relative;
           bottom: -10px;
 
-          @media (width <=1024px) {
+          @media (width <1024px) {
             /* Passer en flex HORIZONTAL pour les 3 cards côte à côte */
             display: flex;
             flex-direction: row-reverse;
@@ -521,7 +521,7 @@
             grid-column: 1;
             grid-row: 1;
 
-            @media (width <=1024px) {
+            @media (width <1024px) {
               grid-column: auto;
               grid-row: auto;
               flex-shrink: 0;
@@ -535,7 +535,7 @@
             grid-column: 2;
             grid-row: 1;
 
-            @media (width <=1024px) {
+            @media (width <1024px) {
               grid-column: auto;
               grid-row: auto;
               flex-shrink: 0;
@@ -550,7 +550,7 @@
             grid-column: 1 / span 2;
             grid-row: 2;
 
-            @media (width <=1024px) {
+            @media (width <1024px) {
               grid-column: auto;
               grid-row: auto;
               flex-shrink: 0;
@@ -579,7 +579,7 @@
           background-size: cover;
           background-position: center;
 
-          @media (width <=1024px) {
+          @media (width <1024px) {
             min-height: 350px;
             flex-shrink: 0;
             width: 300px;
@@ -591,7 +591,7 @@
             line-height: 1.5;
             color: inherit;
 
-            @media (width <=1024px) {
+            @media (width <1024px) {
               font-size: 1rem;
             }
           }
@@ -603,7 +603,7 @@
             color: var(--white);
 
 
-            @media (width <=1024px) {
+            @media (width <1024px) {
               font-size: 2.5rem;
             }
           }
@@ -619,7 +619,7 @@
             position: relative;
             z-index: 1;
 
-            @media (width <=1024px) {
+            @media (width <1024px) {
               font-size: 3.5rem;
             }
           }
@@ -658,12 +658,13 @@
           }
 
           &.card-video {
-            background-image: url('/src/assets/images/images/thumbnail.png');
             padding: 0;
             min-height: 200px;
             cursor: pointer;
+            overflow: hidden;
+            position: relative;
 
-            &:hover {
+            &:hover:not(.video-playing) {
               transform: scale(1.02);
 
               .play-button {
@@ -672,13 +673,34 @@
               }
             }
 
+            /* État lecture en cours */
+            &.video-playing {
+              cursor: default;
+            }
+
             .video-thumbnail {
               width: 100%;
               height: 100%;
               display: flex;
               justify-content: center;
               align-items: center;
-              background: rgba(0, 0, 0, 0.3);
+              position: relative;
+
+              .video-thumb-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                inset: 0;
+              }
+
+              &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.3);
+                pointer-events: none;
+              }
             }
 
             .play-button {
@@ -690,13 +712,59 @@
               align-items: center;
               justify-content: center;
               transition: all 0.3s ease;
-
+              position: relative;
+              z-index: 2;
+              cursor: pointer;
 
               svg {
                 width: 24px;
                 height: 24px;
                 color: var(--black);
                 margin-left: 4px;
+              }
+            }
+
+            /* Container du lecteur vidéo */
+            .video-player {
+              position: absolute;
+              inset: 0;
+              background: #000;
+              z-index: 10;
+
+              .video-close-btn {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                width: 32px;
+                height: 32px;
+                background: rgba(0, 0, 0, 0.7);
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                z-index: 20;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.2s ease;
+
+                svg {
+                  color: #fff;
+                }
+
+                &:hover {
+                  background: rgba(0, 0, 0, 0.9);
+                }
+              }
+
+              .video-iframe-container {
+                width: 100%;
+                height: 100%;
+
+                .video-iframe {
+                  width: 100%;
+                  height: 100%;
+                  border: none;
+                }
               }
             }
           }
@@ -795,7 +863,7 @@
         padding-left: 60px;
         flex: 0 0 50%;
 
-        @media (width <=768px) {
+        @media (width <768px) {
           padding-left: 0;
           flex: 1;
 
@@ -814,7 +882,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
 
-            @media (width <=768px) {
+            @media (width <768px) {
               width: 300px;
             }
           }
@@ -921,7 +989,7 @@
             max-width: 200px;
             text-align: center;
 
-            @media (width <=768px) {
+            @media (width <768px) {
               transform: translate(4%, 50%);
               bottom: 0;
             }
@@ -980,7 +1048,7 @@
           z-index: 3;
 
 
-          @media (width <=768px) {
+          @media (width <768px) {
             transform: translate(-5%, -25%);
           }
         }

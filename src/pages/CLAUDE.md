@@ -492,15 +492,15 @@ Après le build Webpack, **TOUTES les pages HTML sont à la racine de `dist/`** 
      après le build - tout sera à la racine de dist/ -->
 ```
 
-#### ✅ CORRECT - Pour Composants w3-include-html
+#### ✅ CORRECT - Pour Composants (PostHTML-Include)
 ```html
-<!-- Webpack copie src/components → dist/components/ -->
-<div w3-include-html="components/navbar.html"></div>
-<div w3-include-html="components/footer.html"></div>
-<div w3-include-html="components/modal-devis.html"></div>
+<!-- PostHTML-Include injecte le contenu au moment du build -->
+<include src="components/navbar.html"></include>
+<include src="components/footer.html"></include>
+<include src="components/modal-devis.html"></include>
 
-<!-- ❌ JAMAIS -->
-<div w3-include-html="../components/navbar.html"></div>
+<!-- ❌ JAMAIS - Syntaxe obsolète -->
+<div w3-include-html="components/navbar.html"></div>
 ```
 
 #### ✅ CORRECT - Pour Favicon
@@ -582,5 +582,5 @@ Chaque page HTML **DOIT** avoir cette structure dans `<head>` :
 ❌ Imbrication excessive de divs
 ❌ Manque de structure, utiliser plutôt `.containerMax → .grid-tailwind`
 ❌ **Chemins `../assets/` pour images** (CASSERA après le build!)
-❌ **Chemins `../components/` pour w3-include-html** (CASSERA après le build!)
+❌ **Utiliser `w3-include-html`** (obsolète, utiliser `<include src="...">` à la place)
 ❌ URLs relatives dans Open Graph (DOIT être absolue)

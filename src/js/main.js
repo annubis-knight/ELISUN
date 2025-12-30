@@ -33,6 +33,12 @@ import './components/ui-cookie-consent.js';
 // GTM Tracking - initialisation automatique des events
 import { initGTMTracking } from './utils/gtm-tracking.js';
 
+// Progressive Input avec Google Places API
+import { initProgressiveInput } from './components/ui-progressive-input.js';
+
+// Lecteur vidéo YouTube s'auto-initialise
+import './components/ui-video-player.js';
+
 class ElisunApp {
     constructor() {
         this.init();
@@ -55,6 +61,9 @@ class ElisunApp {
 
             // Initialiser le tracking GTM (scroll, clics contact, CTA)
             initGTMTracking();
+
+            // Initialiser le progressive input (Google Places)
+            initProgressiveInput();
 
             document.body.classList.add('dom-loaded');
             console.log('✅ ELISUN initialisée');

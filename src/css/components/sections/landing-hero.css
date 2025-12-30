@@ -82,7 +82,7 @@
     width: 100%;
 
     /* Overflow hidden seulement sur mobile pour l'animation */
-    @media (width <= 1024px) {
+    @media (width < 1024px) {
       width: 90vw;
       margin: 0 auto;
       overflow: hidden;
@@ -100,7 +100,7 @@
       }
 
       /* Mobile : animation de défilement */
-      @media (width <= 1024px) {
+      @media (width < 1024px) {
         width: fit-content;
         gap: 2rem;
         animation: scrollCertifications 24s ease-in-out infinite alternate;
@@ -116,7 +116,7 @@
         transition: all 0.3s ease;
 
         /* Responsive mobile : réduction de la taille */
-        @media (width <= 1024px) {
+        @media (width < 1024px) {
           height: 40px;
         }
       }
@@ -150,11 +150,11 @@
   display: flex;
   align-items: center;
 
-  @media (width <= 1024px) {
+  @media (width < 1024px) {
     min-height: 600px;
   }
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
     background-attachment: scroll;
     min-height: 500px;
   }
@@ -177,11 +177,11 @@
   display: flex;
   align-items: center;
 
-  @media (width <= 1024px) {
+  @media (width < 1024px) {
     min-height: 600px;
   }
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
     min-height: 500px;
   }
 

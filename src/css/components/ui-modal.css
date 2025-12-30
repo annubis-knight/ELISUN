@@ -34,7 +34,7 @@
     height: 90vh;
     margin: 0 1rem;
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       height: 95vh;
       margin: 0 0.5rem;
     }
@@ -52,7 +52,7 @@
     height: 100%;
     overflow: hidden;
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       border-radius: 0.75rem;
     }
   }
@@ -64,7 +64,7 @@
     padding: 2rem;
     border-bottom: 1px solid rgb(0 0 0 / 10%);
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       padding: 1.5rem;
     }
   }
@@ -75,7 +75,7 @@
     color: var(--text-primary);
     margin: 0;
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       font-size: 1.5rem;
     }
   }
@@ -121,7 +121,7 @@
       }
     }
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       padding: 1.5rem;
     }
 
@@ -173,13 +173,7 @@
       color: var(--text-primary);
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
-      &:focus {
-        outline: none;
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgb(251 175 0 / 10%);
-      }
-
-      @media (width <= 768px) {
+      @media (width < 768px) {
         font-size: 1rem;
         padding: 0.875rem 1rem 0.875rem 4.5rem;
       }
@@ -244,5 +238,122 @@
     border-bottom: 2px solid #e2e8f0;
     margin: 0.5rem 0;
   }
+}
+
+/* ==========================================================================
+   VIDEO MODAL - Modal fullscreen pour vidéo YouTube (tablette/mobile)
+   ========================================================================== */
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  /* État actif */
+  &.active {
+    opacity: 1;
+    visibility: visible;
+
+    .video-modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Backdrop sombre */
+  .video-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 90%);
+    cursor: pointer;
+  }
+
+  /* Container du contenu */
+  .video-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 1rem;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    @media (width < 768px) {
+      margin: 0.5rem;
+    }
+  }
+
+  /* Bouton fermer */
+  .video-modal-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: rgb(255 255 255 / 10%);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+
+    svg {
+      color: white;
+    }
+
+    &:hover {
+      background: rgb(255 255 255 / 20%);
+      transform: scale(1.1);
+    }
+
+    @media (width < 768px) {
+      top: -44px;
+      width: 36px;
+      height: 36px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  /* Container iframe */
+  .video-modal-iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgb(0 0 0 / 50%);
+
+    @media (width < 768px) {
+      border-radius: 8px;
+    }
+  }
+
+  /* Iframe YouTube */
+  .video-modal-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+/* Bloquer le scroll du body quand la modal est ouverte */
+body.video-modal-open {
+  overflow: hidden;
 }
 

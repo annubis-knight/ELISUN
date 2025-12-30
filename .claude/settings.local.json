@@ -25,9 +25,25 @@
       "Bash(git push:*)",
       "Bash(npx css-checker:*)",
       "Bash(npm uninstall:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(grep:*)",
+      "Bash(__NEW_LINE__ echo \"=== VÉRIFICATION FINALE DU BUILD ===\")",
+      "Bash(ls:*)",
+      "Bash(__NEW_LINE__ echo \"   - installation.html:\")",
+      "Bash(__NEW_LINE__ echo \"   - materiel.html:\")",
+      "Bash(__NEW_LINE__ echo \"   - faq.html:\")",
+      "Bash(__NEW_LINE__ echo \"\")",
+      "Bash(npx http-server:*)",
+      "Bash(git checkout:*)",
+      "Bash(firebase deploy:*)",
+      "Bash(firebase projects:list:*)",
+      "Bash(firebase functions:log:*)",
+      "Bash(gcloud services enable:*)",
+      "Bash(git reset:*)",
+      "Bash(google-setup generate-tracking:*)",
+      "Bash(google-setup:*)"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "plan"
   },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [

@@ -24,25 +24,19 @@
 }
 
 /* Hover universel */
-.radio-label:hover,
+/* .radio-label:hover,
 .radio-card:hover {
   border-color: var(--primary-color, #ff914d);
   background: var(--primary-ultra-light, #fff7ed);
-}
+} */
 
 /* État checked (sélecteur moderne :has() + fallback sibling) */
 .radio-label:has(input:checked),
 input[type="radio"]:checked + .radio-card {
-  border-color: var(--primary-color, #ff914d);
-  background: var(--primary-ultra-light, #fff7ed);
+  border-color: var(--primary-color);
+
 }
 
-/* Focus visible (accessibilité clavier) */
-.radio-label:focus-within,
-input[type="radio"]:focus + .radio-card {
-  outline: 2px solid var(--primary-color, #ff914d);
-  outline-offset: 2px;
-}
 
 /* === MODIFICATEUR : LANDING PAGE === */
 
@@ -103,7 +97,8 @@ input[type="radio"]:focus + .radio-card {
   height: 20px;
   margin: 0;
   cursor: pointer;
-  accent-color: var(--primary-color, #ff914d);
+  accent-color: #c58900;
+  display: none;
 }
 
 /* Texte dans le label modal */
@@ -114,25 +109,14 @@ input[type="radio"]:focus + .radio-card {
   transition: all 0.2s ease;
 }
 
-/* État checked - Box shadow + texte gras */
-.radio-label--modal:has(input:checked) {
-  box-shadow: 0 0 0 3px rgb(255 145 77 / 10%);
-}
-
 .radio-label--modal:has(input:checked) .radio-text {
   font-weight: 600;
-  color: var(--primary-color, #ff914d);
+  color: var(--primary-color);
 }
 
-/* Focus visible modal */
-
-/* .radio-label--modal:has(input:focus-visible) {
-  outline: 2px solid var(--primary-color, #ff914d);
-  outline-offset: 2px;
-} */
 
 /* === RESPONSIVE MOBILE (640px - Tailwind standard) === */
-@media (width <= 640px) {
+@media (width < 640px) {
   .radio-group {
     gap: 0.5rem;
   }

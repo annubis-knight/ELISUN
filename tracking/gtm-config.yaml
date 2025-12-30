@@ -1,0 +1,249 @@
+# =================================================
+# GTM CONFIG - Fichier Généré
+# google-setup-cli
+# =================================================
+#
+# AUTO-GÉNÉRÉ - NE PAS MODIFIER MANUELLEMENT
+#
+# Source: tracking-events.yaml
+# Commande: google-setup gtm-config-setup
+#
+# Pour modifier, éditez tracking-events.yaml
+# puis relancez la génération.
+#
+# =================================================
+
+# Généré depuis: tracking-events.yaml
+# Date: 2025-12-30
+# Events: 28
+
+project:
+  name: "www"
+  gtm_container_id: "GTM-KV37SG94"
+  ga4_measurement_id: "G-2P2JH4ESZG"
+
+# ============================================
+# VARIABLES GTM
+# ============================================
+variables:
+  - name: "Constant - GA4 Measurement ID"
+    type: "constant"
+    value: "G-2P2JH4ESZG"
+
+  - name: "dlv - element_id"
+    type: "data_layer"
+    data_layer_name: "element_id"
+
+  - name: "dlv - page_section"
+    type: "data_layer"
+    data_layer_name: "page_section"
+
+  - name: "dlv - page_path"
+    type: "data_layer"
+    data_layer_name: "page_path"
+
+# ============================================
+# TRIGGERS GTM
+# ============================================
+
+triggers:
+
+  # --- CONVERSION ---  
+  
+  - name: "CE - form_submit"
+    type: "custom_event"
+    event_name: "form_submit"
+
+  - name: "CE - form_quote"
+    type: "custom_event"
+    event_name: "form_quote"
+
+  - name: "CE - phone_click"
+    type: "custom_event"
+    event_name: "phone_click"
+
+  - name: "CE - email_click"
+    type: "custom_event"
+    event_name: "email_click"
+
+  - name: "CE - whatsapp_click"
+    type: "custom_event"
+    event_name: "whatsapp_click"
+
+  - name: "CE - form_step"
+    type: "custom_event"
+    event_name: "form_step"
+
+
+  # --- ENGAGEMENT ---  
+  - name: "CE - cta_primary"
+    type: "custom_event"
+    event_name: "cta_primary"
+
+  - name: "CE - cta_secondary"
+    type: "custom_event"
+    event_name: "cta_secondary"
+
+  - name: "CE - video_play"
+    type: "custom_event"
+    event_name: "video_play"
+
+  - name: "CE - accordion_open"
+    type: "custom_event"
+    event_name: "accordion_open"
+
+  - name: "CE - tab_click"
+    type: "custom_event"
+    event_name: "tab_click"
+
+  - name: "CE - modal_open"
+    type: "custom_event"
+    event_name: "modal_open"
+
+  - name: "CE - scroll_25"
+    type: "custom_event"
+    event_name: "scroll_25"
+
+  - name: "CE - scroll_50"
+    type: "custom_event"
+    event_name: "scroll_50"
+
+  - name: "CE - scroll_75"
+    type: "custom_event"
+    event_name: "scroll_75"
+
+  - name: "CE - scroll_100"
+    type: "custom_event"
+    event_name: "scroll_100"
+
+  - name: "CE - read_30s"
+    type: "custom_event"
+    event_name: "read_30s"
+
+  - name: "CE - read_60s"
+    type: "custom_event"
+    event_name: "read_60s"
+
+  - name: "CE - read_120s"
+    type: "custom_event"
+    event_name: "read_120s"
+
+  - name: "CE - cookie_accept"
+    type: "custom_event"
+    event_name: "cookie_accept"
+
+  - name: "CE - cookie_reject"
+    type: "custom_event"
+    event_name: "cookie_reject"
+
+  - name: "CE - cookie_customize"
+    type: "custom_event"
+    event_name: "cookie_customize"
+
+  - name: "CE - cookie_save"
+    type: "custom_event"
+    event_name: "cookie_save"
+
+
+  # --- NAVIGATION ---  
+  - name: "CE - menu_click"
+    type: "custom_event"
+    event_name: "menu_click"
+
+  - name: "CE - logo_click"
+    type: "custom_event"
+    event_name: "logo_click"
+
+  - name: "CE - error_404"
+    type: "custom_event"
+    event_name: "error_404"
+
+  - name: "CE - error_form"
+    type: "custom_event"
+    event_name: "error_form"
+
+  - name: "CE - error_page"
+    type: "custom_event"
+    event_name: "error_page"
+
+# ============================================
+# BALISES GA4
+# ============================================
+tags:
+  - name: "GA4 - Config"
+    type: "ga4_configuration"
+    measurement_id: "{{Constant - GA4 Measurement ID}}"
+    triggers:
+      - "All Pages"
+
+  - name: "GA4 Event - Conversions"
+    type: "ga4_event"
+    configuration_tag: "GA4 - Config"
+    event_parameters:
+      - name: "element_id"
+        value: "{{dlv - element_id}}"
+      - name: "page_section"
+        value: "{{dlv - page_section}}"
+      - name: "page_path"
+        value: "{{dlv - page_path}}"
+    triggers:
+      - "CE - form_submit"
+      - "CE - form_quote"
+      - "CE - phone_click"
+      - "CE - email_click"
+      - "CE - whatsapp_click"
+      - "CE - form_step"
+
+  - name: "GA4 Event - Engagement"
+    type: "ga4_event"
+    configuration_tag: "GA4 - Config"
+    event_parameters:
+      - name: "element_id"
+        value: "{{dlv - element_id}}"
+      - name: "page_section"
+        value: "{{dlv - page_section}}"
+      - name: "page_path"
+        value: "{{dlv - page_path}}"
+    triggers:
+      - "CE - cta_primary"
+      - "CE - cta_secondary"
+      - "CE - video_play"
+      - "CE - accordion_open"
+      - "CE - tab_click"
+      - "CE - modal_open"
+      - "CE - scroll_25"
+      - "CE - scroll_50"
+      - "CE - scroll_75"
+      - "CE - scroll_100"
+      - "CE - read_30s"
+      - "CE - read_60s"
+      - "CE - read_120s"
+      - "CE - cookie_accept"
+      - "CE - cookie_reject"
+      - "CE - cookie_customize"
+      - "CE - cookie_save"
+
+  - name: "GA4 Event - Navigation"
+    type: "ga4_event"
+    configuration_tag: "GA4 - Config"
+    event_parameters:
+      - name: "element_id"
+        value: "{{dlv - element_id}}"
+      - name: "page_section"
+        value: "{{dlv - page_section}}"
+      - name: "page_path"
+        value: "{{dlv - page_path}}"
+    triggers:
+      - "CE - menu_click"
+      - "CE - logo_click"
+      - "CE - error_404"
+      - "CE - error_form"
+      - "CE - error_page"
+
+# ============================================
+# RÉSUMÉ
+# ============================================
+# Variables: 4 (1 constante + 3 DLV)
+# Triggers: 29 (1 pageview + 28 custom events)
+# Tags: 4 (1 Config + 3 Event)
+# ============================================

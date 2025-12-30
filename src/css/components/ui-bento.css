@@ -37,7 +37,7 @@
   &:not(.bento-layout-2, .bento-layout-3) {
     grid-template-columns: repeat(3, 1fr);
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       grid-template-columns: 1fr;
     }
   }
@@ -63,7 +63,7 @@
       }
     }
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       grid-template-columns: 1fr;
       grid-template-rows: auto;
 
@@ -100,7 +100,7 @@
       }
     }
 
-    @media (width <= 768px) {
+    @media (width < 768px) {
       grid-template-rows: auto auto;
 
       .bento-bottom-row {
@@ -124,14 +124,14 @@
 
   /* Uniformisation responsive globale pour tous les p */
   p {
-    @media (width <= 768px) {
+    @media (width < 768px) {
       font-size: 0.875rem !important;
     }
   }
 
   /* Uniformisation responsive globale pour tous les strong */
   strong {
-    @media (width <= 768px) {
+    @media (width < 768px) {
       font-size: 1.125rem !important;
     }
   }

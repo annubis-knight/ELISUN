@@ -129,7 +129,7 @@
   }
 
   /* Responsive mobile */
-    @media (width <=768px) {
+    @media (width <768px) {
       table {
         tbody {
           tr {

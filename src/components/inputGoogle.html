@@ -1,0 +1,278 @@
+<!-- inputGoogle.html - Progressive Input avec validation Google Places API -->
+<!-- Étapes : 1. Adresse (Google) → 2. Email → 3. Nom/Prénom → 4. Confirmation -->
+
+<div class="progressive-input-wrapper" id="progressive-input-container">
+
+    <!-- Indicateurs de progression -->
+    <div class="progress-indicator">
+        <span class="progress-dot active" data-step="1"></span>
+        <span class="progress-dot" data-step="2"></span>
+        <span class="progress-dot" data-step="3"></span>
+    </div>
+
+    <!-- ÉTAPE 1 : Adresse Google Places -->
+    <div class="progressive-step active" id="progressive-step-1">
+        <div class="input-button-wrapper">
+            <input
+                type="text"
+                id="progressive-address-input"
+                class="input-field"
+                placeholder="Entrez votre adresse pour vérifier l'éligibilité"
+                autocomplete="off"
+            />
+            <button type="button" class="bouton btn-primary" id="progressive-next-btn">
+                <i class="fas fa-map-marker-alt"></i> Vérifier
+            </button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 2 : Email -->
+    <div class="progressive-step" id="progressive-step-2">
+        <div class="input-button-wrapper">
+            <input
+                type="email"
+                id="progressive-email-input"
+                class="input-field"
+                placeholder="Votre adresse email"
+                autocomplete="email"
+            />
+            <button type="button" class="bouton btn-primary" id="progressive-next-btn-step2">
+                <i class="fas fa-arrow-right"></i> Continuer
+            </button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 3 : Nom et Prénom -->
+    <div class="progressive-step" id="progressive-step-3">
+        <div class="progressive-name-fields">
+            <input
+                type="text"
+                id="progressive-firstname-input"
+                class="input-field input-field-half"
+                placeholder="Prénom"
+                autocomplete="given-name"
+            />
+            <input
+                type="text"
+                id="progressive-lastname-input"
+                class="input-field input-field-half"
+                placeholder="Nom"
+                autocomplete="family-name"
+            />
+        </div>
+        <button type="button" class="bouton btn-primary btn-full-width" id="progressive-next-btn-step3">
+            <i class="fas fa-paper-plane"></i> Envoyer ma demande
+        </button>
+    </div>
+
+    <!-- ÉTAPE 4 : Confirmation -->
+    <div class="progressive-step" id="progressive-step-4">
+        <div class="progressive-confirmation">
+            <i class="fas fa-check-circle progressive-success-icon"></i>
+            <p class="progressive-success-text">Merci ! Nous vous recontacterons très rapidement.</p>
+        </div>
+    </div>
+
+    <!-- Message de feedback (distance, erreurs, etc.) -->
+    <div id="progressive-message" class="progressive-message"></div>
+
+</div>
+
+<style>
+    /* ===================================
+       PROGRESSIVE INPUT - Structure
+       =================================== */
+
+    .progressive-input-wrapper {
+        width: 100%;
+    }
+
+    /* Indicateurs de progression (dots) */
+    .progress-indicator {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .progress-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #d1d5db;
+        transition: all 0.3s ease;
+    }
+
+    .progress-dot.active {
+        background: var(--color-elisun-orange-500, #f97316);
+        transform: scale(1.25);
+    }
+
+    .progress-dot.completed {
+        background: #10b981;
+    }
+
+    /* Étapes - Affichage/Masquage */
+    .progressive-step {
+        display: none;
+        animation: progressiveSlideIn 0.3s ease;
+    }
+
+    .progressive-step.active {
+        display: block;
+    }
+
+    @keyframes progressiveSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Champs nom/prénom côte à côte */
+    .progressive-name-fields {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .input-field-half {
+        flex: 1;
+    }
+
+    .btn-full-width {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Confirmation (étape 4) */
+    .progressive-confirmation {
+        text-align: center;
+        padding: 24px 16px;
+    }
+
+    .progressive-success-icon {
+        font-size: 48px;
+        color: #10b981;
+        margin-bottom: 12px;
+        animation: progressiveSuccessPop 0.5s ease;
+    }
+
+    @keyframes progressiveSuccessPop {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .progressive-success-text {
+        font-size: 16px;
+        font-weight: 500;
+        color: #065f46;
+    }
+
+    /* ===================================
+       MESSAGES DE FEEDBACK
+       =================================== */
+
+    .progressive-message {
+        margin-top: 12px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        display: none;
+        animation: progressiveMessageSlide 0.3s ease;
+    }
+
+    .progressive-message i {
+        margin-right: 8px;
+    }
+
+    .progressive-message.success {
+        background: #d1fae5;
+        color: #065f46;
+        border-left: 4px solid #10b981;
+    }
+
+    .progressive-message.warning {
+        background: #fef3c7;
+        color: #92400e;
+        border-left: 4px solid #f59e0b;
+    }
+
+    .progressive-message.info {
+        background: #dbeafe;
+        color: #1e40af;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .progressive-message.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border-left: 4px solid #ef4444;
+    }
+
+    @keyframes progressiveMessageSlide {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ===================================
+       GOOGLE PLACES AUTOCOMPLETE
+       =================================== */
+
+    .pac-container {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin-top: 4px;
+        font-family: inherit;
+        z-index: 9999;
+        border: 1px solid #e5e7eb;
+    }
+
+    .pac-item {
+        padding: 10px 12px;
+        cursor: pointer;
+    }
+
+    .pac-item:hover {
+        background-color: #f3f4f6;
+    }
+
+    .pac-icon {
+        margin-right: 8px;
+    }
+
+    /* ===================================
+       RESPONSIVE
+       =================================== */
+
+    @media (max-width: 640px) {
+        .progressive-name-fields {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-field-half {
+            width: 100%;
+        }
+    }
+</style>

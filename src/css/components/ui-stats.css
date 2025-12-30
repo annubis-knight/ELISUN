@@ -101,7 +101,7 @@
 }
 
 /* Responsive mobile */
-@media (width <= 768px) {
+@media (width < 768px) {
   .stats-container {
     gap: 4px;
     margin-bottom: 1.5rem;

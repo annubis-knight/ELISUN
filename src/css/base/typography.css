@@ -21,7 +21,7 @@ body h1 {
   line-height: 1.1;
   margin-bottom: 1.5rem;
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
       font-size: 2.3rem;
   }
 
@@ -39,7 +39,7 @@ body h2 {
   line-height: 1.2;
   margin-bottom: 1.5rem;
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
       font-size: 1.75rem;
   }
 
@@ -100,7 +100,7 @@ body p {
   margin-bottom: 1rem;
   color: #64748b;
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
       font-size: 0.875rem;
   }
 
@@ -126,7 +126,7 @@ body li {
 .heading-5xl {
   font-size: 9rem;
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
     font-size: clamp(2rem, 16vw, 6rem);
   }
 }
@@ -149,7 +149,7 @@ body li {
   font-size: 3rem;
   line-height: 1.2;
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
     font-size: 2rem;
   }
 
@@ -163,7 +163,7 @@ body li {
   font-size: 1.75rem;
   line-height: 1.2;
 
-  @media (width <= 768px) {
+  @media (width < 768px) {
     font-size: 1.5rem;
   }
 

@@ -1,4 +1,5 @@
 import intlTelInput from 'intl-tel-input';
+import { trackModalOpen, trackFormStep, trackFormSubmit } from '../utils/gtm-tracking.js';
 
 /**
  * Gestionnaire du modal de demande de devis
@@ -119,7 +120,7 @@ async initPhoneInput() {  // ✅ async ici
     this.form?.addEventListener('submit', (e) => this.handleSubmit(e));
 
     // Validation temps réel avec debounce
-    this.setupRealTimeValidation();
+    // this.setupRealTimeValidation();
   }
 
   /**
@@ -137,6 +138,9 @@ async initPhoneInput() {  // ✅ async ici
 
     // Charger progression sauvegardée
     this.loadProgressFromLocalStorage();
+
+    // GTM : Tracker l'ouverture du modal
+    trackModalOpen('cta_devis');
 
     // Émettre événement custom
     this.fireCustomEvent('opened', {});
@@ -201,6 +205,9 @@ async initPhoneInput() {  // ✅ async ici
 
     // Sauvegarder progression
     this.saveProgressToLocalStorage();
+
+    // GTM : Tracker le changement d'étape
+    trackFormStep(stepNumber);
 
     // Émettre événement custom
     this.fireCustomEvent('step-changed', { step: stepNumber });
@@ -371,7 +378,8 @@ async initPhoneInput() {  // ✅ async ici
     }
 
     if (field.type === 'tel' && field.value.trim()) {
-      const telRegex = /^[0-9\s\.\-\+\(\)]{10,}$/;
+      // const telRegex = /^[0-9\s\.\-\+\(\)]{10,}$/;
+      const telRegex = /^0?[1-9][0-9]{8}$/;
       if (!telRegex.test(field.value)) {
         isValid = false;
       }
@@ -452,6 +460,9 @@ async initPhoneInput() {  // ✅ async ici
     const result = await response.json();
 
     if (result.success) {
+      // GTM : Tracker la soumission réussie (LEAD)
+      trackFormSubmit({ puissance: data.puissance });
+
       this.showSuccess();
       this.form.reset();
       submitBtn.innerHTML = originalText;
