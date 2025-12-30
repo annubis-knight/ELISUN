@@ -195,14 +195,14 @@
       transition: opacity 0.3s ease, z-index 0.3s ease;
 
       /* Par défaut (particulier) - position normale */
-      &[data-target="particulier"] {
+      &[data-state-audience="particulier"] {
         position: relative;
         opacity: 1;
         z-index: 2;
       }
 
       /* Professionnel - absolute + invisible par défaut */
-      &[data-target="professionnel"] {
+      &[data-state-audience="professionnel"] {
         position: absolute;
         top: 0;
         left: 0;
@@ -213,14 +213,14 @@
       }
 
       /* Classe active pour professionnel */
-      &[data-target="professionnel"].active {
+      &[data-state-audience="professionnel"].active {
         opacity: 1;
         z-index: 2;
         pointer-events: auto;
       }
 
       /* Classe inactive pour particulier */
-      &[data-target="particulier"].inactive {
+      &[data-state-audience="particulier"].inactive {
         opacity: 0;
         z-index: 1;
         pointer-events: none;

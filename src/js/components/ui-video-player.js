@@ -105,14 +105,14 @@ function closeVideoModal() {
  * Initialise tous les lecteurs vidéo de la page
  */
 export function initVideoPlayers() {
-  const videoCards = document.querySelectorAll('.card-video[data-video-id]');
+  const videoCards = document.querySelectorAll('.card-video[data-value-video]');
 
   if (videoCards.length === 0) {
     return;
   }
 
   videoCards.forEach(card => {
-    const videoId = card.dataset.videoId;
+    const videoId = card.dataset.valueVideo;
     if (!videoId) return;
 
     const thumbnail = card.querySelector('.video-thumbnail');

@@ -47,11 +47,11 @@
   }
 
   /* Activation de l'animation zoom via data-attributes */
-  &[data-animate-before='true']::before {
+  &[data-state-anim-before='true']::before {
     animation: heroBackgroundZoom 5000ms ease-out forwards;
   }
 
-  &[data-animate-after='true']::after {
+  &[data-state-anim-after='true']::after {
     animation: heroBackgroundZoom 5000ms ease-out forwards;
   }
 

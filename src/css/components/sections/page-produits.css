@@ -198,7 +198,7 @@
   }
 
   /* Classe pour déplacer le slider vers la slide 2 (sera ajoutée via JS) */
-  .onduleur-slider-track.slide-1 {
+  .onduleur-slider-track.slide-2 {
     transform: translateX(-50%);
   }
 
@@ -362,7 +362,7 @@
   }
 
   /* Classe pour déplacer le slider vers la slide 2 (sera ajoutée via JS) */
-  .stockage-slider-track.slide-1 {
+  .stockage-slider-track.slide-2 {
     transform: translateX(-50%);
   }
 

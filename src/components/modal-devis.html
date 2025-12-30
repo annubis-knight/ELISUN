@@ -8,19 +8,19 @@
       <!-- Corps du modal avec formulaire -->
       <div class="modal-body">
         <!-- Bouton de fermeture -->
-        <button type="button" class="modal-close" aria-label="Fermer le formulaire" data-close-modal>
+        <button type="button" class="modal-close" aria-label="Fermer le formulaire" data-action-close>
           <i class="fas fa-times"></i>
         </button>
         <form id="form-devis" class="devis-form" novalidate>
 
           <!-- ÉTAPE 1 : Informations de contact -->
-          <div class="form-step" data-step="1">
+          <div class="form-step" data-state-step="1">
             <h3 class="step-title">Étape 1/2 - Vos coordonnées</h3>
 
             <!-- Indicateur de progression -->
             <div class="form-steps-indicator">
-              <div class="progress-bar" data-step-indicator="1"></div>
-              <div class="progress-bar" data-step-indicator="2"></div>
+              <div class="progress-bar" data-state-indicator="1"></div>
+              <div class="progress-bar" data-state-indicator="2"></div>
             </div>
 
             <!-- Nom et Prénom sur la même ligne -->
@@ -63,13 +63,13 @@
           </div>
 
           <!-- ÉTAPE 2 : Détails du projet -->
-          <div class="form-step" data-step="2" hidden>
+          <div class="form-step" data-state-step="2" hidden>
             <h3 class="step-title">Étape 2/2 - Votre projet</h3>
 
             <!-- Indicateur de progression -->
             <div class="form-steps-indicator">
-              <div class="progress-bar" data-step-indicator="1"></div>
-              <div class="progress-bar" data-step-indicator="2"></div>
+              <div class="progress-bar" data-state-indicator="1"></div>
+              <div class="progress-bar" data-state-indicator="2"></div>
             </div>
 
             <!-- Puissance souhaitée (radio buttons) -->
@@ -122,10 +122,10 @@
 
           <!-- Navigation entre étapes -->
           <div class="form-navigation flex flex-col md:flex-row gap-4">
-            <button type="button" class="btn-prev bouton btn-secondary w-full max-w-none" data-nav="prev" hidden>
+            <button type="button" class="btn-prev bouton btn-secondary w-full max-w-none" data-action-nav="prev" hidden>
               <i class="fas fa-arrow-left"></i> Précédent
             </button>
-            <button type="button" class="btn-next bouton btn-primary w-full max-w-none" data-nav="next">
+            <button type="button" class="btn-next bouton btn-primary w-full max-w-none" data-action-nav="next">
               Suivant <i class="fas fa-arrow-right"></i>
             </button>
             <button type="submit" class="btn-submit bouton btn-primary w-full max-w-none" hidden>

@@ -28,18 +28,18 @@ class ModalDevis {
     // Sélection des éléments du DOM
     this.modal = document.querySelector('#modal-devis');
     this.modalCard = this.modal?.querySelector('.modal-card');
-    this.closeBtn = this.modal?.querySelector('[data-close-modal]');
+    this.closeBtn = this.modal?.querySelector('[data-action-close]');
     this.form = document.querySelector('#form-devis');
     this.formSuccess = this.form?.querySelector('.form-success');
-    this.openButtons = document.querySelectorAll('[data-open-modal="devis"]');
+    this.openButtons = document.querySelectorAll('[data-action-modal="devis"]');
 
     // Navigation multi-étapes
     this.currentStep = 1;
     this.totalSteps = 2;
-    this.steps = this.form?.querySelectorAll('[data-step]');
-    this.stepIndicators = this.form?.querySelectorAll('[data-step-indicator]');
-    this.btnNext = this.form?.querySelector('[data-nav="next"]');
-    this.btnPrev = this.form?.querySelector('[data-nav="prev"]');
+    this.steps = this.form?.querySelectorAll('[data-state-step]');
+    this.stepIndicators = this.form?.querySelectorAll('[data-state-indicator]');
+    this.btnNext = this.form?.querySelector('[data-action-nav="next"]');
+    this.btnPrev = this.form?.querySelector('[data-action-nav="prev"]');
     this.btnSubmit = this.form?.querySelector('.btn-submit');
     this.formAlert = this.form?.querySelector('.form-alert');
 
@@ -180,7 +180,7 @@ async initPhoneInput() {  // ✅ async ici
 
     // Afficher/masquer les étapes
     this.steps?.forEach(step => {
-      const stepNum = parseInt(step.getAttribute('data-step'));
+      const stepNum = parseInt(step.getAttribute('data-state-step'));
       if (stepNum === stepNumber) {
         step.removeAttribute('hidden');
         step.classList.add('active');
@@ -192,7 +192,7 @@ async initPhoneInput() {  // ✅ async ici
 
     // Mise à jour indicateurs de progression
     this.stepIndicators?.forEach(indicator => {
-      const indicatorNum = parseInt(indicator.getAttribute('data-step-indicator'));
+      const indicatorNum = parseInt(indicator.getAttribute('data-state-indicator'));
       if (indicatorNum <= stepNumber) {
         indicator.classList.add('active');
       } else {
@@ -244,7 +244,7 @@ async initPhoneInput() {  // ✅ async ici
   }
 
   validateCurrentStep() {
-    const currentStepElement = this.form?.querySelector(`[data-step="${this.currentStep}"]`);
+    const currentStepElement = this.form?.querySelector(`[data-state-step="${this.currentStep}"]`);
     const requiredInputs = currentStepElement?.querySelectorAll('.form-input[required], .form-textarea[required]');
     let isValid = true;
 

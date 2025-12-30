@@ -26,23 +26,23 @@ export function initOnduleurSlider() {
       // Ajouter la classe active au bouton cliqué
       button.classList.add('active');
 
-      // Récupérer l'index de la slide depuis l'attribut data-slide
-      const slideIndex = button.getAttribute('data-slide');
+      // Récupérer l'index de la slide depuis l'attribut data-action-slide (1-based)
+      const slideIndex = button.getAttribute('data-action-slide');
 
       // Mettre à jour la position des deux sliders (onduleur ET stockage)
-      // Slide 0 = pas de transformation (position initiale)
-      // Slide 1 = translateX(-100%) pour afficher la deuxième slide
-      if (slideIndex === '0') {
-        onduleurSliderTrack.classList.remove('slide-1');
+      // Slide 1 = pas de transformation (position initiale)
+      // Slide 2 = translateX(-100%) pour afficher la deuxième slide
+      if (slideIndex === '1') {
+        onduleurSliderTrack.classList.remove('slide-2');
         // Mettre à jour aussi le slider stockage si présent
         if (stockageSliderTrack) {
-          stockageSliderTrack.classList.remove('slide-1');
+          stockageSliderTrack.classList.remove('slide-2');
         }
-      } else if (slideIndex === '1') {
-        onduleurSliderTrack.classList.add('slide-1');
+      } else if (slideIndex === '2') {
+        onduleurSliderTrack.classList.add('slide-2');
         // Mettre à jour aussi le slider stockage si présent
         if (stockageSliderTrack) {
-          stockageSliderTrack.classList.add('slide-1');
+          stockageSliderTrack.classList.add('slide-2');
         }
       }
     });

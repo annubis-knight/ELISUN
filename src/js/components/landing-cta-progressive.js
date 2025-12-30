@@ -209,11 +209,11 @@ class CtaProgressive {
     // Mettre à jour le texte du bouton
     this.btn.textContent = currentStepConfig.buttonText;
 
-    // Gérer l'attribut data-open-modal
+    // Gérer l'attribut data-action-modal
     if (currentStepConfig.openModal) {
-      this.btn.setAttribute('data-open-modal', 'devis');
+      this.btn.setAttribute('data-action-modal', 'devis');
     } else {
-      this.btn.removeAttribute('data-open-modal');
+      this.btn.removeAttribute('data-action-modal');
     }
 
     // Focus sur le premier input visible (sauf étape 1 au chargement)

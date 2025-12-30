@@ -6,8 +6,8 @@
 
 export function initTriggerBlock() {
   const triggerButtons = document.querySelectorAll('.trigger-button');
-  const particulierSection = document.querySelector('.left-section[data-target="particulier"]');
-  const professionnelSection = document.querySelector('.left-section[data-target="professionnel"]');
+  const particulierSection = document.querySelector('.left-section[data-state-audience="particulier"]');
+  const professionnelSection = document.querySelector('.left-section[data-state-audience="professionnel"]');
 
   if (!triggerButtons.length || !particulierSection || !professionnelSection) return;
 
@@ -24,7 +24,7 @@ export function initTriggerBlock() {
       button.classList.add('active');
 
       // Récupérer le type sélectionné (particulier ou professionnel)
-      const selectedType = button.getAttribute('data-type');
+      const selectedType = button.getAttribute('data-action-filter');
 
       // Toggle entre particulier et professionnel avec opacity + z-index
       if (selectedType === 'particulier') {

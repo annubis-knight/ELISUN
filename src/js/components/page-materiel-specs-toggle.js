@@ -8,7 +8,7 @@ export function initSpecsToggle() {
 
   toggleButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const targetId = button.getAttribute('data-target');
+      const targetId = button.getAttribute('data-action-toggle');
       const specsContainer = document.getElementById(targetId);
 
       if (!specsContainer) return;

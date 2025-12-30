@@ -105,7 +105,7 @@ class Benefits {
 
         if (bentoGrids && bentoGrids.length > 0) {
             bentoGrids.forEach(grid => grid.classList.remove('active'));
-            const targetGrid = section?.querySelector(`.installation-bento-grid[data-step="${stepNumber}"]`);
+            const targetGrid = section?.querySelector(`.installation-bento-grid[data-state-scroll="${stepNumber}"]`);
             if (targetGrid) targetGrid.classList.add('active');
         }
     }
@@ -126,7 +126,7 @@ class Benefits {
                 this.toggleClass(firstTabButton, 'tab-button-inactive', false);
 
                 bentoGrids.forEach(grid => grid.classList.remove('active'));
-                const firstGrid = section.querySelector('.installation-bento-grid[data-step="01"]');
+                const firstGrid = section.querySelector('.installation-bento-grid[data-state-scroll="1"]');
                 if (firstGrid) firstGrid.classList.add('active');
             }
         });

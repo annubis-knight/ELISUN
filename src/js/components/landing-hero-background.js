@@ -34,8 +34,8 @@ class HeroBackgroundRotation {
             linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 80%)
         `;
         this.heroSection.style.setProperty(`--bg-${layer}`, `${gradients}, url('${imageUrl}')`);
-        this.heroSection.setAttribute(`data-animate-${layer}`, 'false');
-        setTimeout(() => this.heroSection.setAttribute(`data-animate-${layer}`, 'true'), 100);
+        this.heroSection.setAttribute(`data-state-anim-${layer}`, 'false');
+        setTimeout(() => this.heroSection.setAttribute(`data-state-anim-${layer}`, 'true'), 100);
     }
 
     /**
@@ -44,7 +44,7 @@ class HeroBackgroundRotation {
     toggleLayers(visibleLayer, hiddenLayer) {
         this.heroSection.style.setProperty(`--opacity-${visibleLayer}`, '1');
         this.heroSection.style.setProperty(`--opacity-${hiddenLayer}`, '0');
-        setTimeout(() => this.heroSection.setAttribute(`data-animate-${hiddenLayer}`, 'false'), this.fadeDelay);
+        setTimeout(() => this.heroSection.setAttribute(`data-state-anim-${hiddenLayer}`, 'false'), this.fadeDelay);
     }
 
     /**
