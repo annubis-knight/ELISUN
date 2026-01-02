@@ -18,12 +18,6 @@ events:
     selector: "form[data-track='contact']"
     # Soumission du formulaire de contact principal
 
-  - event_name: "form_quote"
-    category: "conversion"
-    trigger: "submit"
-    selector: "form[data-track='quote']"
-    # Demande de devis
-
   - event_name: "phone_click"
     category: "conversion"
     trigger: "click"
@@ -169,6 +163,12 @@ events:
     trigger: "click"
     selector: "[data-track='logo']"
     # Clic sur le logo
+
+  - event_name: "nav_internal"
+    category: "navigation"
+    trigger: "click"
+    selector: "[data-track='nav']"
+    # Bouton de navigation interne (Voir, Découvrir) - pas de conversion
 
   - event_name: "error_404"
     category: "navigation"

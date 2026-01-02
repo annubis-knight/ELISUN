@@ -4,7 +4,7 @@
 // Intégration GTM Consent Mode v2
 
 import * as CookieConsent from 'vanilla-cookieconsent';
-import { updateGTMConsent } from '../utils/gtm-tracking.js';
+import { updateGTMConsent } from '../utils/tracking.js';
 
 /**
  * Configuration des catégories de cookies

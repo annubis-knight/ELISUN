@@ -30,8 +30,8 @@ import './components/landing-cta-progressive.js';
 // Cookie Consent s'auto-initialise
 import './components/ui-cookie-consent.js';
 
-// GTM Tracking - initialisation automatique des events
-import { initGTMTracking } from './utils/gtm-tracking.js';
+// Tracking DataLayer - auto-généré depuis tracking-events.yaml
+import './utils/tracking.js';
 
 // Progressive Input avec Google Places API
 import { initProgressiveInput } from './components/ui-progressive-input.js';
@@ -58,9 +58,6 @@ class ElisunApp {
         try {
             await this.initCriticalComponents();
             this.initNavigation();
-
-            // Initialiser le tracking GTM (scroll, clics contact, CTA)
-            initGTMTracking();
 
             // Initialiser le progressive input (Google Places)
             initProgressiveInput();

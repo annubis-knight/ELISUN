@@ -1,0 +1,300 @@
+# TRACKING RULES - Rulesets pour auto-détection des éléments HTML
+# Utilisé par /track-html-elements pour injecter les attributs data-track
+#
+# PHILOSOPHIE : Détection basée sur l'INTENTION, pas sur les classes CSS
+# - Verbes d'ACTION (conversion) : Obtenir, Demander, Réserver, S'inscrire, Envoyer
+# - Verbes d'EXPLORATION (navigation) : Voir, Découvrir, Explorer, En savoir plus
+
+rulesets:
+
+  # ============================================
+  # CTA (Call To Action)
+  # ============================================
+
+  cta_primary:
+    description: "Bouton d'action principal - CONVERSION (devis, contact, achat)"
+    target_tags: ["a", "button", "div"]
+    indices:
+      # Intention / Comportement
+      - texte: "Déclenche une action immédiate (ouverture modale, formulaire, paiement)"
+        weight: 25
+      - texte: "Texte avec verbe d'ACTION fort : Obtenir, Demander, Réserver, S'inscrire, Envoyer, Commencer"
+        weight: 20
+      - texte: "Attribut data-action-modal présent (déclenche une modale)"
+        weight: 15
+      # Apparence / Style
+      - texte: "Fond de couleur primaire (pas outline, pas ghost, pas transparent)"
+        weight: 15
+      - texte: "Taille plus grande ou style plus visible que les autres boutons de la section"
+        weight: 10
+      # Position / Contexte
+      - texte: "Présent dans une zone critique (hero, header, above-the-fold, fin de section)"
+        weight: 10
+      - texte: "Isolé ou visuellement mis en avant dans sa section"
+        weight: 5
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+
+  cta_secondary:
+    description: "Bouton secondaire - ACCOMPAGNEMENT (en savoir plus, contact alternatif)"
+    target_tags: ["a", "button"]
+    indices:
+      # Intention / Comportement
+      - texte: "Texte avec verbe d'EXPLORATION : En savoir plus, Me contacter, Voir les tarifs"
+        weight: 20
+      - texte: "Accompagne un bouton primaire dans la même section (rôle de complément)"
+        weight: 20
+      - texte: "NE déclenche PAS de modale ou formulaire directement"
+        weight: 15
+      # Apparence / Style
+      - texte: "Style outline, ghost, ou bordure sans fond plein"
+        weight: 20
+      - texte: "Visuellement moins proéminent que le CTA primaire voisin"
+        weight: 10
+      # Position / Contexte
+      - texte: "Souvent à droite ou en dessous d'un CTA primaire"
+        weight: 10
+      - texte: "Pas de classe ou ID contenant 'primary'"
+        weight: 5
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+
+  # ============================================
+  # NAVIGATION
+  # ============================================
+
+  nav_internal:
+    description: "Bouton de navigation interne stylisé - ENGAGEMENT (Voir, Découvrir, Explorer)"
+    target_tags: ["a"]
+    indices:
+      # Intention / Comportement - DISCRIMINANT CLÉ
+      - texte: "Texte avec verbe d'EXPLORATION : Voir, Découvrir, Explorer (PAS d'action de conversion)"
+        weight: 30
+      - texte: "href vers une page interne (.html) ou ancre (#section)"
+        weight: 25
+      - texte: "PAS d'attribut data-action-modal (ne déclenche pas de modale)"
+        weight: 20
+      # Apparence / Style
+      - texte: "Apparence de bouton (stylisé comme btn-primary) MAIS comportement de lien"
+        weight: 15
+      # Contexte
+      - texte: "Positionné en fin de section pour inciter à explorer davantage"
+        weight: 10
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+
+  logo_click:
+    description: "Clic sur le logo du site - retour accueil"
+    target_tags: ["a"]
+    indices:
+      # Position / Contexte
+      - texte: "Situé dans la navbar, le header ou le footer"
+        weight: 30
+      - texte: "href vers index.html, /, ou racine du site"
+        weight: 25
+      # Contenu
+      - texte: "Contient une image avec alt contenant 'logo' ou nom de marque"
+        weight: 25
+      - texte: "Classe ou ID contient 'logo'"
+        weight: 20
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+
+  menu_click:
+    description: "Lien du menu de navigation principal"
+    target_tags: ["a"]
+    indices:
+      # Position / Contexte
+      - texte: "Situé dans un élément <nav> ou <header>"
+        weight: 30
+      - texte: "Parent est un <li> dans une <ul> de navigation"
+        weight: 20
+      # Contenu / Style
+      - texte: "Texte court (1-3 mots) sans verbe d'action fort"
+        weight: 20
+      - texte: "href vers une page interne (.html)"
+        weight: 15
+      # Apparence
+      - texte: "Pas de style bouton (pas de fond, pas de bordure prononcée)"
+        weight: 15
+    seuils:
+      tres_confiant: 80
+      confiant: 65
+      incertain: 45
+
+  # ============================================
+  # CONTACT
+  # ============================================
+
+  phone_click:
+    description: "Lien vers numéro de téléphone"
+    target_tags: ["a"]
+    indices:
+      # Attributs techniques - DISCRIMINANT CLÉ
+      - texte: "Attribut href commence par 'tel:'"
+        weight: 50
+      # Contenu
+      - texte: "Texte contient un numéro de téléphone (chiffres, espaces, +33)"
+        weight: 30
+      # Contexte visuel
+      - texte: "Icône téléphone (SVG, font-icon) à proximité immédiate"
+        weight: 20
+    seuils:
+      tres_confiant: 90
+      confiant: 70
+      incertain: 50
+
+  email_click:
+    description: "Lien vers adresse email"
+    target_tags: ["a"]
+    indices:
+      # Attributs techniques - DISCRIMINANT CLÉ
+      - texte: "Attribut href commence par 'mailto:'"
+        weight: 50
+      # Contenu
+      - texte: "Texte contient @ ou ressemble à une adresse email"
+        weight: 30
+      # Contexte visuel
+      - texte: "Icône email/envelope (SVG, font-icon) à proximité immédiate"
+        weight: 20
+    seuils:
+      tres_confiant: 90
+      confiant: 70
+      incertain: 50
+
+  whatsapp_click:
+    description: "Lien vers WhatsApp"
+    target_tags: ["a"]
+    indices:
+      # Attributs techniques - DISCRIMINANT CLÉ
+      - texte: "Attribut href contient 'wa.me' ou 'whatsapp.com'"
+        weight: 50
+      # Accessibilité
+      - texte: "aria-label contient 'WhatsApp' (insensible à la casse)"
+        weight: 30
+      # Contexte visuel
+      - texte: "Icône WhatsApp (SVG spécifique ou font-icon)"
+        weight: 20
+    seuils:
+      tres_confiant: 90
+      confiant: 70
+      incertain: 50
+
+  # ============================================
+  # ENGAGEMENT
+  # ============================================
+
+  accordion_open:
+    description: "Ouverture d'un accordéon (FAQ, spécifications, détails)"
+    target_tags: ["button", "div"]
+    indices:
+      # Attributs techniques
+      - texte: "Attribut data-action-toggle présent (toggle behavior)"
+        weight: 30
+      # Classe / Sémantique
+      - texte: "Classe contient 'faq', 'toggle', 'accordion', 'expand', 'collapse'"
+        weight: 25
+      # Contexte
+      - texte: "Dans une section FAQ ou avec classe parente contenant 'faq'"
+        weight: 25
+      # Icône
+      - texte: "Icône chevron, flèche, ou +/- indiquant un état toggle"
+        weight: 20
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+
+  video_play:
+    description: "Lecture d'une vidéo intégrée (YouTube, Vimeo, etc.)"
+    target_tags: ["div", "button"]
+    indices:
+      # Attributs techniques - DISCRIMINANT CLÉ
+      - texte: "Attribut data-value-video présent (ID vidéo YouTube/Vimeo)"
+        weight: 50
+      # Classe / Sémantique
+      - texte: "Classe contient 'video', 'player', 'thumbnail'"
+        weight: 25
+      # Icône
+      - texte: "Bouton play visible (triangle, icône play)"
+        weight: 25
+    seuils:
+      tres_confiant: 90
+      confiant: 75
+      incertain: 50
+
+  tab_click:
+    description: "Changement d'onglet, filtre ou slide"
+    target_tags: ["div", "button"]
+    indices:
+      # Attributs techniques - DISCRIMINANT CLÉ
+      - texte: "Attribut data-action-filter, data-action-slide, ou data-tab présent"
+        weight: 40
+      # Contexte
+      - texte: "Dans un groupe de boutons similaires (siblings avec même structure)"
+        weight: 25
+      # État
+      - texte: "Un élément du groupe a une classe 'active', 'selected', ou 'current'"
+        weight: 20
+      # Classe / Sémantique
+      - texte: "Classe contient 'tab', 'trigger', 'filter'"
+        weight: 15
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+
+  # ============================================
+  # FORMULAIRE
+  # ============================================
+
+  form_step:
+    description: "Bouton de progression dans formulaire multi-étapes"
+    target_tags: ["button", "div"]
+    indices:
+      # Contenu textuel
+      - texte: "Texte : Suivant, Continuer, Next, Étape suivante"
+        weight: 30
+      # Attributs techniques
+      - texte: "Attribut data-action-nav='next' ou similaire"
+        weight: 25
+      # Contexte
+      - texte: "Dans un formulaire avec indicateur d'étapes (steps, progress)"
+        weight: 25
+      # Icône
+      - texte: "Icône flèche droite ou chevron-right"
+        weight: 20
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+
+  form_submit:
+    description: "Bouton de soumission finale de formulaire"
+    target_tags: ["button", "input"]
+    indices:
+      # Attributs techniques - DISCRIMINANT CLÉ
+      - texte: "type='submit' ou rôle de soumission"
+        weight: 35
+      # Contenu textuel
+      - texte: "Texte : Envoyer, Soumettre, Valider, Confirmer"
+        weight: 25
+      # Contexte
+      - texte: "Dernier bouton visible dans le formulaire"
+        weight: 20
+      # Style
+      - texte: "Style primaire (fond coloré, mise en avant)"
+        weight: 20
+    seuils:
+      tres_confiant: 85
+      confiant: 70
+      incertain: 50
+

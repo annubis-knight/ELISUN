@@ -1,5 +1,5 @@
 import intlTelInput from 'intl-tel-input';
-import { trackModalOpen, trackFormStep, trackFormSubmit } from '../utils/gtm-tracking.js';
+import { trackModalOpen, trackFormStep, trackFormSubmit } from '../utils/tracking.js';
 
 /**
  * Gestionnaire du modal de demande de devis
