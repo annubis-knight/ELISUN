@@ -48,3 +48,8 @@ temp/
 
 # Local configuration
 .env.local.firebase/
+
+# Google Cloud credentials (NEVER commit)
+*-service-account*.json
+*-credentials*.json
+premium-archery-*.json
